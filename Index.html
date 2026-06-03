@@ -1,0 +1,4214 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MPLS Diversa Natura — SMA Agnesiana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =============================================
+   CSS VARIABLES & ROOT THEME
+   ============================================= */
+      :root {
+        /* KELAS ELEMENTAL COLORS */
+        --langit-h: #4a90d9; /* Langit/Kalimantan - Biru Langit */
+        --langit-l: #e8f4ff;  
+        --langit-d: #1a5a9a;
+
+        --air-h: #2bbba0; /* Air/Sulawesi - Tosca */
+        --air-l: #e0f7f4;
+        --air-d: #0a8a72;
+
+        --angin-h: #7ec8a2; /* Angin/Sumatra - Hijau Muda */
+        --angin-l: #eaf7ef;
+        --angin-d: #3a8f5e;
+
+        --api-h: #e85d3a; /* Api/Jawa - Merah Bara */
+        --api-l: #fff0ec;
+        --api-d: #a82c12;
+
+        --matahari-h: #f5a623; /* Matahari/Bali - Emas */
+        --matahari-l: #fff8e7;
+        --matahari-d: #b3720a;
+
+        --tanah-h: #8b5e3c; /* Tanah/Papua - Coklat Tanah */
+        --tanah-l: #f5ede6;
+        --tanah-d: #5c3520;
+
+        /* GLOBAL */
+        --bg: #0b1a12;
+        --bg2: #102019;
+        --bg3: #162b1f;
+        --surface: rgba(255, 255, 255, 0.04);
+        --surface2: rgba(255, 255, 255, 0.07);
+        --border: rgba(255, 255, 255, 0.08);
+        --border2: rgba(255, 255, 255, 0.14);
+        --text: #f0ede5;
+        --text2: #a8b5a0;
+        --text3: #6b7e65;
+        --accent: #5dbb80;
+        --accent2: #3a8f5e;
+        --gold: #d4a843;
+
+        --font-display: "Playfair Display", serif;
+        --font-body: "DM Sans", sans-serif;
+        --font-mono: "Space Mono", monospace;
+
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+        --radius-xl: 30px;
+        --radius-pill: 999px;
+
+        --nav-h: 64px;
+        --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* =============================================
+   RESET & BASE
+   ============================================= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: inherit;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      input,
+      textarea,
+      select {
+        font-family: inherit;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent2);
+        border-radius: 999px;
+      }
+
+      /* =============================================
+   BACKGROUND ORGANIC TEXTURE
+   ============================================= */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 15% 20%,
+            rgba(93, 187, 128, 0.06) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 50% 60% at 85% 75%,
+            rgba(74, 144, 217, 0.05) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 50% 50%,
+            rgba(212, 168, 67, 0.03) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Leaf pattern overlay */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle 1px at 20% 30%,
+            rgba(93, 187, 128, 0.15) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            circle 1px at 60% 70%,
+            rgba(93, 187, 128, 0.1) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            circle 1px at 80% 20%,
+            rgba(74, 144, 217, 0.1) 0%,
+            transparent 100%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* =============================================
+   NAVBAR
+   ============================================= */
+      #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.25rem;
+        background: rgba(11, 26, 18, 0.8);
+        backdrop-filter: blur(16px) saturate(1.4);
+        -webkit-backdrop-filter: blur(16px) saturate(1.4);
+        border-bottom: 1px solid var(--border);
+        transition: var(--transition);
+      }
+      #navbar.scrolled {
+        background: rgba(11, 26, 18, 0.95);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .nav-logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+      .nav-logo-text span:first-child {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .nav-logo-text span:last-child {
+        font-size: 0.65rem;
+        color: var(--text3);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-btn {
+        height: 40px;
+        padding: 0 1rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: var(--transition);
+        border: 1px solid var(--border2);
+        color: var(--text2);
+        display: none;
+      }
+      @media (min-width: 640px) {
+        .nav-btn {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .nav-btn:hover {
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn.accent {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: transparent;
+        font-weight: 600;
+      }
+      .nav-btn.accent:hover {
+        background: #4cad70;
+      }
+      .hamburger {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border2);
+        transition: var(--transition);
+      }
+      .hamburger:hover {
+        background: var(--surface2);
+      }
+      .hamburger span {
+        display: block;
+        width: 20px;
+        height: 1.5px;
+        background: var(--text);
+        position: relative;
+        transition: var(--transition);
+      }
+      .hamburger span::before,
+      .hamburger span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height: 1.5px;
+        background: var(--text);
+        transition: var(--transition);
+      }
+      .hamburger span::before {
+        top: -6px;
+      }
+      .hamburger span::after {
+        top: 6px;
+      }
+      .hamburger.open span {
+        background: transparent;
+      }
+      .hamburger.open span::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      .hamburger.open span::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      /* =============================================
+   SIDEBAR DRAWER
+   ============================================= */
+      #sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 199;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      #sidebar-overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      #sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(320px, 90vw);
+        height: 100%;
+        z-index: 200;
+        background: rgba(16, 32, 25, 0.97);
+        backdrop-filter: blur(20px) saturate(1.5);
+        -webkit-backdrop-filter: blur(20px) saturate(1.5);
+        border-left: 1px solid var(--border2);
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        overflow-y: auto;
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-header {
+        padding: 1.25rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        background: rgba(16, 32, 25, 0.97);
+        z-index: 1;
+      }
+      .sidebar-header h3 {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .sidebar-close {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        font-size: 1.1rem;
+      }
+      .sidebar-close:hover {
+        background: var(--surface2);
+      }
+      .sidebar-nav {
+        padding: 1rem;
+        flex: 1;
+      }
+      .sidebar-section-title {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin: 1rem 0 0.5rem;
+        padding-left: 0.5rem;
+      }
+      .sidebar-section-title:first-child {
+        margin-top: 0;
+      }
+      .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0.75rem 0.75rem;
+        border-radius: var(--radius-md);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+        margin-bottom: 2px;
+        color: var(--text2);
+      }
+      .sidebar-link:hover {
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .sidebar-link.active {
+        background: rgba(93, 187, 128, 0.1);
+        color: var(--accent);
+      }
+      .sidebar-link-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        background: var(--surface);
+        flex-shrink: 0;
+      }
+      .sidebar-footer {
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+      }
+      .sidebar-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(93, 187, 128, 0.1);
+        border: 1px solid rgba(93, 187, 128, 0.2);
+        border-radius: var(--radius-pill);
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+      .sidebar-badge::before {
+        content: "●";
+        font-size: 0.5rem;
+      }
+
+      /* =============================================
+   HERO SECTION
+   ============================================= */
+      #hero {
+        position: relative;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        padding: calc(var(--nav-h) + 2rem) 1.25rem 4rem;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .hero-bg-art {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      /* Animated organic shapes */
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.12;
+        animation: orbFloat linear infinite;
+      }
+      .hero-orb:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        background: var(--accent);
+        top: -50px;
+        right: -80px;
+        animation-duration: 18s;
+      }
+      .hero-orb:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        background: var(--langit-h);
+        bottom: 10%;
+        left: -60px;
+        animation-duration: 22s;
+        animation-delay: -5s;
+      }
+      .hero-orb:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        background: var(--gold);
+        top: 40%;
+        right: 20%;
+        animation-duration: 15s;
+        animation-delay: -8s;
+      }
+      @keyframes orbFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        33% {
+          transform: translateY(-30px) scale(1.05);
+        }
+        66% {
+          transform: translateY(15px) scale(0.97);
+        }
+      }
+
+      /* Floating leaves */
+      .leaf {
+        position: absolute;
+        width: 60px;
+        height: 40px;
+        border-radius: 50% 10px;
+        opacity: 0.06;
+        animation: leafDrift linear infinite;
+      }
+      .leaf:nth-child(4) {
+        background: var(--accent);
+        top: 20%;
+        left: 15%;
+        width: 50px;
+        animation-duration: 20s;
+      }
+      .leaf:nth-child(5) {
+        background: var(--langit-h);
+        top: 60%;
+        right: 10%;
+        width: 35px;
+        animation-duration: 25s;
+        animation-delay: -10s;
+        transform: rotate(60deg);
+      }
+      .leaf:nth-child(6) {
+        background: var(--matahari-h);
+        top: 75%;
+        left: 35%;
+        width: 45px;
+        animation-duration: 17s;
+        animation-delay: -3s;
+        transform: rotate(-30deg);
+      }
+      @keyframes leafDrift {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.06;
+        }
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+          opacity: 0.1;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(93, 187, 128, 0.08);
+        border: 1px solid rgba(93, 187, 128, 0.2);
+        border-radius: var(--radius-pill);
+        padding: 0.4rem 1rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease both;
+      }
+      .hero-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-greeting {
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 10vw, 5.5rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+        animation: fadeInUp 0.8s ease 0.1s both;
+      }
+      .hero-greeting-italic {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .hero-tagline {
+        font-family: var(--font-display);
+        font-size: clamp(0.85rem, 3vw, 1.1rem);
+        font-style: italic;
+        color: var(--gold);
+        letter-spacing: 0.04em;
+        margin-bottom: 0.4rem;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+      .hero-motto-sub {
+        font-size: 0.8rem;
+        color: var(--text3);
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease 0.25s both;
+      }
+      .hero-desc {
+        font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+        color: var(--text2);
+        line-height: 1.8;
+        max-width: 480px;
+        margin: 0 auto 2.5rem;
+        animation: fadeInUp 0.8s ease 0.3s both;
+      }
+      .hero-desc em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease 0.4s both;
+      }
+      .btn {
+        height: 48px;
+        padding: 0 1.5rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+        box-shadow: 0 4px 20px rgba(93, 187, 128, 0.3);
+      }
+      .btn-primary:hover {
+        background: #4cad70;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(93, 187, 128, 0.4);
+      }
+      .btn-secondary {
+        background: var(--surface);
+        border: 1px solid var(--border2);
+        color: var(--text2);
+      }
+      .btn-secondary:hover {
+        background: var(--surface2);
+        color: var(--text);
+        transform: translateY(-2px);
+      }
+      .hero-scroll-hint {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: var(--text3);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        animation: fadeInUp 1s ease 0.8s both;
+        z-index: 2;
+      }
+      .scroll-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--border2), transparent);
+        animation: scrollBounce 2s ease infinite;
+      }
+      @keyframes scrollBounce {
+        0%,
+        100% {
+          transform: scaleY(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scaleY(1.3);
+          opacity: 1;
+        }
+      }
+
+      /* Countdown timer inside hero */
+      .hero-countdown {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease 0.35s both;
+      }
+      .countdown-unit {
+        text-align: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 0.6rem 0.8rem;
+        min-width: 64px;
+      }
+      .countdown-num {
+        font-family: var(--font-mono);
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        display: block;
+      }
+      .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-top: 4px;
+        display: block;
+      }
+      .countdown-sep {
+        font-family: var(--font-mono);
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--text3);
+        align-self: center;
+        margin-top: -0.8rem;
+      }
+
+      /* =============================================
+   SECTION COMMON
+   ============================================= */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+      .section-label::before,
+      .section-label::after {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: rgba(93, 187, 128, 0.4);
+      }
+      .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--text);
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .section-desc {
+        font-size: 0.9rem;
+        color: var(--text2);
+        max-width: 480px;
+        margin: 0.75rem auto 0;
+      }
+      .section-divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, var(--accent), transparent);
+        margin: 1rem auto 0;
+        border-radius: 999px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      .section-pad {
+        padding: 5rem 0;
+      }
+      @media (max-width: 640px) {
+        .section-pad {
+          padding: 3.5rem 0;
+        }
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* =============================================
+   FEATURE TABS (MAIN NAVIGATION)
+   ============================================= */
+      #features {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .feature-tabs {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        gap: 4px;
+        padding: 0.75rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        justify-content: center;
+      }
+      .feature-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .ftab {
+        flex-shrink: 0;
+        height: 40px;
+        padding: 0 1rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.82rem;
+        font-weight: 500;
+        transition: var(--transition);
+        color: var(--text3);
+        border: 1px solid transparent;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .ftab:hover {
+        color: var(--text2);
+        background: var(--surface);
+      }
+      .ftab.active {
+        color: var(--accent);
+        background: rgba(93, 187, 128, 0.1);
+        border-color: rgba(93, 187, 128, 0.2);
+      }
+      .ftab-icon {
+        font-size: 1rem;
+      }
+
+      /* Feature panels */
+      .feature-panel {
+        display: none;
+        padding: 2.5rem 1.25rem;
+      }
+      .feature-panel.active {
+        display: block;
+      }
+
+      /* =============================================
+   1. GUIDEBOOK PANEL
+   ============================================= */
+      .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .guide-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+      .guide-card:hover {
+        border-color: var(--border2);
+        background: var(--surface2);
+        transform: translateY(-3px);
+      }
+      .guide-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .guide-card h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .guide-card p {
+        font-size: 0.83rem;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+      .guide-card-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        padding: 0.4rem 0.8rem;
+        background: rgba(93, 187, 128, 0.08);
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(93, 187, 128, 0.15);
+      }
+      .eco-banner {
+        margin-top: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          rgba(93, 187, 128, 0.1),
+          rgba(58, 143, 94, 0.05)
+        );
+        border: 1px solid rgba(93, 187, 128, 0.2);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .eco-banner-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+      .eco-banner h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .eco-banner p {
+        font-size: 0.8rem;
+        color: var(--text2);
+      }
+      .eco-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 0.5rem;
+      }
+      .eco-tag {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 0.25rem 0.6rem;
+        border-radius: var(--radius-pill);
+        background: rgba(93, 187, 128, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(93, 187, 128, 0.2);
+      }
+
+      /* Schedule / Timetable */
+      .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        font-size: 0.82rem;
+      }
+      .schedule-table th {
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text3);
+        border-bottom: 1px solid var(--border);
+      }
+      .schedule-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+      }
+      .schedule-table tr:last-child td {
+        border-bottom: none;
+      }
+      .schedule-badge {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+      .sbadge-green {
+        background: rgba(93, 187, 128, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(93, 187, 128, 0.2);
+      }
+      .sbadge-gold {
+        background: rgba(212, 168, 67, 0.1);
+        color: var(--gold);
+        border: 1px solid rgba(212, 168, 67, 0.2);
+      }
+      .sbadge-blue {
+        background: rgba(74, 144, 217, 0.1);
+        color: var(--langit-h);
+        border: 1px solid rgba(74, 144, 217, 0.2);
+      }
+
+      /* =============================================
+   2. SEKOLAH & OSIS PANEL
+   ============================================= */
+      .osis-hero {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .osis-emblem {
+        width: 80px;
+        height: 80px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        flex-shrink: 0;
+      }
+      .osis-info {
+        flex: 1;
+        min-width: 200px;
+      }
+      .osis-info h2 {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .osis-info .school-name {
+        font-size: 0.8rem;
+        color: var(--text3);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .osis-info p {
+        font-size: 0.85rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .stat-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        text-align: center;
+      }
+      .stat-num {
+        font-family: var(--font-mono);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.72rem;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .vm-grid {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      @media (max-width: 480px) {
+        .vm-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .vm-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
+      }
+      .vm-card-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .vm-card p {
+        font-size: 0.83rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .osis-structure-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text2);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .osis-member-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.75rem;
+      }
+      .osis-member {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem 0.75rem;
+        text-align: center;
+        transition: var(--transition);
+      }
+      .osis-member:hover {
+        border-color: var(--border2);
+      }
+      .member-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        margin: 0 auto 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+      .osis-member .member-name {
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .osis-member .member-role {
+        font-size: 0.68rem;
+        color: var(--text3);
+      }
+
+      /* =============================================
+   3. KELAS & MASKOT PANEL
+   ============================================= */
+      .class-slider-container {
+        overflow: hidden;
+      }
+      .class-tabs-nav {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 1rem;
+      }
+      .class-tabs-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .class-tab-btn {
+        flex-shrink: 0;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1.5px solid transparent;
+        transition: var(--transition);
+        color: var(--text3);
+        background: var(--surface);
+      }
+      .class-tab-btn.active {
+        color: #fff;
+      }
+      .class-tab-btn:hover {
+        opacity: 0.85;
+      }
+      .class-panel {
+        display: none;
+      }
+      .class-panel.active {
+        display: block;
+      }
+      .class-hero {
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .class-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--surface);
+        border-radius: inherit;
+      }
+      .class-hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .class-mascot-big {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .class-name-big {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 0.25rem;
+      }
+      .class-element {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.3rem 0.8rem;
+        border-radius: var(--radius-pill);
+        margin-bottom: 0.75rem;
+      }
+      .class-desc {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .class-traits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+      }
+      .class-trait {
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.3rem 0.7rem;
+        border-radius: var(--radius-pill);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .class-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .class-info-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 0.75rem;
+      }
+      .class-info-label {
+        font-size: 0.68rem;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .class-info-value {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 0.2rem;
+      }
+
+      /* =============================================
+   4. EKSTRAKURIKULER & GURU
+   ============================================= */
+      .ekskul-search {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      .ekskul-search input {
+        width: 100%;
+        height: 48px;
+        background: var(--surface);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius-pill);
+        padding: 0 1rem 0 3rem;
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+      .ekskul-search input:focus {
+        outline: none;
+        border-color: rgba(93, 187, 128, 0.4);
+      }
+      .ekskul-search input::placeholder {
+        color: var(--text3);
+      }
+      .ekskul-search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text3);
+        font-size: 1.1rem;
+        pointer-events: none;
+      }
+      .ekskul-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .ekskul-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem 1rem;
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+      .ekskul-card:hover {
+        border-color: var(--border2);
+        background: var(--surface2);
+        transform: translateY(-3px);
+      }
+      .ekskul-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+      .ekskul-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .ekskul-type {
+        font-size: 0.7rem;
+        color: var(--text3);
+      }
+      .guru-section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .guru-tabs-nav {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 0.75rem;
+      }
+      .guru-tabs-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .guru-tab-btn {
+        flex-shrink: 0;
+        height: 34px;
+        padding: 0 0.9rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.78rem;
+        font-weight: 500;
+        transition: var(--transition);
+        color: var(--text3);
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+      .guru-tab-btn.active {
+        background: rgba(93, 187, 128, 0.1);
+        color: var(--accent);
+        border-color: rgba(93, 187, 128, 0.2);
+      }
+      .guru-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+      .guru-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: var(--transition);
+      }
+      .guru-card:hover {
+        border-color: var(--border2);
+      }
+      .guru-avatar {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+      .guru-name {
+        font-size: 0.83rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+      }
+      .guru-subject {
+        font-size: 0.73rem;
+        color: var(--text3);
+      }
+      .guru-class {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 0.15rem;
+      }
+
+      /* =============================================
+   5. MEMORIAL STORY & KATA UNTUK MASA DEPAN
+   ============================================= */
+      .memorial-intro {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .memorial-intro h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+      }
+      .memorial-intro p {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.8;
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .story-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        transition: var(--transition);
+      }
+      .story-card:hover {
+        border-color: var(--border2);
+      }
+      .story-author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .story-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .story-author-info .author-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .story-author-info .author-class {
+        font-size: 0.73rem;
+        color: var(--text3);
+      }
+      .story-quote {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.8;
+        padding-left: 0.75rem;
+        border-left: 2px solid rgba(93, 187, 128, 0.3);
+        margin-bottom: 0.75rem;
+        font-style: italic;
+      }
+      .story-date {
+        font-size: 0.72rem;
+        color: var(--text3);
+      }
+
+      /* Future message form */
+      .future-form-wrap {
+        margin-top: 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(93, 187, 128, 0.06),
+          rgba(74, 144, 217, 0.04)
+        );
+        border: 1px solid rgba(93, 187, 128, 0.15);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+      }
+      .future-form-title {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .future-form-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .future-form-sub {
+        font-size: 0.83rem;
+        color: var(--text2);
+        margin-bottom: 1.5rem;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text2);
+        margin-bottom: 0.4rem;
+      }
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius-md);
+        padding: 0.75rem 1rem;
+        color: var(--text);
+        font-size: 0.88rem;
+        transition: var(--transition);
+      }
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: rgba(93, 187, 128, 0.5);
+        background: rgba(93, 187, 128, 0.04);
+      }
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+        color: var(--text3);
+      }
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+        line-height: 1.6;
+      }
+      .form-select {
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+      }
+      .form-select option {
+        background: var(--bg2);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      @media (max-width: 420px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .btn-submit {
+        height: 48px;
+        width: 100%;
+        border-radius: var(--radius-md);
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 0.9rem;
+        font-weight: 700;
+        transition: var(--transition);
+      }
+      .btn-submit:hover {
+        background: #4cad70;
+        transform: translateY(-1px);
+      }
+
+      /* Wall of messages */
+      .messages-wall {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .message-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1rem;
+        transition: var(--transition);
+      }
+      .message-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-2px);
+      }
+      .message-from {
+        font-size: 0.7rem;
+        color: var(--text3);
+        margin-bottom: 0.4rem;
+      }
+      .message-text {
+        font-size: 0.82rem;
+        color: var(--text2);
+        font-style: italic;
+        line-height: 1.6;
+      }
+
+      /* =============================================
+   6. PETA SEKOLAH 3D CSS
+   ============================================= */
+      #peta-section {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+      }
+      .map-container {
+        perspective: 900px;
+        margin-bottom: 1.5rem;
+      }
+      .map-scene {
+        width: 100%;
+        transform: rotateX(35deg) rotateZ(-5deg);
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+      .map-scene:hover {
+        transform: rotateX(28deg) rotateZ(-3deg);
+      }
+      .map-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 1.5rem;
+        background: rgba(22, 43, 31, 0.8);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius-lg);
+      }
+      .map-block {
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0.75rem 0.4rem;
+        position: relative;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .map-block-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+        display: block;
+      }
+      .map-block-name {
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.3;
+      }
+      .map-block.span2 {
+        grid-column: span 2;
+      }
+      .map-block.span3 {
+        grid-column: span 3;
+      }
+      /* Block colors */
+      .mb-green {
+        background: rgba(93, 187, 128, 0.2);
+        border: 1.5px solid rgba(93, 187, 128, 0.3);
+      }
+      .mb-blue {
+        background: rgba(74, 144, 217, 0.2);
+        border: 1.5px solid rgba(74, 144, 217, 0.3);
+      }
+      .mb-gold {
+        background: rgba(212, 168, 67, 0.15);
+        border: 1.5px solid rgba(212, 168, 67, 0.25);
+      }
+      .mb-red {
+        background: rgba(232, 93, 58, 0.15);
+        border: 1.5px solid rgba(232, 93, 58, 0.25);
+      }
+      .mb-teal {
+        background: rgba(43, 187, 160, 0.15);
+        border: 1.5px solid rgba(43, 187, 160, 0.25);
+      }
+      .mb-gray {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+      }
+      .mb-earth {
+        background: rgba(139, 94, 60, 0.2);
+        border: 1.5px solid rgba(139, 94, 60, 0.3);
+      }
+      .map-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+      }
+      .map-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        color: var(--text3);
+      }
+      .map-legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .modal-overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal {
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        max-width: 400px;
+        width: 100%;
+        transform: scale(0.9) translateY(20px);
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+        opacity: 0;
+      }
+      .modal-overlay.show .modal {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      .modal-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .modal-title {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .modal-close {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        background: var(--surface2);
+      }
+      .modal-body p {
+        font-size: 0.85rem;
+        color: var(--text2);
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+      }
+      .modal-detail-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.82rem;
+      }
+      .modal-detail-row:last-child {
+        border-bottom: none;
+      }
+      .modal-detail-label {
+        color: var(--text3);
+        width: 80px;
+        flex-shrink: 0;
+      }
+      .modal-detail-value {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* =============================================
+   FOOTER
+   ============================================= */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 3rem 1.25rem 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto 2rem;
+      }
+      @media (max-width: 640px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+      .footer-brand h3 {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .footer-brand p {
+        font-size: 0.8rem;
+        color: var(--text3);
+        line-height: 1.7;
+      }
+      .footer-tagline {
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: 0.85rem;
+        color: var(--gold);
+        margin-top: 0.75rem;
+      }
+      .footer-col h4 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 1rem;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .footer-link {
+        font-size: 0.82rem;
+        color: var(--text2);
+        transition: color 0.2s;
+      }
+      .footer-link:hover {
+        color: var(--accent);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.8rem;
+        color: var(--text2);
+        margin-bottom: 0.6rem;
+      }
+      .footer-contact-icon {
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* QR Code tiruan */
+      .qr-section {
+        max-width: 900px;
+        margin: 0 auto 2rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .qr-code {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      .qr-inner {
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 1.5px;
+        padding: 6px;
+      }
+      .qr-pixel {
+        border-radius: 1px;
+      }
+      .qr-pixel.q {
+        background: #0b1a12;
+      }
+      .qr-pixel.b {
+        background: white;
+      }
+      .qr-text h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .qr-text p {
+        font-size: 0.8rem;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+      .qr-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(93, 187, 128, 0.08);
+        border: 1px solid rgba(93, 187, 128, 0.15);
+        border-radius: var(--radius-pill);
+        padding: 0.3rem 0.75rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 0.5rem;
+      }
+
+      .footer-bottom {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .footer-bottom-left {
+        font-size: 0.78rem;
+        color: var(--text3);
+      }
+      .footer-bottom-right {
+        display: flex;
+        gap: 1rem;
+      }
+      .footer-bottom-right a {
+        font-size: 0.78rem;
+        color: var(--text3);
+        transition: color 0.2s;
+      }
+      .footer-bottom-right a:hover {
+        color: var(--text2);
+      }
+
+      /* =============================================
+   NOTIFICATION TOAST
+   ============================================= */
+      #toast {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(120%);
+        background: rgba(22, 43, 31, 0.95);
+        border: 1px solid rgba(93, 187, 128, 0.3);
+        border-radius: var(--radius-pill);
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text);
+        z-index: 500;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        white-space: nowrap;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      #toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
+      #toast .toast-icon {
+        margin-right: 6px;
+      }
+
+      /* =============================================
+   MEDIA QUERIES - DESKTOP ENHANCEMENTS
+   ============================================= */
+      @media (min-width: 768px) {
+        .story-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .messages-wall {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .feature-panel {
+          padding: 2.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .guide-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .story-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .feature-panel {
+          padding: 2.5rem 3rem;
+        }
+      }
+
+      /* =============================================
+   ANIMATED SECTION SEPARATOR
+   ============================================= */
+      .organic-sep {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        color: var(--text3);
+        font-size: 0.8rem;
+      }
+      .organic-sep-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .organic-sep-icon {
+        font-size: 1.2rem;
+        opacity: 0.4;
+      }
+
+      /* Elemental color classes for reuse */
+      .color-langit {
+        color: var(--langit-h);
+      }
+      .color-air {
+        color: var(--air-h);
+      }
+      .color-angin {
+        color: var(--angin-h);
+      }
+      .color-api {
+        color: var(--api-h);
+      }
+      .color-matahari {
+        color: var(--matahari-h);
+      }
+      .color-tanah {
+        color: var(--tanah-h);
+      }
+
+      .bg-langit {
+        background: rgba(74, 144, 217, 0.12);
+        border-color: rgba(74, 144, 217, 0.2) !important;
+      }
+      .bg-air {
+        background: rgba(43, 187, 160, 0.12);
+        border-color: rgba(43, 187, 160, 0.2) !important;
+      }
+      .bg-angin {
+        background: rgba(126, 200, 162, 0.12);
+        border-color: rgba(126, 200, 162, 0.2) !important;
+      }
+      .bg-api {
+        background: rgba(232, 93, 58, 0.12);
+        border-color: rgba(232, 93, 58, 0.2) !important;
+      }
+      .bg-matahari {
+        background: rgba(245, 166, 35, 0.12);
+        border-color: rgba(245, 166, 35, 0.2) !important;
+      }
+      .bg-tanah {
+        background: rgba(139, 94, 60, 0.12);
+        border-color: rgba(139, 94, 60, 0.2) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span>Diversa Natura</span>
+          <span>MPLS 2025 • SMA Agnesiana</span>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="nav-btn" onclick="scrollToSection('features')">
+          📘 Guidebook
+        </button>
+        <button
+          class="nav-btn accent"
+          onclick="scrollToSection('peta-section')"
+        >
+          🗺️ Peta
+        </button>
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          onclick="toggleSidebar()"
+          aria-label="Menu"
+        >
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===================== SIDEBAR OVERLAY ===================== -->
+    <div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h3>Menu Utama</h3>
+        <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Navigasi</div>
+        <a href="#hero" class="sidebar-link" onclick="closeSidebar()">
+          <div class="sidebar-link-icon">🏠</div>
+          Beranda
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-guidebook');
+          "
+        >
+          <div class="sidebar-link-icon">📘</div>
+          Guidebook MPLS
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-sekolah');
+          "
+        >
+          <div class="sidebar-link-icon">🏫</div>
+          Profil Sekolah & OSIS
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+          "
+        >
+          <div class="sidebar-link-icon">🌟</div>
+          Kelas & Maskot
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-ekskul');
+          "
+        >
+          <div class="sidebar-link-icon">🎭</div>
+          Ekskul & Guru
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-memorial');
+          "
+        >
+          <div class="sidebar-link-icon">✍️</div>
+          Memorial Story
+        </a>
+        <a href="#peta-section" class="sidebar-link" onclick="closeSidebar()">
+          <div class="sidebar-link-icon">🗺️</div>
+          Peta Sekolah 3D
+        </a>
+
+        <div class="sidebar-section-title">Info</div>
+        <a href="#footer" class="sidebar-link" onclick="closeSidebar()">
+          <div class="sidebar-link-icon">📍</div>
+          Lokasi & Kontak
+        </a>
+        <a href="#footer" class="sidebar-link" onclick="closeSidebar()">
+          <div class="sidebar-link-icon">💬</div>
+          Kritik & Saran
+        </a>
+
+        <div class="sidebar-section-title">Kelas Elemental</div>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('langit'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(74, 144, 217, 0.15)"
+          >
+            ☁️
+          </div>
+          <span style="color: var(--langit-h)">Langit</span> – Kalimantan
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('air'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(43, 187, 160, 0.15)"
+          >
+            💧
+          </div>
+          <span style="color: var(--air-h)">Air</span> – Sulawesi
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('angin'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(126, 200, 162, 0.15)"
+          >
+            🌬️
+          </div>
+          <span style="color: var(--angin-h)">Angin</span> – Sumatra
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('api'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(232, 93, 58, 0.15)"
+          >
+            🔥
+          </div>
+          <span style="color: var(--api-h)">Api</span> – Jawa
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('matahari'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(245, 166, 35, 0.15)"
+          >
+            ☀️
+          </div>
+          <span style="color: var(--matahari-h)">Matahari</span> – Bali
+        </a>
+        <a
+          href="#features"
+          class="sidebar-link"
+          onclick="
+            closeSidebar();
+            switchTab('tab-kelas');
+            setTimeout(() => switchClass('tanah'), 300);
+          "
+        >
+          <div
+            class="sidebar-link-icon"
+            style="background: rgba(139, 94, 60, 0.15)"
+          >
+            🌍
+          </div>
+          <span style="color: var(--tanah-h)">Tanah</span> – Papua
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-badge">● MPLS 2025 Aktif</div>
+        <p style="font-size: 0.75rem; color: var(--text3)">
+          SMA Agnesiana<br />Diversa Natura — Bersatu dalam Keberagaman
+        </p>
+      </div>
+    </aside>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero">
+      <div class="hero-bg-art">
+        <div class="hero-orb"></div>
+        <div class="hero-orb"></div>
+        <div class="hero-orb"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          MPLS 2025 — Diversa Natura
+        </div>
+        <h1 class="hero-greeting">
+          Hai Hai<br /><em class="hero-greeting-italic">Agnesian!</em>
+        </h1>
+        <p class="hero-tagline">✦ NON SCHOLAE SED VITAE DISCIMUS ✦</p>
+        <p class="hero-motto-sub">
+          "Sekolah bukan untuk mencari ijazah saja, tetapi untuk hidup."
+        </p>
+        <p class="hero-desc">
+          Selamat datang, <em>penerus harapan bangsa</em>! Kami sangat
+          bersemangat menyambutmu di keluarga besar SMA Agnesiana. Ini bukan
+          sekadar sekolah — ini adalah rumah tempat kamu tumbuh, bermimpi, dan
+          <em>menjadi versi terbaikmu</em>. Perjalananmu dimulai hari ini. 🌿
+        </p>
+        <!-- Countdown -->
+        <div class="hero-countdown" id="countdownTimer">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-days">03</span
+            ><span class="countdown-label">Hari</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-hours">08</span
+            ><span class="countdown-label">Jam</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-mins">45</span
+            ><span class="countdown-label">Menit</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-secs">20</span
+            ><span class="countdown-label">Detik</span>
+          </div>
+        </div>
+        <p
+          style="
+            font-size: 0.72rem;
+            color: var(--text3);
+            margin-top: -1.5rem;
+            margin-bottom: 1.75rem;
+            text-align: center;
+          "
+        >
+          ⏳ Menuju Hari Pertama MPLS 2025
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToSection('features')">
+            📘 Lihat Guidebook
+          </button>
+          <button
+            class="btn btn-secondary"
+            onclick="scrollToSection('peta-section')"
+          >
+            🗺️ Peta Sekolah
+          </button>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        Scroll
+      </div>
+    </section>
+
+    <!-- ===================== FEATURE TABS ===================== -->
+    <section id="features">
+      <!-- Tab Nav -->
+      <div class="feature-tabs" id="featureTabs">
+        <button
+          class="ftab active"
+          id="tab-guidebook"
+          onclick="switchTab('tab-guidebook')"
+        >
+          <span class="ftab-icon">📘</span> Guidebook
+        </button>
+        <button
+          class="ftab"
+          id="tab-sekolah"
+          onclick="switchTab('tab-sekolah')"
+        >
+          <span class="ftab-icon">🏫</span> Sekolah & OSIS
+        </button>
+        <button class="ftab" id="tab-kelas" onclick="switchTab('tab-kelas')">
+          <span class="ftab-icon">🌟</span> Kelas & Maskot
+        </button>
+        <button class="ftab" id="tab-ekskul" onclick="switchTab('tab-ekskul')">
+          <span class="ftab-icon">🎭</span> Ekskul & Guru
+        </button>
+        <button
+          class="ftab"
+          id="tab-memorial"
+          onclick="switchTab('tab-memorial')"
+        >
+          <span class="ftab-icon">✍️</span> Memorial
+        </button>
+      </div>
+
+      <!-- ===== PANEL 1: GUIDEBOOK ===== -->
+      <div class="feature-panel active" id="panel-guidebook">
+        <div class="section-header reveal">
+          <div class="section-label">Panduan Lengkap</div>
+          <h2 class="section-title">Guidebook <em>MPLS 2025</em></h2>
+          <p class="section-desc">
+            Semua yang perlu kamu tahu untuk memulai perjalanan di SMA
+            Agnesiana.
+          </p>
+        </div>
+        <div class="guide-grid">
+          <div class="guide-card reveal reveal-delay-1">
+            <div
+              class="guide-card-icon"
+              style="background: rgba(93, 187, 128, 0.12)"
+            >
+              📋
+            </div>
+            <h3>Tata Tertib MPLS</h3>
+            <p>
+              Ketentuan, aturan berpakaian, jam kehadiran, dan kode etik siswa
+              selama kegiatan MPLS berlangsung.
+            </p>
+            <div
+              class="guide-card-action"
+              onclick="showToast('📋 Membuka Tata Tertib...')"
+            >
+              → Baca ketentuan
+            </div>
+          </div>
+          <div class="guide-card reveal reveal-delay-2">
+            <div
+              class="guide-card-icon"
+              style="background: rgba(74, 144, 217, 0.12)"
+            >
+              📅
+            </div>
+            <h3>Jadwal Kegiatan</h3>
+            <p>
+              Rundown lengkap seluruh kegiatan MPLS dari hari pertama hingga
+              hari terakhir beserta lokasi dan penanggung jawab.
+            </p>
+            <div
+              class="guide-card-action"
+              onclick="showToast('📅 Membuka Jadwal...')"
+            >
+              ↓ Lihat Jadwal
+            </div>
+          </div>
+          <div class="guide-card reveal reveal-delay-3">
+            <div
+              class="guide-card-icon"
+              style="background: rgba(212, 168, 67, 0.12)"
+            >
+              📣
+            </div>
+            <h3>Pengumuman Terbaru</h3>
+            <p>
+              Informasi terkini seputar MPLS, perubahan jadwal, dan pengumuman
+              penting dari panitia dan OSIS.
+            </p>
+            <div
+              class="guide-card-action"
+              onclick="showToast('📣 Membuka Pengumuman...')"
+            >
+              → Baca
+            </div>
+          </div>
+        </div>
+        <!-- Schedule Table -->
+        <div class="reveal" style="margin-top: 1.5rem">
+          <h3
+            style="
+              font-size: 0.9rem;
+              font-weight: 600;
+              color: var(--text2);
+              margin-bottom: 0.75rem;
+            "
+          >
+            📅 Rundown Singkat MPLS 2025
+          </h3>
+          <div
+            style="
+              overflow-x: auto;
+              border-radius: var(--radius-lg);
+              border: 1px solid var(--border);
+            "
+          >
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Hari</th>
+                  <th>Tanggal</th>
+                  <th>Kegiatan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Senin</td>
+                  <td>14 Juli</td>
+                  <td>Upacara Pembukaan & Orientasi</td>
+                  <td>
+                    <span class="schedule-badge sbadge-blue">Segera</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Selasa</td>
+                  <td>15 Juli</td>
+                  <td>Pengenalan Kelas & Guru</td>
+                  <td>
+                    <span class="schedule-badge sbadge-blue">Segera</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rabu</td>
+                  <td>16 Juli</td>
+                  <td>Workshop: Peduli Lingkungan</td>
+                  <td>
+                    <span class="schedule-badge sbadge-green">Terbuka</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kamis</td>
+                  <td>17 Juli</td>
+                  <td>Festival Kelas & Pentas Budaya</td>
+                  <td>
+                    <span class="schedule-badge sbadge-gold">Unggulan</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jumat</td>
+                  <td>18 Juli</td>
+                  <td>Upacara Penutupan & Wisuda MPLS</td>
+                  <td>
+                    <span class="schedule-badge sbadge-green">Final</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Eco Banner -->
+        <div class="eco-banner reveal">
+          <div class="eco-banner-icon">🌿</div>
+          <div>
+            <h4>Kampanye Peduli Lingkungan</h4>
+            <p>
+              Diversa Natura mengajak seluruh Agnesian untuk menjaga bumi kita
+              bersama. Setiap langkah kecilmu berarti!
+            </p>
+            <div class="eco-tags">
+              <span class="eco-tag">♻️ Bawa Tumbler</span>
+              <span class="eco-tag">🚫 Kurangi Plastik</span>
+              <span class="eco-tag">🌱 Jaga lingkungan</span>
+              <span class="eco-tag">💡 Hemat Energi</span>
+              <span class="eco-tag">📚 Belajar bersama</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL 2: SEKOLAH & OSIS ===== -->
+      <div class="feature-panel" id="panel-sekolah">
+        <div class="osis-hero reveal">
+          <div class="osis-emblem">🏛️</div>
+          <div class="osis-info">
+            <div class="school-name">SMA Agnesiana • Est. 1987</div>
+            <h2>Profil Sekolah</h2>
+            <p>
+              SMA Agnesiana adalah sekolah menengah atas swasta Katolik unggulan
+              yang berkomitmen mencetak generasi berkarakter, berprestasi, dan
+              berwawasan lingkungan. Dengan semboyan
+              <em style="color: var(--gold)"
+                >"Non Scholae Sed Vitae Discimus"</em
+              >, kami mendidik siswa bukan hanya untuk meraih ijazah, melainkan
+              untuk menghadapi kehidupan nyata.
+            </p>
+          </div>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <span class="stat-num">63</span>
+            <span class="stat-label">Berdiri selama</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">611</span>
+            <span class="stat-label">Siswa Aktif</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">52</span>
+            <span class="stat-label">Tenaga Didik</span>
+          </div>
+        </div>
+        <div class="vm-grid reveal">
+          <div class="vm-card">
+            <div class="vm-card-label">Visi</div>
+            <p>
+              Menjadi SMA pilihan, pembentuk peserta
+               didik yang beriman, berkarakter, kompeten, 
+               berjiwa misioner, dan yang berkomitmen pada kehidupan
+            </p>
+          </div>
+          <div class="vm-card">
+            <div class="vm-card-label">Misi</div>
+            <p>
+              1. Menumbuh kembangkan kecintaan peserta didik terhadap Tuhan, diri sendiri, sesama, bangsa/negara, dan lingkungan hidup sesuai dengan paradigma pedagogi SSpS. <br/>
+              2. Membangun atmosfir pembelajaran yang memacu peserta didik untuk mengembangkan daya nalar, berpikir kritis, dan berprinsip.<br/>
+              3. Menyediakan sarana dan prasarana edukasi yang mampu membentuk peserta didik menjadi manusia yang kompeten dan terampil dalam bidang pilihannya.<br/>
+              4. Mengelola suatu proses belajar   mengajar yang mampu membangun kepercayaan diri peserta didik dalam belajar mengkomunikasikan ilmunya kepada masyarakat.<br/>
+              5. Membangun jejaring dengan Lembaga Pendidikan Tinggi, masyarakat dan pemerintah yang mendukung pengembangan institusi dan mutu lulusan.<br/>
+              6. Menciptakan lingkungan hidup yang sehat.
+            </p>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="osis-structure-title">
+            Struktur Pengurus OSIS 2024/2025
+          </div>
+          <div class="osis-member-grid">
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(93, 187, 128, 0.15)"
+              >
+                👑
+              </div>
+              <div class="member-name">Maria Jocelyn Nainggoian </div>
+              <div class="member-role">Ketua OSIS</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(74, 144, 217, 0.15)"
+              >
+                🤝
+              </div>
+              <div class="member-name">Ruth Shekania Arella Tiku</div>
+              <div class="member-role">Wakil Ketua</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(212, 168, 67, 0.15)"
+              >
+                ✍️
+              </div>
+              <div class="member-name">Aulia Puteri Sidharta</div>
+              <div class="member-role">Sekretaris I</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(212, 168, 67, 0.15)"
+              >
+                ✍️
+              </div>
+              <div class="member-name">Jesselyn Fiorencia Djunaedi</div>
+              <div class="member-role">Sekretaris II</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                <!-- style="background: rgba(232, 93, 58, 0.15)" -->
+              >
+                💰
+              </div>
+              <div class="member-name">Eliana Jessica Yo’eli</div>
+              <div class="member-role">Bendahara I</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                <!-- style="background: rgba(232, 93, 58, 0.15)" -->
+              >
+                💰
+              </div>
+              <div class="member-name">Gracia Florentina Setiawan</div>
+              <div class="member-role">Bendahara II</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(43, 187, 160, 0.15)"
+              >
+                📢
+              </div>
+              <div class="member-name">DLL</div>
+              <div class="member-role">Depart Lain</div>
+            </div>
+            <div class="osis-member">
+              <div
+                class="member-avatar"
+                style="background: rgba(126, 200, 162, 0.15)"
+              >
+                🎨
+              </div>
+              <div class="member-name">Felicia K. T.</div>
+              <div class="member-role">Sie. Kreasi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL 3: KELAS & MASKOT ===== -->
+      <div class="feature-panel" id="panel-kelas">
+        <div class="section-header reveal">
+          <div class="section-label">6 Elemen Nusantara</div>
+          <h2 class="section-title">Kelas & <em>Maskot Elemental</em></h2>
+        </div>
+        <div class="class-slider-container reveal">
+          <div class="class-tabs-nav">
+            <button
+              class="class-tab-btn active"
+              id="ctab-langit"
+              onclick="switchClass('langit')"
+              style="
+                background: rgba(74, 144, 217, 0.15);
+                color: var(--langit-h);
+                border-color: rgba(74, 144, 217, 0.3);
+              "
+            >
+              ☁️ Langit
+            </button>
+            <button
+              class="class-tab-btn"
+              id="ctab-air"
+              onclick="switchClass('air')"
+            >
+              💧 Air
+            </button>
+            <button
+              class="class-tab-btn"
+              id="ctab-angin"
+              onclick="switchClass('angin')"
+            >
+              🌬️ Angin
+            </button>
+            <button
+              class="class-tab-btn"
+              id="ctab-api"
+              onclick="switchClass('api')"
+            >
+              🔥 Api
+            </button>
+            <button
+              class="class-tab-btn"
+              id="ctab-matahari"
+              onclick="switchClass('matahari')"
+            >
+              ☀️ Matahari
+            </button>
+            <button
+              class="class-tab-btn"
+              id="ctab-tanah"
+              onclick="switchClass('tanah')"
+            >
+              🌍 Tanah
+            </button>
+          </div>
+
+          <!-- Langit Panel -->
+          <div class="class-panel active" id="cpanel-langit">
+            <div
+              class="class-hero bg-langit"
+              style="border: 1.5px solid rgba(74, 144, 217, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">☁️</span>
+                <div class="class-name-big color-langit">LANGIT</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(74, 144, 217, 0.15);
+                    color: var(--langit-h);
+                    border: 1px solid rgba(74, 144, 217, 0.3);
+                  "
+                >
+                  🗺️ Kalimantan • Baju Kalimantan
+                </div>
+                <p class="class-desc">
+                  Kelas Langit mengambil inspirasi dari luasnya langit
+                  Kalimantan yang tak terbatas. Bebas, luas, dan penuh
+                  kemungkinan. Seperti langit, kalian diharapkan terus menatap
+                  ke atas dan meraih cita-cita setinggi bintang.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-langit">Bebas</span>
+                  <span class="class-trait color-langit">Visioner</span>
+                  <span class="class-trait color-langit">Luas</span>
+                  <span class="class-trait color-langit">Inspiratif</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-langit">Biru Langit</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Kalimantan</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-langit">☁️ Udara</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Terbang Tinggi"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Air Panel -->
+          <div class="class-panel" id="cpanel-air">
+            <div
+              class="class-hero bg-air"
+              style="border: 1.5px solid rgba(43, 187, 160, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">💧</span>
+                <div class="class-name-big color-air">AIR</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(43, 187, 160, 0.15);
+                    color: var(--air-h);
+                    border: 1px solid rgba(43, 187, 160, 0.3);
+                  "
+                >
+                  🗺️ Sulawesi • Adat Sulawesi
+                </div>
+                <p class="class-desc">
+                  Kelas Air terinspirasi dari kejernihan perairan Sulawesi yang
+                  kaya kehidupan. Adaptif, mengalir tanpa henti, dan memberikan
+                  kehidupan bagi semua yang ada di sekitarnya.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-air">Adaptif</span>
+                  <span class="class-trait color-air">Jernih</span>
+                  <span class="class-trait color-air">Mengalir</span>
+                  <span class="class-trait color-air">Sejuk</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-air">Tosca</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Sulawesi</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-air">💧 Air</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Tetap Mengalir"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Angin Panel -->
+          <div class="class-panel" id="cpanel-angin">
+            <div
+              class="class-hero bg-angin"
+              style="border: 1.5px solid rgba(126, 200, 162, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">🌬️</span>
+                <div class="class-name-big color-angin">ANGIN</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(126, 200, 162, 0.15);
+                    color: var(--angin-h);
+                    border: 1px solid rgba(126, 200, 162, 0.3);
+                  "
+                >
+                  🗺️ Sumatra • Adat Sumatra
+                </div>
+                <p class="class-desc">
+                  Kelas Angin mengalir bebas seperti semilir yang membawa
+                  keharuman hutan Sumatra yang megah. Dinamis, energik, dan
+                  selalu membawa perubahan positif ke mana pun melangkah.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-angin">Dinamis</span>
+                  <span class="class-trait color-angin">Energik</span>
+                  <span class="class-trait color-angin">Bebas</span>
+                  <span class="class-trait color-angin">Segar</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-angin">Hijau Muda</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Sumatra</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-angin">🌬️ Angin</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Bergerak Maju"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Api Panel -->
+          <div class="class-panel" id="cpanel-api">
+            <div
+              class="class-hero bg-api"
+              style="border: 1.5px solid rgba(232, 93, 58, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">🔥</span>
+                <div class="class-name-big color-api">API</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(232, 93, 58, 0.15);
+                    color: var(--api-h);
+                    border: 1px solid rgba(232, 93, 58, 0.3);
+                  "
+                >
+                  🗺️ Jawa • Batik Jawa
+                </div>
+                <p class="class-desc">
+                  Kelas Api mengambil semangat dari kehangatan budaya Jawa yang
+                  kaya dan berkobar-kobar. Penuh semangat, hangat, dan mampu
+                  menerangi kegelapan dengan api pengetahuan.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-api">Bersemangat</span>
+                  <span class="class-trait color-api">Hangat</span>
+                  <span class="class-trait color-api">Berani</span>
+                  <span class="class-trait color-api">Menerangi</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-api">Merah Bara</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Jawa</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-api">🔥 Api</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Berkobar Pantang Padam"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matahari Panel -->
+          <div class="class-panel" id="cpanel-matahari">
+            <div
+              class="class-hero bg-matahari"
+              style="border: 1.5px solid rgba(245, 166, 35, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">☀️</span>
+                <div class="class-name-big color-matahari">MATAHARI</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(245, 166, 35, 0.15);
+                    color: var(--matahari-h);
+                    border: 1px solid rgba(245, 166, 35, 0.3);
+                  "
+                >
+                  🗺️ Bali • Pakaian Adat Bali
+                </div>
+                <p class="class-desc">
+                  Kelas Matahari bersinar seperti fajar di Bali yang memukau
+                  dunia. Gemilang, hangat, dan menjadi pusat cahaya bagi semua.
+                  Seperti matahari, kalian adalah sumber semangat dan
+                  kehangatan.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-matahari">Gemilang</span>
+                  <span class="class-trait color-matahari">Hangat</span>
+                  <span class="class-trait color-matahari">Bersinar</span>
+                  <span class="class-trait color-matahari">Memberi</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-matahari">Emas</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Bali</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-matahari">☀️ Cahaya</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Bersinar Selalu"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tanah Panel -->
+          <div class="class-panel" id="cpanel-tanah">
+            <div
+              class="class-hero bg-tanah"
+              style="border: 1.5px solid rgba(139, 94, 60, 0.3)"
+            >
+              <div class="class-hero-content">
+                <span class="class-mascot-big">🌍</span>
+                <div class="class-name-big color-tanah">TANAH</div>
+                <div
+                  class="class-element"
+                  style="
+                    background: rgba(139, 94, 60, 0.15);
+                    color: var(--tanah-h);
+                    border: 1px solid rgba(139, 94, 60, 0.3);
+                  "
+                >
+                  🗺️ Papua • Koteka Papua
+                </div>
+                <p class="class-desc">
+                  Kelas Tanah berdiri kokoh seperti bumi Papua yang penuh
+                  kekayaan alam yang luar biasa. Kuat, stabil, dan menjadi
+                  fondasi bagi semua kehidupan di atasnya. Kalian adalah pondasi
+                  masa depan bangsa.
+                </p>
+                <div class="class-traits">
+                  <span class="class-trait color-tanah">Kuat</span>
+                  <span class="class-trait color-tanah">Kokoh</span>
+                  <span class="class-trait color-tanah">Kaya</span>
+                  <span class="class-trait color-tanah">Fondasi</span>
+                </div>
+              </div>
+            </div>
+            <div class="class-info-grid">
+              <div class="class-info-item">
+                <div class="class-info-label">Warna Kelas</div>
+                <div class="class-info-value color-tanah">Coklat Tanah</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Asal Budaya</div>
+                <div class="class-info-value">Papua</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Elemen</div>
+                <div class="class-info-value color-tanah">🌍 Tanah</div>
+              </div>
+              <div class="class-info-item">
+                <div class="class-info-label">Semboyan</div>
+                <div class="class-info-value">"Kokoh Tak Tergoyahkan"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL 4: EKSKUL & GURU ===== -->
+      <div class="feature-panel" id="panel-ekskul">
+        <div class="section-header reveal">
+          <div class="section-label">Kegiatan & Pengajar</div>
+          <h2 class="section-title">Ekstrakurikuler & <em>Guru</em></h2>
+        </div>
+        <div class="ekskul-search reveal">
+          <span class="ekskul-search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Cari ekskul atau guru..."
+            id="ekskulSearch"
+            oninput="filterEkskul(this.value)"
+          />
+        </div>
+        <div class="ekskul-grid" id="ekskulGrid">
+          <div class="ekskul-card" data-name="basket">
+            <span class="ekskul-icon">🏀</span>
+            <div class="ekskul-name">Basket</div>
+            <div class="ekskul-type">Olahraga</div>
+          </div>
+          <div class="ekskul-card" data-name="futsal">
+            <span class="ekskul-icon">⚽</span>
+            <div class="ekskul-name">Futsal</div>
+            <div class="ekskul-type">Olahraga</div>
+          </div>
+          <div class="ekskul-card" data-name="voli">
+            <span class="ekskul-icon">🏐</span>
+            <div class="ekskul-name">Voli</div>
+            <div class="ekskul-type">Olahraga</div>
+          </div>
+          <div class="ekskul-card" data-name="badminton">
+            <span class="ekskul-icon">🏸</span>
+            <div class="ekskul-name">Badminton</div>
+            <div class="ekskul-type">Olahraga</div>
+          </div>
+          <div class="ekskul-card" data-name="pramuka">
+            <span class="ekskul-icon">🏕️</span>
+            <div class="ekskul-name">Pramuka</div>
+            <div class="ekskul-type">Kepanduan</div>
+          </div>
+          <div class="ekskul-card" data-name="paskibra">
+            <span class="ekskul-icon">🚩</span>
+            <div class="ekskul-name">Paskibra</div>
+            <div class="ekskul-type">Kepanduan</div>
+          </div>
+          <div class="ekskul-card" data-name="pmr">
+            <span class="ekskul-icon">🏥</span>
+            <div class="ekskul-name">PMR</div>
+            <div class="ekskul-type">Sosial</div>
+          </div>
+          <div class="ekskul-card" data-name="paduan suara">
+            <span class="ekskul-icon">🎵</span>
+            <div class="ekskul-name">Paduan Suara</div>
+            <div class="ekskul-type">Seni</div>
+          </div>
+          <div class="ekskul-card" data-name="tari tradisional">
+            <span class="ekskul-icon">💃</span>
+            <div class="ekskul-name">Tari Tradisional</div>
+            <div class="ekskul-type">Seni</div>
+          </div>
+          <div class="ekskul-card" data-name="teater drama">
+            <span class="ekskul-icon">🎭</span>
+            <div class="ekskul-name">Teater</div>
+            <div class="ekskul-type">Seni</div>
+          </div>
+          <div class="ekskul-card" data-name="fotografi">
+            <span class="ekskul-icon">📸</span>
+            <div class="ekskul-name">Fotografi</div>
+            <div class="ekskul-type">Seni & Teknologi</div>
+          </div>
+          <div class="ekskul-card" data-name="jurnalistik">
+            <span class="ekskul-icon">📰</span>
+            <div class="ekskul-name">Jurnalistik</div>
+            <div class="ekskul-type">Literasi</div>
+          </div>
+          <div class="ekskul-card" data-name="english club">
+            <span class="ekskul-icon">🗣️</span>
+            <div class="ekskul-name">English Club</div>
+            <div class="ekskul-type">Akademik</div>
+          </div>
+          <div class="ekskul-card" data-name="robotik coding">
+            <span class="ekskul-icon">🤖</span>
+            <div class="ekskul-name">Robotik</div>
+            <div class="ekskul-type">Teknologi</div>
+          </div>
+          <div class="ekskul-card" data-name="karya ilmiah">
+            <span class="ekskul-icon">🔬</span>
+            <div class="ekskul-name">KIR</div>
+            <div class="ekskul-type">Akademik</div>
+          </div>
+          <div class="ekskul-card" data-name="lingkungan hidup">
+            <span class="ekskul-icon">🌿</span>
+            <div class="ekskul-name">Pecinta Alam</div>
+            <div class="ekskul-type">Lingkungan</div>
+          </div>
+        </div>
+        <div class="guru-section-title reveal">
+          👩‍🏫 Perkenalan Guru per Kelas
+        </div>
+        <div class="guru-grid" id="guruGrid">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+
+      <!-- ===== PANEL 5: MEMORIAL ===== -->
+      <div class="feature-panel" id="panel-memorial">
+        <div class="memorial-intro reveal">
+          <h3>"Setiap Cerita Adalah Warisan"</h3>
+          <p>
+            Di sinilah kisah-kisah berkesan ditulis, dirawat, dan diwariskan.
+            Baca cerita inspiratif kakak-kakak Agnesian sebelummu, dan tuliskan
+            kata-kata untuk dirimu di masa depan.
+          </p>
+        </div>
+        <div class="story-grid" id="storyGrid">
+          <div class="story-card reveal reveal-delay-1">
+            <div class="story-author">
+              <div
+                class="story-avatar"
+                style="background: rgba(93, 187, 128, 0.15)"
+              >
+                🌿
+              </div>
+              <div class="story-author-info">
+                <div class="author-name">From...</div>
+                <div class="author-class">
+                  Kelas Langit 2022 • Sekarang di Univ. Indonesia
+                </div>
+              </div>
+            </div>
+            <div class="story-quote">
+              "MPLS mengajarku bahwa keberagaman bukan halangan, melainkan
+              kekuatan. Teman-temanku dari berbagai daerah menjadi keluargaku
+              hingga hari ini."
+            </div>
+            <div class="story-date">📅 Juli 2022</div>
+          </div>
+          <div class="story-card reveal reveal-delay-2">
+            <div class="story-author">
+              <div
+                class="story-avatar"
+                style="background: rgba(74, 144, 217, 0.15)"
+              >
+                💙
+              </div>
+              <div class="story-author-info">
+                <div class="author-name">From...</div>
+                <div class="author-class">
+                  Kelas Air 2021 • Kini Dokter Muda
+                </div>
+              </div>
+            </div>
+            <div class="story-quote">
+              "Di MPLS, aku menemukan passion-ku di bidang kesehatan. Ketika
+              kami diajak simulasi P3K, aku sadar ini yang ingin kulakukan
+              seumur hidup."
+            </div>
+            <div class="story-date">📅 Juli 2021</div>
+          </div>
+          <div class="story-card reveal reveal-delay-3">
+            <div class="story-author">
+              <div
+                class="story-avatar"
+                style="background: rgba(232, 93, 58, 0.15)"
+              >
+                🔥
+              </div>
+              <div class="story-author-info">
+                <div class="author-name">From...</div>
+                <div class="author-class">
+                  Kelas Api 2023 • Sekarang Kelas XII
+                </div>
+              </div>
+            </div>
+            <div class="story-quote">
+              "Saat pertama masuk, aku sangat pemalu. Tapi MPLS dengan tema
+              budaya Indonesia ini membuat aku bangga dengan asal-usulku dan
+              berani tampil."
+            </div>
+            <div class="story-date">📅 Juli 2023</div>
+          </div>
+        </div>
+        <!-- Message Wall -->
+        <div style="margin-top: 2rem" id="messageWallSection">
+          <div class="osis-structure-title">🌟 Dinding Pesan Agnesian</div>
+          <div class="messages-wall" id="messageWall">
+            <div class="message-card">
+              <div class="message-from">🌿 Anya • Kelas Angin</div>
+              <div class="message-text">
+                "Hei Anya masa depan! Jangan pernah berhenti bermimpi besar.
+                Ingat tekad pertamamu hari ini."
+              </div>
+            </div>
+            <div class="message-card">
+              <div class="message-from">🔥 Doni • Kelas Api</div>
+              <div class="message-text">
+                "Aku ingin jadi insinyur. Tiga tahun lagi, apakah kamu sudah
+                melamar beasiswa?"
+              </div>
+            </div>
+            <div class="message-card">
+              <div class="message-from">☀️ Clara • Kelas Matahari</div>
+              <div class="message-text">
+                "Teruslah bersinar, walau kadang langit mendung. Kamu lebih kuat
+                dari yang kamu kira!"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PETA SEKOLAH 3D ===================== -->
+    <section id="peta-section" class="section-pad">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">Navigasi Kampus</div>
+          <h2 class="section-title">Peta Sekolah <em>3D Interaktif</em></h2>
+          <p class="section-desc">
+            Klik setiap ruangan untuk melihat informasi detail. Geser untuk
+            menjelajahi seluruh area kampus.
+          </p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="map-container reveal">
+          <div class="map-scene">
+            <div class="map-grid">
+              <!-- Row 1 -->
+              <div
+                class="map-block mb-blue"
+                onclick="
+                  showRoomInfo(
+                    'Gerbang Masuk',
+                    '🚪',
+                    'Pintu masuk utama sekolah',
+                    'Senin–Sabtu 06.00–17.00',
+                    'Semua Civitas',
+                  )
+                "
+              >
+                <span class="map-block-icon">🚪</span>
+                <span class="map-block-name">Gerbang Masuk</span>
+              </div>
+              <div
+                class="map-block mb-gray"
+                onclick="
+                  showRoomInfo(
+                    'Area Parkir',
+                    '🚗',
+                    'Area parkir siswa dan guru',
+                    'Senin–Sabtu',
+                    'Siswa & Guru',
+                  )
+                "
+              >
+                <span class="map-block-icon">🚗</span>
+                <span class="map-block-name">Parkir</span>
+              </div>
+              <div
+                class="map-block mb-green span2"
+                onclick="
+                  showRoomInfo(
+                    'Lapangan Utama',
+                    '⚽',
+                    'Lapangan serbaguna untuk olahraga, upacara, dan acara besar sekolah',
+                    'Setiap hari',
+                    'Semua Siswa',
+                  )
+                "
+              >
+                <span class="map-block-icon">⚽</span>
+                <span class="map-block-name">Lapangan Utama</span>
+              </div>
+              <!-- Row 2 -->
+              <div
+                class="map-block mb-blue span2"
+                onclick="
+                  showRoomInfo(
+                    'Ruang Kelas X',
+                    '📚',
+                    'Ruang belajar kelas 10. Memuat 36 siswa per kelas dengan fasilitas AC dan proyektor',
+                    '07.00–15.30',
+                    'Siswa Kelas X',
+                  )
+                "
+              >
+                <span class="map-block-icon">📚</span>
+                <span class="map-block-name">Kelas X (A–F)</span>
+              </div>
+              <div
+                class="map-block mb-gold"
+                onclick="
+                  showRoomInfo(
+                    'Kantin Sekolah',
+                    '🍽️',
+                    'Kantin utama dengan berbagai pilihan makanan sehat',
+                    '06.30–15.00',
+                    'Semua Siswa',
+                  )
+                "
+              >
+                <span class="map-block-icon">🍽️</span>
+                <span class="map-block-name">Kantin</span>
+              </div>
+              <div
+                class="map-block mb-earth"
+                onclick="
+                  showRoomInfo(
+                    'Greenhouse sekolah',
+                    '🌿',
+                    'Taman hijau tempat bersantai dan belajar di alam terbuka',
+                    'Setiap hari',
+                    'Semua',
+                  )
+                "
+              >
+                <span class="map-block-icon">🌿</span>
+                <span class="map-block-name">Greenhouse</span>
+              </div>
+              <!-- Row 3 -->
+              <div
+                class="map-block mb-teal"
+                onclick="
+                  showRoomInfo(
+                    'Lab IPA',
+                    '🔬',
+                    'Laboratorium lengkap untuk praktikum Fisika, Kimia, dan Biologi',
+                    '07.00–15.00',
+                    'Siswa & Guru IPA',
+                  )
+                "
+              >
+                <span class="map-block-icon">🔬</span>
+                <span class="map-block-name">Lab IPA</span>
+              </div>
+              <div
+                class="map-block mb-teal"
+                onclick="
+                  showRoomInfo(
+                    'Lab Komputer',
+                    '💻',
+                    'Lab komputer dengan 40 unit terbaru untuk pelajaran TIK dan coding',
+                    '07.00–15.30',
+                    'Kelas TIK',
+                  )
+                "
+              >
+                <span class="map-block-icon">💻</span>
+                <span class="map-block-name">Lab Komputer</span>
+              </div>
+              <div
+                class="map-block mb-blue span2"
+                onclick="
+                  showRoomInfo(
+                    'Perpustakaan',
+                    '📖',
+                    'Koleksi lebih dari 10.000 judul buku dan digital library. Ruang baca nyaman ber-AC',
+                    '07.00–16.00',
+                    'Semua Siswa',
+                  )
+                "
+              >
+                <span class="map-block-icon">📖</span>
+                <span class="map-block-name">Perpustakaan</span>
+              </div>
+              <!-- Row 4 -->
+              <div
+                class="map-block mb-teal"
+                onclick="
+                  showRoomInfo(
+                    'Ruang musik',
+                    '🎶',
+                    'Tempat siswa/i dapat mengembangkan bakat dan minat di bidang seni musik',
+                    '07.00–17.00',
+                    'Ekstra Band',
+                  )
+                "
+              >
+                <span class="map-block-icon">🎶</span>
+                <span class="map-block-name">R. Musik</span>
+              </div>
+              <div
+                class="map-block mb-gold"
+                onclick="
+                  showRoomInfo(
+                    'Ruang BK',
+                    '💬',
+                    'Ruang Bimbingan Konseling untuk konsultasi akademik dan personal siswa',
+                    '08.00–15.00',
+                    'Semua Siswa',
+                  )
+                "
+              >
+                <span class="map-block-icon">💬</span>
+                <span class="map-block-name">R. BK</span>
+              </div>
+              <div
+                class="map-block mb-gray"
+                onclick="
+                  showRoomInfo(
+                    'Ruang Guru',
+                    '👩‍🏫',
+                    'Ruang kerja dan istirahat bagi seluruh tenaga pengajar',
+                    'Jam Kerja',
+                    'Guru & Staf',
+                  )
+                "
+              >
+                <span class="map-block-icon">👩‍🏫</span>
+                <span class="map-block-name">R. Guru</span>
+              </div>
+              <div
+                class="map-block mb-blue"
+                onclick="
+                  showRoomInfo(
+                    'Ruang TU',
+                    '🏢',
+                    'Tata Usaha dan administrasi sekolah. Urusan dokumen, pembayaran, dll',
+                    '07.30–15.30',
+                    'Semua',
+                  )
+                "
+              >
+                <span class="map-block-icon">🏢</span>
+                <span class="map-block-name">Tata Usaha</span>
+              </div>
+              <!-- Row 5 -->
+              <div
+                class="map-block mb-green span2"
+                onclick="
+                  showRoomInfo(
+                    'Aula Utama',
+                    '🎭',
+                    'Aula serbaguna berkapasitas 500 orang untuk seminar, pentas seni, dan acara besar',
+                    'Sesuai Jadwal',
+                    'Semua',
+                  )
+                "
+              >
+                <span class="map-block-icon">🎭</span>
+                <span class="map-block-name">Aula Utama</span>
+              </div>
+              <div
+                class="map-block mb-teal"
+                onclick="
+                  showRoomInfo(
+                    'UKS',
+                    '🏥',
+                    'Unit Kesehatan Siswa dengan perlengkapan P3K dan tempat istirahat',
+                    '07.00–15.30',
+                    'Semua Siswa',
+                  )
+                "
+              >
+                <span class="map-block-icon">🏥</span>
+                <span class="map-block-name">UKS</span>
+              </div>
+              <div
+                class="map-block mb-earth"
+                onclick="
+                  showRoomInfo(
+                    'Kapel Sekolah',
+                    '⛪',
+                    'Kapel untuk ibadah, doa pagi, dan kegiatan rohani sekolah',
+                    '06.30–17.00',
+                    'Semua',
+                  )
+                "
+              >
+                <span class="map-block-icon">⛪</span>
+                <span class="map-block-name">Kapel</span>
+              </div>
+            </div>
+          </div>
+        </div><br> 
+
+        <!-- Map Legend -->
+        <div class="map-legend reveal">
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(93, 187, 128, 0.4)"
+            ></div>
+            Ruang Terbuka
+          </div>
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(74, 144, 217, 0.4)"
+            ></div>
+            Ruang Kelas
+          </div>
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(43, 187, 160, 0.4)"
+            ></div>
+            Lab & Perpustakaan
+          </div>
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(212, 168, 67, 0.4)"
+            ></div>
+            Layanan Siswa
+          </div>
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(232, 93, 58, 0.4)"
+            ></div>
+            Organisasi
+          </div>
+          <div class="map-legend-item">
+            <div
+              class="map-legend-dot"
+              style="background: rgba(139, 94, 60, 0.4)"
+            ></div>
+            Area Hijau & Ibadah
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer id="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🌿 SMA Agnesiana</h3>
+          <p>
+            Sekolah menengah atas Katolik unggulan yang mendidik generasi
+            berkarakter, berprestasi, dan berwawasan lingkungan.
+          </p>
+          <div class="footer-tagline">✦ Non Scholae Sed Vitae Discimus ✦</div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <div class="footer-links">
+            <a href="#hero" class="footer-link">Beranda</a>
+            <a href="#features" class="footer-link">Guidebook MPLS</a>
+            <a href="#features" class="footer-link">Profil Sekolah</a>
+            <a href="#features" class="footer-link">Kelas & Maskot</a>
+            <a href="#features" class="footer-link">Ekskul & Guru</a>
+            <a href="#peta-section" class="footer-link">Peta Sekolah</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>Jl. Agnesiana No. 17, Kota Pendidikan, Indonesia 12345</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <span>(021) 8765-4321</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">✉️</span>
+            <span>osis@agnesiana.sch.id</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📱</span>
+            <span>Instagram: @osis_agnesiana</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- QR Code Section -->
+      <div class="qr-section" id="footer">
+        <div class="qr-code">
+          <div class="qr-inner" id="qrPixels"><!-- JS generated --></div>
+        </div>
+        <div class="qr-text">
+          <h4>📢 Kritik & Saran</h4>
+          <p>
+            Scan QR code ini atau klik tombol di bawah untuk memberikan masukan
+            kepada panitia MPLS. Suaramu sangat berharga bagi kami!
+          </p>
+          <div
+            class="qr-badge"
+            onclick="showToast('✅ Terima kasih! Form kritik & saran dibuka.')"
+            style="cursor: pointer"
+          >
+            💬 Isi Form Sekarang →
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          © 2025 SMA Agnesiana • MPLS Diversa Natura • Dibuat dengan ❤️ oleh
+          OSIS
+        </div>
+        <div class="footer-bottom-right">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Popup -->
+    <div class="modal-overlay" id="roomModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon" id="modalIcon"></span>
+            <div class="modal-title" id="modalTitle"></div>
+          </div>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <p id="modalDesc"></p>
+          <div class="modal-detail-row">
+            <span class="modal-detail-label">⏰ Jam Buka</span
+            ><span class="modal-detail-value" id="modalHours"></span>
+          </div>
+          <div class="modal-detail-row">
+            <span class="modal-detail-label">👥 Pengguna</span
+            ><span class="modal-detail-value" id="modalUsers"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast">
+      <span class="toast-icon">✅</span><span id="toastMsg"></span>
+    </div>
+
+    <script>
+      /* =============================================
+   NAVBAR SCROLL
+   ============================================= */
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      /* =============================================
+   SIDEBAR
+   ============================================= */
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebar-overlay");
+        const btn = document.getElementById("hamburgerBtn");
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("show");
+        btn.classList.toggle("open");
+        document.body.style.overflow = sidebar.classList.contains("open")
+          ? "hidden"
+          : "";
+      }
+      function closeSidebar() {
+        document.getElementById("sidebar").classList.remove("open");
+        document.getElementById("sidebar-overlay").classList.remove("show");
+        document.getElementById("hamburgerBtn").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      /* =============================================
+   SCROLL TO SECTION
+   ============================================= */
+      function scrollToSection(id) {
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* =============================================
+   FEATURE TABS
+   ============================================= */
+      function switchTab(tabId) {
+        // Remove active from all tabs
+        document
+          .querySelectorAll(".ftab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".feature-panel")
+          .forEach((p) => p.classList.remove("active"));
+        // Activate selected
+        document.getElementById(tabId)?.classList.add("active");
+        const panelId = "panel-" + tabId.replace("tab-", "");
+        document.getElementById(panelId)?.classList.add("active");
+        // Scroll to features
+        document
+          .getElementById("features")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* =============================================
+   CLASS SWITCHER
+   ============================================= */
+      const classColors = {
+        langit: {
+          color: "var(--langit-h)",
+          bg: "rgba(74,144,217,0.15)",
+          border: "rgba(74,144,217,0.3)",
+        },
+        air: {
+          color: "var(--air-h)",
+          bg: "rgba(43,187,160,0.15)",
+          border: "rgba(43,187,160,0.3)",
+        },
+        angin: {
+          color: "var(--angin-h)",
+          bg: "rgba(126,200,162,0.15)",
+          border: "rgba(126,200,162,0.3)",
+        },
+        api: {
+          color: "var(--api-h)",
+          bg: "rgba(232,93,58,0.15)",
+          border: "rgba(232,93,58,0.3)",
+        },
+        matahari: {
+          color: "var(--matahari-h)",
+          bg: "rgba(245,166,35,0.15)",
+          border: "rgba(245,166,35,0.3)",
+        },
+        tanah: {
+          color: "var(--tanah-h)",
+          bg: "rgba(139,94,60,0.15)",
+          border: "rgba(139,94,60,0.3)",
+        },
+      };
+      function switchClass(cls) {
+        document.querySelectorAll(".class-tab-btn").forEach((b) => {
+          b.classList.remove("active");
+          b.style.background = "var(--surface)";
+          b.style.color = "var(--text3)";
+          b.style.borderColor = "transparent";
+        });
+        document
+          .querySelectorAll(".class-panel")
+          .forEach((p) => p.classList.remove("active"));
+        const btn = document.getElementById("ctab-" + cls);
+        const c = classColors[cls];
+        if (btn && c) {
+          btn.classList.add("active");
+          btn.style.background = c.bg;
+          btn.style.color = c.color;
+          btn.style.borderColor = c.border;
+        }
+        document.getElementById("cpanel-" + cls)?.classList.add("active");
+      }
+
+      /* =============================================
+   GURU DATA & FILTER
+   ============================================= */
+      const guruData = [
+        {
+          nama: "Wali kelas langit",
+          mapel: "Matematika",
+          kelas: "langit",
+          emoji: "📐",
+        },
+        {
+          nama: "Wali kelas air",
+          mapel: "Bahasa Indonesia",
+          kelas: "air",
+          emoji: "📝",
+        },
+        { nama: "Wali kelas angin", mapel: "Fisika", kelas: "angin", emoji: "⚗️" },
+        {
+          nama: "Wali kelas api",
+          mapel: "Biologi",
+          kelas: "api",
+          emoji: "🌿",
+        },
+        {
+          nama: "Wali kelas matahari",
+          mapel: "Kimia",
+          kelas: "matahari",
+          emoji: "🧪",
+        },
+        {
+          nama: "Wali kelas tanah",
+          mapel: "Sejarah",
+          kelas: "tanah",
+          emoji: "📜",
+        },
+      ];
+      const bgColors = {
+        langit: "rgba(74,144,217,0.15)",
+        air: "rgba(43,187,160,0.15)",
+        angin: "rgba(126,200,162,0.15)",
+        api: "rgba(232,93,58,0.15)",
+        matahari: "rgba(245,166,35,0.15)",
+        tanah: "rgba(139,94,60,0.15)",
+      };
+      const textColors = {
+        langit: "var(--langit-h)",
+        air: "var(--air-h)",
+        angin: "var(--angin-h)",
+        api: "var(--api-h)",
+        matahari: "var(--matahari-h)",
+        tanah: "var(--tanah-h)",
+      };
+      const kelasLabels = {
+        langit: "☁️ Langit",
+        air: "💧 Air",
+        angin: "🌬️ Angin",
+        api: "🔥 Api",
+        matahari: "☀️ Matahari",
+        tanah: "🌍 Tanah",
+      };
+
+      function renderGuru(filter) {
+        const grid = document.getElementById("guruGrid");
+        const filtered =
+          filter === "all"
+            ? guruData
+            : guruData.filter((g) => g.kelas === filter);
+        grid.innerHTML = filtered
+          .map(
+            (g) => `
+    <div class="guru-card">
+      <div class="guru-avatar" style="background:${bgColors[g.kelas]}">${g.emoji}</div>
+      <div>
+        <div class="guru-name">${g.nama}</div>
+        <div class="guru-subject">${g.mapel}</div>
+        <div class="guru-class" style="color:${textColors[g.kelas]}">${kelasLabels[g.kelas]}</div>
+      </div>
+    </div>
+  `,
+          )
+          .join("");
+      }
+      function switchGuruTab(btn, filter) {
+        document
+          .querySelectorAll(".guru-tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderGuru(filter);
+      }
+
+      /* =============================================
+   EKSKUL SEARCH FILTER
+   ============================================= */
+      function filterEkskul(query) {
+        const cards = document.querySelectorAll(".ekskul-card");
+        const q = query.toLowerCase().trim();
+        cards.forEach((c) => {
+          c.style.display = !q || c.dataset.name.includes(q) ? "" : "none";
+        });
+      }
+
+      /* =============================================
+   MAP ROOM MODAL
+   ============================================= */
+      function showRoomInfo(name, icon, desc, hours, users) {
+        document.getElementById("modalIcon").textContent = icon;
+        document.getElementById("modalTitle").textContent = name;
+        document.getElementById("modalDesc").textContent = desc;
+        document.getElementById("modalHours").textContent = hours;
+        document.getElementById("modalUsers").textContent = users;
+        document.getElementById("roomModal").classList.add("show");
+      }
+      function closeModal() {
+        document.getElementById("roomModal").classList.remove("show");
+      }
+      document.getElementById("roomModal").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("roomModal")) closeModal();
+      });
+
+      /* =============================================
+   FUTURE MESSAGE FORM
+   ============================================= */
+      function submitFutureMessage() {
+        const nama = document.getElementById("futureNama").value.trim();
+        const kelas = document.getElementById("futureKelas").value;
+        const pesan = document.getElementById("futurePesan").value.trim();
+        if (!nama || !kelas || !pesan) {
+          showToast("⚠️ Lengkapi semua field dulu ya!");
+          return;
+        }
+        // Add to wall
+        const wall = document.getElementById("messageWall");
+        const kelasEmoji = {
+          Langit: "☁️",
+          Air: "💧",
+          Angin: "🌬️",
+          Api: "🔥",
+          Matahari: "☀️",
+          Tanah: "🌍",
+        };
+        const card = document.createElement("div");
+        card.className = "message-card";
+        card.style.animation = "fadeInUp 0.5s ease both";
+        card.innerHTML = `<div class="message-from">${kelasEmoji[kelas] || "🌿"} ${nama} • Kelas ${kelas}</div><div class="message-text">"${pesan}"</div>`;
+        wall.insertBefore(card, wall.firstChild);
+        // Reset
+        document.getElementById("futureNama").value = "";
+        document.getElementById("futureKelas").value = "";
+        document.getElementById("futureCita").value = "";
+        document.getElementById("futurePesan").value = "";
+        showToast("✅ Pesanmu terkirim ke masa depan! 🌿");
+      }
+
+      /* =============================================
+   TOAST NOTIFICATION
+   ============================================= */
+      let toastTimer;
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toastMsg").textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+      /* =============================================
+   COUNTDOWN TIMER (ke 14 Juli 2025 07:00)
+   ============================================= */
+      function updateCountdown() {
+        const target = new Date("2025-07-14T07:00:00").getTime();
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff <= 0) {
+          document.getElementById("cd-days").textContent = "00";
+          document.getElementById("cd-hours").textContent = "00";
+          document.getElementById("cd-mins").textContent = "00";
+          document.getElementById("cd-secs").textContent = "00";
+          return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("cd-days").textContent = String(d).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("cd-hours").textContent = String(h).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("cd-mins").textContent = String(m).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("cd-secs").textContent = String(s).padStart(
+          2,
+          "0",
+        );
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      /* =============================================
+   SCROLL REVEAL
+   ============================================= */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObserver.observe(el));
+
+      /* =============================================
+   GENERATE QR CODE PATTERN (visual only)
+   ============================================= */
+      function generateQR() {
+        const container = document.getElementById("qrPixels");
+        if (!container) return;
+        // Simplified fixed QR-like pattern
+        const pattern = [
+          "qqqqqqqbqbbbbqqqqqq",
+          "qbbbbbbqbqbbqbbbbbbq",
+          "qbqqqbqbbqbbqbqqqbq",
+          "qbqqqbqbbbbqqbqqqbq",
+          "qbqqqbqbqbbqqbqqqbq",
+          "qbbbbbbqbqbbqbbbbbbq",
+          "qqqqqqqbqbqbqqqqqq",
+          "bbbbbbbbqbbbbbbbbbb",
+          "qbqbqbqqbbbqbqqbbb",
+          "bbbqbbbbqbqbbqbqbb",
+        ];
+        let html = "";
+        // Generate a pseudo-random QR pattern
+        const seed = 42;
+        for (let r = 0; r < 10; r++) {
+          for (let c = 0; c < 10; c++) {
+            // Corners (finder patterns)
+            const isCorner =
+              (r < 3 && c < 3) || (r < 3 && c > 6) || (r > 6 && c < 3);
+            const inner =
+              (r === 1 && c === 1) ||
+              (r === 1 && c === 8) ||
+              (r === 8 && c === 1);
+            let dark = isCorner || (r * 13 + c * 7 + seed) % 3 === 0;
+            if (r === 0 || r === 9 || c === 0 || c === 9) dark = true;
+            if (inner) dark = true;
+            html += `<div class="qr-pixel ${dark ? "q" : "b"}"></div>`;
+          }
+        }
+        container.innerHTML = html;
+      }
+
+      /* =============================================
+   INIT
+   ============================================= */
+      document.addEventListener("DOMContentLoaded", () => {
+        renderGuru("all");
+        generateQR();
+        // Re-observe after tab switches
+        setTimeout(() => {
+          document
+            .querySelectorAll(".reveal")
+            .forEach((el) => revealObserver.observe(el));
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
