@@ -445,17 +445,33 @@
         flex-shrink: 0;
       }
 
-      /* ── Gradient overlay agar teks tetap terbaca ── */
+      /* ── Overlay: vignette cinematik, karakter tetap terlihat ── */
       .hero-video-overlay {
         position: absolute;
         inset: 0;
         z-index: 1;
         background:
+          /* Vignette vertikal: gelap atas & bawah */
           linear-gradient(
             to bottom,
-            rgba(11, 26, 18, 0.55) 0%,
-            rgba(11, 26, 18, 0.35) 45%,
-            rgba(11, 26, 18, 0.65) 100%
+            rgba(8, 18, 12, 0.72) 0%,
+            rgba(8, 18, 12, 0.10) 28%,
+            rgba(8, 18, 12, 0.10) 72%,
+            rgba(8, 18, 12, 0.72) 100%
+          ),
+          /* Vignette horizontal: gelap pinggir kiri & kanan */
+          linear-gradient(
+            to right,
+            rgba(8, 18, 12, 0.55) 0%,
+            transparent 30%,
+            transparent 70%,
+            rgba(8, 18, 12, 0.55) 100%
+          ),
+          /* Radial di tengah untuk area teks */
+          radial-gradient(
+            ellipse 55% 60% at 50% 48%,
+            rgba(8, 18, 12, 0.52) 0%,
+            transparent 100%
           );
       }
 
@@ -616,10 +632,15 @@
           background:
             linear-gradient(
               to bottom,
-              rgba(11, 26, 18, 0.60) 0%,
-              rgba(11, 26, 18, 0.30) 40%,
-              rgba(11, 26, 18, 0.30) 60%,
-              rgba(11, 26, 18, 0.72) 100%
+              rgba(8, 18, 12, 0.75) 0%,
+              rgba(8, 18, 12, 0.15) 30%,
+              rgba(8, 18, 12, 0.15) 70%,
+              rgba(8, 18, 12, 0.75) 100%
+            ),
+            radial-gradient(
+              ellipse 75% 55% at 50% 50%,
+              rgba(8, 18, 12, 0.58) 0%,
+              transparent 100%
             );
         }
       }
@@ -638,10 +659,15 @@
           background:
             linear-gradient(
               to bottom,
-              rgba(11, 26, 18, 0.68) 0%,
-              rgba(11, 26, 18, 0.35) 40%,
-              rgba(11, 26, 18, 0.35) 60%,
-              rgba(11, 26, 18, 0.80) 100%
+              rgba(8, 18, 12, 0.80) 0%,
+              rgba(8, 18, 12, 0.20) 30%,
+              rgba(8, 18, 12, 0.20) 70%,
+              rgba(8, 18, 12, 0.82) 100%
+            ),
+            radial-gradient(
+              ellipse 80% 55% at 50% 50%,
+              rgba(8, 18, 12, 0.55) 0%,
+              transparent 100%
             );
         }
       }
@@ -649,25 +675,29 @@
       .hero-content {
         position: relative;
         z-index: 20;
-        max-width: 600px;
+        max-width: 580px;
         margin: 0 auto;
         text-align: center;
+        /* Tanpa kotak — teks terbaca lewat shadow & vignette overlay */
       }
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(93, 187, 128, 0.08);
-        border: 1px solid rgba(93, 187, 128, 0.2);
+        background: rgba(8, 20, 13, 0.50);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(125, 239, 160, 0.30);
         border-radius: var(--radius-pill);
         padding: 0.4rem 1rem;
         font-size: 0.72rem;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--accent);
+        color: #7defa0;
         margin-bottom: 1.5rem;
         animation: fadeInUp 0.8s ease both;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
       }
       .hero-eyebrow-dot {
         width: 6px;
@@ -706,38 +736,62 @@
         letter-spacing: -0.02em;
         margin-bottom: 0.5rem;
         animation: fadeInUp 0.8s ease 0.1s both;
+        color: #ffffff;
+        text-shadow:
+          0 0 40px rgba(0, 0, 0, 0.9),
+          0 2px 4px rgba(0, 0, 0, 0.95),
+          0 4px 16px rgba(0, 0, 0, 0.75),
+          0 8px 32px rgba(0, 0, 0, 0.5);
       }
       .hero-greeting-italic {
         font-style: italic;
-        color: var(--accent);
+        color: #7defa0;
+        text-shadow:
+          0 0 30px rgba(93, 187, 128, 0.7),
+          0 0 60px rgba(93, 187, 128, 0.35),
+          0 2px 4px rgba(0, 0, 0, 0.9),
+          0 4px 20px rgba(0, 0, 0, 0.6);
       }
       .hero-tagline {
         font-family: var(--font-display);
         font-size: clamp(0.85rem, 3vw, 1.1rem);
         font-style: italic;
-        color: var(--gold);
-        letter-spacing: 0.04em;
+        color: #fdd76a;
+        letter-spacing: 0.08em;
         margin-bottom: 0.4rem;
         animation: fadeInUp 0.8s ease 0.2s both;
+        text-shadow:
+          0 0 20px rgba(200, 150, 20, 0.6),
+          0 2px 4px rgba(0, 0, 0, 0.95),
+          0 4px 16px rgba(0, 0, 0, 0.7);
       }
       .hero-motto-sub {
         font-size: 0.8rem;
-        color: var(--text3);
+        color: rgba(255, 255, 255, 0.80);
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease 0.25s both;
+        text-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.95),
+          0 3px 12px rgba(0, 0, 0, 0.7);
       }
       .hero-desc {
         font-size: clamp(0.9rem, 3.5vw, 1.05rem);
-        color: var(--text2);
-        line-height: 1.8;
+        color: rgba(240, 237, 229, 0.95);
+        line-height: 1.85;
         max-width: 480px;
         margin: 0 auto 2.5rem;
         animation: fadeInUp 0.8s ease 0.3s both;
+        text-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.95),
+          0 3px 12px rgba(0, 0, 0, 0.65);
       }
       .hero-desc em {
-        color: var(--accent);
+        color: #7defa0;
         font-style: normal;
         font-weight: 600;
+        text-shadow:
+          0 0 16px rgba(93, 187, 128, 0.5),
+          0 1px 4px rgba(0, 0, 0, 0.8);
       }
       .hero-actions {
         display: flex;
@@ -820,8 +874,10 @@
       }
       .countdown-unit {
         text-align: center;
-        background: var(--surface);
-        border: 1px solid var(--border);
+        background: rgba(8, 20, 13, 0.50);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.10);
         border-radius: var(--radius-md);
         padding: 0.6rem 0.8rem;
         min-width: 64px;
@@ -833,22 +889,27 @@
         color: var(--accent);
         line-height: 1;
         display: block;
+        text-shadow:
+          0 0 12px rgba(93, 187, 128, 0.5),
+          0 1px 4px rgba(0, 0, 0, 0.8);
       }
       .countdown-label {
         font-size: 0.6rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--text3);
+        color: rgba(255, 255, 255, 0.55);
         margin-top: 4px;
         display: block;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
       }
       .countdown-sep {
         font-family: var(--font-mono);
         font-size: 1.6rem;
         font-weight: 700;
-        color: var(--text3);
+        color: rgba(255, 255, 255, 0.45);
         align-self: center;
         margin-top: -0.8rem;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
       }
 
       /* =============================================
@@ -4572,22 +4633,15 @@
       (function () {
         const vid = document.querySelector(".hero-video-bg video");
         if (!vid) return;
-
         function forcePlay() {
           if (vid.paused) vid.play().catch(() => {});
         }
-
-        // Resume langsung jika video berhenti sendiri
         vid.addEventListener("pause", () => {
           if (!document.hidden) setTimeout(forcePlay, 80);
         });
-
-        // Resume saat tab/app kembali aktif
         document.addEventListener("visibilitychange", () => {
           if (!document.hidden) forcePlay();
         });
-
-        // Play saat hero terlihat, pause saat tidak (hemat baterai)
         const hero = document.getElementById("hero");
         if (hero && "IntersectionObserver" in window) {
           new IntersectionObserver(
@@ -4600,8 +4654,6 @@
             { threshold: 0.1 }
           ).observe(hero);
         }
-
-        // Unlock autoplay pada interaksi pertama user (fallback browser ketat)
         function unlock() {
           forcePlay();
           ["touchstart", "click", "scroll"].forEach((ev) =>
@@ -4611,8 +4663,6 @@
         document.addEventListener("touchstart", unlock, { passive: true });
         document.addEventListener("click", unlock);
         document.addEventListener("scroll", unlock, { passive: true });
-
-        // Coba play langsung saat load
         vid.play().catch(() => {});
       })();
     </script>
