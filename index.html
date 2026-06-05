@@ -434,14 +434,26 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--bg);  /* fallback / letterbox color */
+        background: var(--bg);
       }
-      .hero-video-bg video {
+
+      /* ── Desktop video (16:9 landscape) ── */
+      .hero-video-bg .vid-desktop {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center center;
         display: block;
+        flex-shrink: 0;
+      }
+
+      /* ── Mobile video (9:16 portrait) — hidden by default ── */
+      .hero-video-bg .vid-mobile {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
         flex-shrink: 0;
       }
 
@@ -608,65 +620,54 @@
 
       /* ── Responsive video behaviour ── */
 
-      /* TABLET (768px ke bawah) */
+      /* TABLET (≤ 768px) — mulai tampilkan video portrait */
       @media (max-width: 768px) {
-        /*
-         * Masalah: video landscape (16:9) di-crop kiri-kanan saat portrait.
-         * Solusi: tampilkan video dalam "kotak" 16:9 yang dipusatkan secara
-         * vertikal di tengah layar — karakter tetap terlihat penuh.
-         * Area kosong atas/bawah ditutup overlay gelap (mirip letterbox).
-         */
-        .hero-video-bg {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--bg);   /* letterbox bars */
+        .hero-video-bg .vid-desktop { display: none; }
+        .hero-video-bg .vid-mobile  { display: block; }
+
+        #hero {
+          min-height: max(133.33vw, 92svh); /* 133.33vw = 100vw × 4/3 (rasio 3:4) */
+          padding-bottom: 3rem;
         }
-        .hero-video-bg video {
-          width: 100%;
-          height: 100%;            /* ikuti rasio 16:9 secara alami */
-          object-fit: unset;       /* biarkan video tampil full tanpa crop */
+        .hero-video-overlay {
+          background:
+            linear-gradient(
+              to bottom,
+              rgba(8, 18, 12, 0.70) 0%,
+              rgba(8, 18, 12, 0.12) 25%,
+              rgba(8, 18, 12, 0.12) 70%,
+              rgba(8, 18, 12, 0.78) 100%
+            ),
+            radial-gradient(
+              ellipse 60% 50% at 50% 48%,
+              rgba(8, 18, 12, 0.55) 0%,
+              transparent 100%
+            );
+        }
+      }
+
+      /* HP KECIL (≤ 480px) — rasio 3:4 ketat */
+      @media (max-width: 480px) {
+        #hero {
+          height: calc(100vw * 4 / 3); /* tepat 3:4 */
           min-height: unset;
+          max-height: 620px;
+          top: 0;
+          padding-top: calc(var(--nav-h) + 1.25rem);
+          padding-bottom: 2rem;
         }
         .hero-video-overlay {
           background:
             linear-gradient(
               to bottom,
               rgba(8, 18, 12, 0.75) 0%,
-              rgba(8, 18, 12, 0.15) 30%,
-              rgba(8, 18, 12, 0.15) 70%,
-              rgba(8, 18, 12, 0.75) 100%
-            ),
-            radial-gradient(
-              ellipse 75% 55% at 50% 50%,
-              rgba(8, 18, 12, 0.58) 0%,
-              transparent 100%
-            );
-        }
-      }
-
-      /* HP KECIL (≤ 480px) */
-      @media (max-width: 480px) {
-        #hero{
-          top: 40px;
-          height: 700px;
-        }
-        .hero-video-bg video {
-          width: 100%;
-          height: 100%;
-        }
-        .hero-video-overlay {
-          background:
-            linear-gradient(
-              to bottom,
-              rgba(8, 18, 12, 0.80) 0%,
-              rgba(8, 18, 12, 0.20) 30%,
-              rgba(8, 18, 12, 0.20) 70%,
+              rgba(8, 18, 12, 0.15) 28%,
+              rgba(8, 18, 12, 0.15) 68%,
               rgba(8, 18, 12, 0.82) 100%
             ),
             radial-gradient(
-              ellipse 80% 55% at 50% 50%,
-              rgba(8, 18, 12, 0.55) 0%,
+              ellipse 70% 50% at 50% 50%,
+              rgba(8, 18, 12, 0.52) 0%,
               transparent 100%
             );
         }
@@ -2398,25 +2399,25 @@
       /* ── Countdown digits: each unit gets its own elemental color ── */
       .hero-countdown .countdown-unit:nth-child(1) {
         border-color: rgba(232, 93, 58, 0.35);
-        background: rgba(232, 93, 58, 0.06);
+        background: rgba(232, 93, 58, 0.4);
       }
       .hero-countdown .countdown-unit:nth-child(1) .countdown-num { color: var(--api-h); }
 
       .hero-countdown .countdown-unit:nth-child(3) {
         border-color: rgba(74, 144, 217, 0.35);
-        background: rgba(74, 144, 217, 0.06);
+        background: rgba(74, 144, 217, 0.4);
       }
       .hero-countdown .countdown-unit:nth-child(3) .countdown-num { color: var(--langit-h); }
 
       .hero-countdown .countdown-unit:nth-child(5) {
         border-color: rgba(245, 166, 35, 0.35);
-        background: rgba(245, 166, 35, 0.06);
+        background: rgba(245, 166, 35, 0.4);
       }
       .hero-countdown .countdown-unit:nth-child(5) .countdown-num { color: var(--matahari-h); }
 
       .hero-countdown .countdown-unit:nth-child(7) {
         border-color: rgba(43, 187, 160, 0.35);
-        background: rgba(43, 187, 160, 0.06);
+        background: rgba(43, 187, 160, 0.4);
       }
       .hero-countdown .countdown-unit:nth-child(7) .countdown-num { color: var(--air-h); }
 
@@ -2807,9 +2808,20 @@
     <section id="hero">
 
       <!-- Video Background (loop) -->
+      <!-- Desktop (>768px): landscape 16:9 -->
+      <!-- Mobile (≤768px): portrait 9:16  -->
       <div class="hero-video-bg">
-        <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <video
+          class="vid-desktop"
+          autoplay muted loop playsinline preload="auto" aria-hidden="true"
+        >
           <source src="Homepage_video_MPLS.mp4" type="video/mp4" />
+        </video>
+        <video
+          class="vid-mobile"
+          autoplay muted loop playsinline preload="auto" aria-hidden="true"
+        >
+          <source src="Ratio_9_16.mp4" type="video/mp4" />
         </video>
       </div>
       <!-- Dark gradient overlay -->
@@ -4628,32 +4640,68 @@
       });
 
       /* =============================================
-   HERO VIDEO — KEEP PLAYING ON MOBILE
+   HERO VIDEO — DUAL SOURCE + KEEP PLAYING
+   Desktop: Homepage_video_MPLS.mp4 (16:9)
+   Mobile : Ratio_9_16.mp4 (9:16)
    ============================================= */
       (function () {
-        const vid = document.querySelector(".hero-video-bg video");
-        if (!vid) return;
-        function forcePlay() {
-          if (vid.paused) vid.play().catch(() => {});
+        const vidDesktop = document.querySelector(".hero-video-bg .vid-desktop");
+        const vidMobile  = document.querySelector(".hero-video-bg .vid-mobile");
+        if (!vidDesktop || !vidMobile) return;
+
+        /* Tentukan video aktif berdasarkan lebar layar */
+        function activeVideo() {
+          return window.innerWidth <= 768 ? vidMobile : vidDesktop;
         }
-        vid.addEventListener("pause", () => {
-          if (!document.hidden) setTimeout(forcePlay, 80);
-        });
+
+        /* Pause video yang tidak dipakai, play yang aktif */
+        function syncVideos() {
+          const active   = activeVideo();
+          const inactive = active === vidDesktop ? vidMobile : vidDesktop;
+          if (!inactive.paused) inactive.pause();
+          if (active.paused) active.play().catch(() => {});
+        }
+
+        function forcePlay() {
+          const v = activeVideo();
+          if (v.paused) v.play().catch(() => {});
+        }
+
+        /* Saat resize (orientasi berubah), switch video */
+        window.addEventListener("resize", syncVideos, { passive: true });
+
+        /* Resume saat tab kembali aktif */
         document.addEventListener("visibilitychange", () => {
           if (!document.hidden) forcePlay();
         });
+
+        /* Auto-resume jika video berhenti sendiri */
+        [vidDesktop, vidMobile].forEach((v) => {
+          v.addEventListener("pause", () => {
+            if (!document.hidden && v === activeVideo()) {
+              setTimeout(forcePlay, 80);
+            }
+          });
+        });
+
+        /* IntersectionObserver: play saat hero terlihat */
         const hero = document.getElementById("hero");
         if (hero && "IntersectionObserver" in window) {
           new IntersectionObserver(
             (entries) => {
               entries.forEach((e) => {
                 if (e.isIntersecting) forcePlay();
-                else if (!vid.paused) vid.pause();
+                else {
+                  if (!vidDesktop.paused) vidDesktop.pause();
+                  if (!vidMobile.paused)  vidMobile.pause();
+                }
               });
             },
             { threshold: 0.1 }
           ).observe(hero);
         }
+
+        /* Unlock autoplay pada interaksi pertama */
         function unlock() {
           forcePlay();
           ["touchstart", "click", "scroll"].forEach((ev) =>
@@ -4663,7 +4711,9 @@
         document.addEventListener("touchstart", unlock, { passive: true });
         document.addEventListener("click", unlock);
         document.addEventListener("scroll", unlock, { passive: true });
-        vid.play().catch(() => {});
+
+        /* Inisialisasi */
+        syncVideos();
       })();
     </script>
   </body>
