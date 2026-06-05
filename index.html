@@ -4565,6 +4565,56 @@
             .forEach((el) => revealObserver.observe(el));
         }, 500);
       });
+
+      /* =============================================
+   HERO VIDEO — KEEP PLAYING ON MOBILE
+   ============================================= */
+      (function () {
+        const vid = document.querySelector(".hero-video-bg video");
+        if (!vid) return;
+
+        function forcePlay() {
+          if (vid.paused) vid.play().catch(() => {});
+        }
+
+        // Resume langsung jika video berhenti sendiri
+        vid.addEventListener("pause", () => {
+          if (!document.hidden) setTimeout(forcePlay, 80);
+        });
+
+        // Resume saat tab/app kembali aktif
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) forcePlay();
+        });
+
+        // Play saat hero terlihat, pause saat tidak (hemat baterai)
+        const hero = document.getElementById("hero");
+        if (hero && "IntersectionObserver" in window) {
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) forcePlay();
+                else if (!vid.paused) vid.pause();
+              });
+            },
+            { threshold: 0.1 }
+          ).observe(hero);
+        }
+
+        // Unlock autoplay pada interaksi pertama user (fallback browser ketat)
+        function unlock() {
+          forcePlay();
+          ["touchstart", "click", "scroll"].forEach((ev) =>
+            document.removeEventListener(ev, unlock)
+          );
+        }
+        document.addEventListener("touchstart", unlock, { passive: true });
+        document.addEventListener("click", unlock);
+        document.addEventListener("scroll", unlock, { passive: true });
+
+        // Coba play langsung saat load
+        vid.play().catch(() => {});
+      })();
     </script>
   </body>
 </html>
