@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MPLS Diversa Natura — SMA Agnesiana</title>
+    <title>MPLS Diversa Natura — SMA Agnesian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -835,7 +835,7 @@
       }
       .hero-scroll-hint {
         position: absolute;
-        bottom: 2rem;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -1392,24 +1392,136 @@
       .class-panel.active {
         display: block;
       }
+      /* Base class-hero: mobile = mascot as bg, text over overlay */
       .class-hero {
+        position: relative;
         border-radius: var(--radius-xl);
         padding: 2rem;
         margin-bottom: 1.5rem;
-        position: relative;
         overflow: hidden;
+        min-height: 280px;
+        display: flex;
+        align-items: stretch;
       }
-      .class-hero::before {
-        content: "";
+
+      /* Mascot background image layer */
+      .class-hero-bg-img {
         position: absolute;
         inset: 0;
-        background: var(--surface);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transition: transform 0.6s ease;
+      }
+
+      /* Subtle parallax on hover */
+      .class-hero:hover .class-hero-bg-img {
+        transform: scale(1.04);
+      }
+
+      /* Color-tinted overlay on top of bg image */
+      .class-hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
         border-radius: inherit;
       }
+
+      /* Content sits above overlay */
       .class-hero-content {
         position: relative;
-        z-index: 1;
+        z-index: 2;
+        flex: 1;
+        max-width: 100%;
       }
+
+      /* ── Mascot image on the right (desktop only) ── */
+      .class-mascot-img-wrap {
+        display: none; /* hidden on mobile */
+      }
+
+      /* ── Desktop two-column layout ── */
+      @media (min-width: 768px) {
+        .class-hero {
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          min-height: 320px;
+          padding: 2.5rem 2.5rem;
+        }
+
+        .class-hero-content {
+          flex: 1 1 0;
+          max-width: 55%; /* text doesn't stretch full width */
+        }
+
+        .class-mascot-img-wrap {
+          display: flex;
+          flex: 0 0 auto;
+          width: 220px;
+          align-items: flex-end;
+          justify-content: center;
+          position: relative;
+          z-index: 3;
+          align-self: flex-end;
+        }
+
+        .class-mascot-img-wrap img {
+          width: 100%;
+          max-width: 220px;
+          height: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .class-mascot-img-wrap {
+          width: 260px;
+        }
+        .class-mascot-img-wrap img {
+          max-width: 260px;
+        }
+      }
+
+      /* ── Mascot animations ── */
+      @keyframes mascotFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        30%       { transform: translateY(-12px) rotate(1.5deg); }
+        60%       { transform: translateY(-6px) rotate(-1deg); }
+      }
+
+      @keyframes mascotFloatMirror {
+        0%, 100% { transform: translateY(0px) rotate(0deg) scaleX(-1); }
+        30%       { transform: translateY(-12px) rotate(1.5deg) scaleX(-1); }
+        60%       { transform: translateY(-6px) rotate(-1deg) scaleX(-1); }
+      }
+
+      .mascot-animate {
+        animation: mascotFloat 4.5s ease-in-out infinite;
+        transform-origin: bottom center;
+      }
+
+      /* mirror (Langit, Air, Matahari) */
+      .mascot-mirror {
+        animation: mascotFloatMirror 4.5s ease-in-out infinite;
+        transform-origin: bottom center;
+      }
+
+      /* Mobile: show mascot image at top (diperbesar) */
+      .class-mascot-mobile {
+        display: block;
+        width: 110px;
+        height: 110px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+      }
+      @media (min-width: 768px) {
+        .class-mascot-mobile { display: none; }
+      }
+
       .class-mascot-big {
         font-size: 5rem;
         margin-bottom: 1rem;
@@ -2287,28 +2399,99 @@
       }
 
       .bg-langit {
-        background: rgba(74, 144, 217, 0.12);
-        border-color: rgba(74, 144, 217, 0.2) !important;
+        border-color: rgba(74, 144, 217, 0.4) !important;
       }
+      .bg-langit .class-hero-bg-img {
+        background-image: url('maskot_langit.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-langit .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(26, 45, 80, 0.92) 0%,
+            rgba(20, 50, 100, 0.80) 45%,
+            rgba(10, 25, 60, 0.30) 100%);
+      }
+
       .bg-air {
-        background: rgba(43, 187, 160, 0.12);
-        border-color: rgba(43, 187, 160, 0.2) !important;
+        border-color: rgba(43, 187, 160, 0.4) !important;
       }
+      .bg-air .class-hero-bg-img {
+        background-image: url('maskot_air.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-air .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(5, 50, 45, 0.92) 0%,
+            rgba(5, 70, 60, 0.80) 45%,
+            rgba(0, 30, 28, 0.30) 100%);
+      }
+
       .bg-angin {
-        background: rgba(126, 200, 162, 0.12);
-        border-color: rgba(126, 200, 162, 0.2) !important;
+        border-color: rgba(126, 200, 162, 0.4) !important;
       }
+      .bg-angin .class-hero-bg-img {
+        background-image: url('maskot_angin.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-angin .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(20, 60, 35, 0.92) 0%,
+            rgba(25, 80, 45, 0.80) 45%,
+            rgba(10, 40, 20, 0.30) 100%);
+      }
+
       .bg-api {
-        background: rgba(232, 93, 58, 0.12);
-        border-color: rgba(232, 93, 58, 0.2) !important;
+        border-color: rgba(232, 93, 58, 0.4) !important;
       }
+      .bg-api .class-hero-bg-img {
+        background-image: url('maskot_api.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-api .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(80, 20, 10, 0.92) 0%,
+            rgba(100, 30, 15, 0.80) 45%,
+            rgba(50, 10, 5, 0.30) 100%);
+      }
+
       .bg-matahari {
-        background: rgba(245, 166, 35, 0.12);
-        border-color: rgba(245, 166, 35, 0.2) !important;
+        border-color: rgba(245, 166, 35, 0.4) !important;
       }
+      .bg-matahari .class-hero-bg-img {
+        background-image: url('maskot_matahari.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-matahari .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(80, 50, 5, 0.92) 0%,
+            rgba(100, 65, 8, 0.80) 45%,
+            rgba(50, 30, 0, 0.30) 100%);
+      }
+
       .bg-tanah {
-        background: rgba(139, 94, 60, 0.12);
-        border-color: rgba(139, 94, 60, 0.2) !important;
+        border-color: rgba(139, 94, 60, 0.4) !important;
+      }
+      .bg-tanah .class-hero-bg-img {
+        background-image: url('maskot_tanah.png');
+        background-position: right bottom;
+        background-size: 55% auto;
+      }
+      .bg-tanah .class-hero-overlay {
+        background:
+          linear-gradient(135deg,
+            rgba(60, 30, 10, 0.92) 0%,
+            rgba(80, 40, 15, 0.80) 45%,
+            rgba(35, 15, 5, 0.30) 100%);
       }
 
       /* =============================================
@@ -2575,6 +2758,76 @@
         border-color: rgba(93, 187, 128, 0.3);
       }
     </style>
+  
+    <script>
+      /* ── Mascot placeholder: inject SVG when real image not found ── */
+      (function() {
+        // Per-element placeholder colors
+        var placeholderColors = {
+          langit:   { bg: '#1a3a6e', accent: '#4a90d9', body: '#a8c8f0', detail: '#7ab0e0' },
+          air:      { bg: '#0a3a32', accent: '#2bbba0', body: '#80d4c8', detail: '#50c0a8' },
+          angin:    { bg: '#1a3a22', accent: '#7ec8a2', body: '#b0e0c0', detail: '#8ed4a8' },
+          api:      { bg: '#5a1a0a', accent: '#e85d3a', body: '#f0a090', detail: '#e87060' },
+          matahari: { bg: '#5a3a05', accent: '#f5a623', body: '#ffd080', detail: '#f5c050' },
+          tanah:    { bg: '#3a1e0a', accent: '#8b5e3c', body: '#c09070', detail: '#a07050' }
+        };
+
+        function makeSVG(el) {
+          var src = el.getAttribute('src') || '';
+          var match = src.match(/maskot_(\w+)\./);
+          var key = match ? match[1] : 'langit';
+          var c = placeholderColors[key] || placeholderColors.langit;
+
+          var svg = [
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">',
+            '<defs>',
+            '  <radialGradient id="bg" cx="50%" cy="50%" r="50%">',
+            '    <stop offset="0%" stop-color="' + c.bg + '" stop-opacity="0"/>',
+            '    <stop offset="100%" stop-color="' + c.bg + '" stop-opacity="0"/>',
+            '  </radialGradient>',
+            '</defs>',
+            '<ellipse cx="100" cy="70" rx="42" ry="38" fill="' + c.body + '"/>',
+            '<ellipse cx="80" cy="52" rx="22" ry="18" fill="white" opacity="0.9"/>',
+            '<ellipse cx="100" cy="46" rx="24" ry="20" fill="white" opacity="0.9"/>',
+            '<ellipse cx="120" cy="52" rx="22" ry="18" fill="white" opacity="0.9"/>',
+            '<rect x="60" y="56" width="80" height="12" rx="6" fill="' + c.accent + '" opacity="0.85"/>',
+            '<ellipse cx="88" cy="74" rx="5" ry="6" fill="#1a2a4a"/>',
+            '<ellipse cx="112" cy="74" rx="5" ry="6" fill="#1a2a4a"/>',
+            '<circle cx="89" cy="72" r="2" fill="white"/>',
+            '<circle cx="113" cy="72" r="2" fill="white"/>',
+            '<path d="M90 86 Q100 94 110 86" stroke="#1a2a4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+            '<rect x="90" y="106" width="20" height="14" rx="4" fill="' + c.body + '"/>',
+            '<ellipse cx="100" cy="175" rx="45" ry="58" fill="' + c.detail + '"/>',
+            '<path d="M60 140 Q100 125 140 140 L148 240 Q100 255 52 240 Z" fill="' + c.accent + '" opacity="0.6"/>',
+            '<rect x="58" y="168" width="84" height="14" rx="7" fill="' + c.body + '" opacity="0.8"/>',
+            '<ellipse cx="55" cy="165" rx="14" ry="36" fill="' + c.body + '" transform="rotate(-12,55,165)"/>',
+            '<ellipse cx="145" cy="165" rx="14" ry="36" fill="' + c.body + '" transform="rotate(12,145,165)"/>',
+            '<ellipse cx="46" cy="197" rx="12" ry="11" fill="' + c.body + '"/>',
+            '<ellipse cx="154" cy="197" rx="12" ry="11" fill="' + c.body + '"/>',
+            '<ellipse cx="82" cy="247" rx="18" ry="22" fill="' + c.detail + '"/>',
+            '<ellipse cx="118" cy="247" rx="18" ry="22" fill="' + c.detail + '"/>',
+            '<ellipse cx="80" cy="266" rx="20" ry="10" fill="' + c.accent + '" opacity="0.7"/>',
+            '<ellipse cx="120" cy="266" rx="20" ry="10" fill="' + c.accent + '" opacity="0.7"/>',
+            '<circle cx="100" cy="155" r="8" fill="white" opacity="0.5"/>',
+            '<circle cx="100" cy="155" r="4" fill="' + c.accent + '"/>',
+            '</svg>'
+          ].join('');
+
+          var encoded = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+          el.src = encoded;
+          el.removeAttribute('onerror');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.class-mascot-mobile, .class-mascot-img-wrap img').forEach(function(img) {
+            img.addEventListener('error', function() { makeSVG(this); });
+            if (!img.complete || img.naturalWidth === 0) {
+              makeSVG(img);
+            }
+          });
+        });
+      })();
+    </script>
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
@@ -2583,7 +2836,7 @@
         <div class="nav-logo-icon">🌿</div>
         <div class="nav-logo-text">
           <span>Diversa Natura</span>
-          <span>MPLS 2025 • SMA Agnesiana</span>
+          <span>MPLS 2026 • SMA Agnesian</span>
         </div>
       </div>
       <div class="nav-right">
@@ -2797,9 +3050,9 @@
         </a>
       </nav>
       <div class="sidebar-footer">
-        <div class="sidebar-badge">● MPLS 2025 Aktif</div>
+        <div class="sidebar-badge">● MPLS 2026 Aktif</div>
         <p style="font-size: 0.75rem; color: var(--text3)">
-          SMA Agnesiana<br />Diversa Natura — Bersatu dalam Keberagaman
+          SMA Agnesian<br />Diversa Natura — Bersatu dalam Keberagaman
         </p>
       </div>
     </aside>
@@ -2842,7 +3095,7 @@
       <div class="hero-content">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          MPLS 2025 — Diversa Natura
+          MPLS 2026 — Diversa Natura
         </div>
         <h1 class="hero-greeting">
           Hai Hai<br /><em class="hero-greeting-italic">Agnesian!</em>
@@ -2853,14 +3106,14 @@
         </p>
         <p class="hero-desc">
           Selamat datang, <em>penerus harapan bangsa</em>! Kami sangat
-          bersemangat menyambutmu di keluarga besar SMA Agnesiana. Ini bukan
+          bersemangat menyambutmu di keluarga besar SMA Agnesian. Ini bukan
           sekadar sekolah — ini adalah rumah tempat kamu tumbuh, bermimpi, dan
           <em>menjadi versi terbaikmu</em>. Perjalananmu dimulai hari ini. 🌿
         </p>
         <!-- Countdown -->
         <div class="hero-countdown" id="countdownTimer">
           <div class="countdown-unit">
-            <span class="countdown-num" id="cd-days">03</span
+            <span class="countdown-num" id="cd-days">04</span
             ><span class="countdown-label">Hari</span>
           </div>
           <div class="countdown-sep">:</div>
@@ -2888,7 +3141,7 @@
             text-align: center;
           "
         >
-          ⏳ Menuju Hari Pertama MPLS 2025
+          ⏳ Menuju Hari Pertama MPLS 2026
         </p>
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="scrollToSection('features')">
@@ -3308,8 +3561,10 @@
               class="class-hero bg-langit"
               style="border: 1.5px solid rgba(74, 144, 217, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">☁️</span>
+                <img src="AKASA.png" alt="Maskot Langit" class="class-mascot-mobile mascot-mirror" />
                 <div class="class-name-big color-langit">LANGIT</div>
                 <div
                   class="class-element"
@@ -3333,6 +3588,9 @@
                   <span class="class-trait color-langit">Luas</span>
                   <span class="class-trait color-langit">Inspiratif</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="AKASA.png" alt="Maskot Langit" class="mascot-mirror" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3361,8 +3619,10 @@
               class="class-hero bg-air"
               style="border: 1.5px solid rgba(43, 187, 160, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">💧</span>
+                <img src="TIRTA.png" alt="Maskot Air" class="class-mascot-mobile mascot-mirror" />
                 <div class="class-name-big color-air">AIR</div>
                 <div
                   class="class-element"
@@ -3385,6 +3645,9 @@
                   <span class="class-trait color-air">Mengalir</span>
                   <span class="class-trait color-air">Sejuk</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="TIRTA.png" alt="Maskot Air" class="mascot-mirror" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3413,8 +3676,10 @@
               class="class-hero bg-angin"
               style="border: 1.5px solid rgba(126, 200, 162, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">🌬️</span>
+                <img src="BAYU.png" alt="Maskot Angin" class="class-mascot-mobile mascot-animate" />
                 <div class="class-name-big color-angin">ANGIN</div>
                 <div
                   class="class-element"
@@ -3437,6 +3702,9 @@
                   <span class="class-trait color-angin">Bebas</span>
                   <span class="class-trait color-angin">Segar</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="BAYU.png" alt="Maskot Angin" class="mascot-animate" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3465,8 +3733,10 @@
               class="class-hero bg-api"
               style="border: 1.5px solid rgba(232, 93, 58, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">🔥</span>
+                <img src="AGNI.png" alt="Maskot Api" class="class-mascot-mobile mascot-animate" />
                 <div class="class-name-big color-api">API</div>
                 <div
                   class="class-element"
@@ -3489,6 +3759,9 @@
                   <span class="class-trait color-api">Berani</span>
                   <span class="class-trait color-api">Menerangi</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="AGNI.png" alt="Maskot Api" class="mascot-animate" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3517,8 +3790,10 @@
               class="class-hero bg-matahari"
               style="border: 1.5px solid rgba(245, 166, 35, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">☀️</span>
+                <img src="ARUNA.png" alt="Maskot Matahari" class="class-mascot-mobile mascot-mirror" />
                 <div class="class-name-big color-matahari">MATAHARI</div>
                 <div
                   class="class-element"
@@ -3542,6 +3817,9 @@
                   <span class="class-trait color-matahari">Bersinar</span>
                   <span class="class-trait color-matahari">Memberi</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="ARUNA.png" alt="Maskot Matahari" class="mascot-mirror" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3570,8 +3848,10 @@
               class="class-hero bg-tanah"
               style="border: 1.5px solid rgba(139, 94, 60, 0.3)"
             >
+              <div class="class-hero-bg-img"></div>
+              <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <span class="class-mascot-big">🌍</span>
+                <img src="BHUMI.png" alt="Maskot Tanah" class="class-mascot-mobile mascot-animate" />
                 <div class="class-name-big color-tanah">TANAH</div>
                 <div
                   class="class-element"
@@ -3595,6 +3875,9 @@
                   <span class="class-trait color-tanah">Kaya</span>
                   <span class="class-trait color-tanah">Fondasi</span>
                 </div>
+              </div>
+              <div class="class-mascot-img-wrap">
+                <img src="BHUMI.png" alt="Maskot Tanah" class="mascot-animate" />
               </div>
             </div>
             <div class="class-info-grid">
@@ -4149,7 +4432,7 @@
     <footer id="footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <h3>🌿 SMA Agnesiana</h3>
+          <h3>🌿 SMA Agnesian</h3>
           <p>
             Sekolah menengah atas Katolik unggulan yang mendidik generasi
             berkarakter, berprestasi, dan berwawasan lingkungan.
@@ -4171,7 +4454,7 @@
           <h4>Kontak</h4>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📍</span>
-            <span>Jl. Agnesiana No. 17, Kota Pendidikan, Indonesia 12345</span>
+            <span>Jl. Agnesian No. 17, Kota Pendidikan, Indonesia 12345</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📞</span>
@@ -4179,11 +4462,11 @@
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">✉️</span>
-            <span>osis@agnesiana.sch.id</span>
+            <span>osis@agnesian.sch.id</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📱</span>
-            <span>Instagram: @osis_agnesiana</span>
+            <span>Instagram: @osis_agnesian</span>
           </div>
         </div>
       </div>
@@ -4211,7 +4494,7 @@
 
       <div class="footer-bottom">
         <div class="footer-bottom-left">
-          © 2025 SMA Agnesiana • MPLS Diversa Natura • Dibuat dengan ❤️ oleh
+          © 2026 SMA Agnesia • MPLS Diversa Natura • Dibuat dengan ❤️ oleh
           OSIS
         </div>
         <div class="footer-bottom-right">
@@ -4533,7 +4816,7 @@
       }
 
       /* =============================================
-   COUNTDOWN TIMER (ke 14 Juli 2025 07:00)
+   COUNTDOWN TIMER (ke 14 Juni 2026 07:00)
    ============================================= */
       function updateCountdown() {
         const target = new Date("2026-07-10T07:00:00+07:00").getTime();
