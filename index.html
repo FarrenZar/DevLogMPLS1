@@ -1165,6 +1165,98 @@
         color: var(--accent);
         border: 1px solid rgba(93, 187, 128, 0.2);
       }
+      .eco-banner-actions {
+        display: flex;
+        gap: 8px;
+        margin-left: auto; /* Mendorong tombol ke ujung kanan */
+        flex-wrap: wrap; /* Mencegah tombol terpotong di layar kecil */
+      }
+      .eco-banner-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 0.45rem 0.8rem;
+        border-radius: var(--radius-pill);
+        background: var(--accent);
+        color: var(--bg);
+        border: 1px solid transparent;
+        transition: var(--transition);
+      }
+      .eco-banner-btn:hover {
+        background: #4cad70;
+        transform: translateY(-1px);
+      }
+      .eco-banner-btn.outline {
+        background: rgba(93, 187, 128, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(93, 187, 128, 0.25);
+      }
+      .eco-banner-btn.outline:hover {
+        background: rgba(93, 187, 128, 0.16);
+      }
+      /* Profil Pelajar Pancasila */
+      .pancasila-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 1rem;
+      }
+      .pancasila-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.1rem;
+      }
+      .pancasila-item h5 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 0.35rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pancasila-item p {
+        font-size: 0.82rem;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+      /* Latar Belakang MPLS */
+      .latar-block {
+        margin-bottom: 1.1rem;
+      }
+      .latar-block h5 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 0.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+      .latar-block p {
+        font-size: 0.85rem;
+        color: var(--text2);
+        line-height: 1.7;
+        margin-bottom: 0.6rem;
+      }
+      .latar-block ol,
+      .latar-block ul {
+        padding-left: 1.2rem;
+        margin-top: 0.4rem;
+      }
+      .latar-block ol li,
+      .latar-block ul li {
+        list-style: decimal;
+        font-size: 0.85rem;
+        color: var(--text2);
+        line-height: 1.7;
+        margin-bottom: 0.35rem;
+      }
+      .latar-block ul li {
+        list-style: disc;
+      }
 
       /* Schedule / Timetable */
       .schedule-table {
@@ -1455,6 +1547,14 @@
           gap: 2rem;
           min-height: 320px;
           padding: 2.5rem 2.5rem;
+        }
+        .feature-tabs {
+          display: flex;
+          overflow-x: auto;
+          scrollbar-width: none;
+          gap: 4px;
+          padding: 0.75rem 1.25rem;
+          border-bottom: 1px solid var(--border);
         }
 
         .class-hero-content {
@@ -2985,6 +3085,11 @@
         max-width: 100vw;
         -webkit-overflow-scrolling: touch;
       }
+      @media (max-width: 768px) {
+        .feature-tabs {
+          justify-content: flex-start;
+        }
+      }
       /* Prevent hero background art from adding scroll width */
       .hero-bg-art {
         width: 100%;
@@ -3778,10 +3883,56 @@
             </table>
           </div>
         </div>
+        <style>
+          /* 1. Gaya dasar untuk kedua tombol (bentuk kapsul & transisi halus) */
+          .eco-banner-actions button {
+            padding: 0.7rem 1.4rem;
+            border-radius: 50px; /* Membuat bentuk tombol menjadi lonjong/kapsul */
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Memberikan efek halus saat di-hover */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          /* 2. Gaya untuk Tombol Pertama (Tombol Sekunder - Outline Style) */
+          .eco-banner-actions button:first-child {
+            background-color: transparent;
+            border: 1.5px solid #5dbb80; /* Garis pinggir hijau */
+            color: #3a8f5e; /* Teks hijau gelap */
+          }
+
+          /* Efek saat tombol pertama disorot mouse */
+          .eco-banner-actions button:first-child:hover {
+            background-color: rgba(93, 187, 128, 0.1);
+            transform: translateY(-2px); /* Tombol sedikit terangkat */
+          }
+
+          /* 3. Gaya untuk Tombol Kedua (Tombol Utama - Gradient & Glowing Style) */
+          .eco-banner-actions button:last-child {
+            background: linear-gradient(
+              135deg,
+              #5dbb80,
+              #3a8f5e
+            ); /* Gradasi hijau */
+            border: none;
+            color: #ffffff; /* Teks putih */
+            box-shadow: 0 4px 12px rgba(93, 187, 128, 0.35); /* Efek cahaya/glowing di bawah tombol */
+          }
+
+          /* Efek saat tombol kedua disorot mouse */
+          .eco-banner-actions button:last-child:hover {
+            transform: translateY(-2px); /* Tombol sedikit terangkat */
+            box-shadow: 0 6px 16px rgba(93, 187, 128, 0.5); /* Cahaya membesar saat di-hover */
+            filter: brightness(1.05); /* Warna menjadi sedikit lebih terang */
+          }
+        </style>
         <!-- Eco Banner -->
         <div class="eco-banner reveal">
           <div class="eco-banner-icon">🌿</div>
-          <div>
+          <div class="partision">
             <h4>Kampanye Peduli Lingkungan</h4>
             <p>
               Diversa Natura mengajak seluruh Agnesian untuk menjaga bumi kita
@@ -3794,6 +3945,20 @@
               <span class="eco-tag">💡 Hemat Energi</span>
               <span class="eco-tag">📚 Belajar bersama</span>
             </div>
+          </div>
+          <div class="eco-banner-actions">
+            <button
+              class="eco-banner-btn"
+              onclick="openGuideModal('pancasilaModal')"
+            >
+              🧭 Profil Pelajar Pancasila
+            </button>
+            <button
+              class="eco-banner-btn outline"
+              onclick="openGuideModal('latarBelakangModal')"
+            >
+              📖 Latar Belakang MPLS
+            </button>
           </div>
         </div>
       </div>
@@ -3844,6 +4009,60 @@
               lulusan.<br />
               6. Menciptakan lingkungan hidup yang sehat.
             </p>
+          </div>
+          <div class="vm-card">
+            <div
+              class="guru-section-title reveal"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                margin-top: 2rem;
+              "
+            >
+              <span>🌟 Struktur Panitia OSIS & MPK</span>
+
+              <!-- Tombol Khusus Pop-up OSIS & MPK -->
+              <!-- Menggunakan gaya outline (garis luar) agar terlihat sedikit berbeda namun senada dengan tombol guru -->
+              <button
+                class="btn"
+                onclick="openGuideModal('modalOsisMpk')"
+                style="
+                  border-radius: 50px;
+                  padding: 0.6rem 1.5rem;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 0.85rem;
+                  border: 1.5px solid var(--accent);
+                  color: var(--accent);
+                  background: transparent;
+                "
+              >
+                🧑‍🎓 Lihat Formasi Panitia
+              </button>
+              <button
+                class="btn"
+                onclick="openGuideModal('modalDokumentasi')"
+                style="
+                  border-radius: 50px;
+                  padding: 0.6rem 1.5rem;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 0.85rem;
+                  border: 1.5px solid var(--langit-h);
+                  color: var(--langit-h);
+                  background: transparent;
+                  margin-top: 10px;
+                "
+              >
+                📸 Lihat Dokumentasi Kegiatan
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -3919,7 +4138,7 @@
                   alt="Maskot Langit"
                   class="class-mascot-mobile mascot-mirror"
                 />
-                <div class="class-name-big color-langit">LANGIT</div>
+                <div class="class-name-big color-langit">AKASA</div>
                 <div
                   class="class-element"
                   style="
@@ -3931,10 +4150,8 @@
                   🗺️ Kalimantan • Baju Kalimantan
                 </div>
                 <p class="class-desc">
-                  Kelas Langit mengambil inspirasi dari luasnya langit
-                  Kalimantan yang tak terbatas. Bebas, luas, dan penuh
-                  kemungkinan. Seperti langit, kalian diharapkan terus menatap
-                  ke atas dan meraih cita-cita setinggi bintang.
+                  Siswa diharapkan memiliki pandangan luas, berani bermimpi, dan
+                  berusaha meraih masa depan yang gemilang.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-langit">Bebas</span>
@@ -3985,7 +4202,7 @@
                   alt="Maskot Air"
                   class="class-mascot-mobile mascot-mirror"
                 />
-                <div class="class-name-big color-air">AIR</div>
+                <div class="class-name-big color-air">TIRTA</div>
                 <div
                   class="class-element"
                   style="
@@ -3997,9 +4214,8 @@
                   🗺️ Sulawesi • Adat Sulawesi
                 </div>
                 <p class="class-desc">
-                  Kelas Air terinspirasi dari kejernihan perairan Sulawesi yang
-                  kaya kehidupan. Adaptif, mengalir tanpa henti, dan memberikan
-                  kehidupan bagi semua yang ada di sekitarnya.
+                  Siswa diharapkan mampu bersikap tenang, sabar, dan mudah
+                  beradaptasi dalam berbagai situasi.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-air">Adaptif</span>
@@ -4046,7 +4262,7 @@
                   alt="Maskot Angin"
                   class="class-mascot-mobile mascot-animate"
                 />
-                <div class="class-name-big color-angin">ANGIN</div>
+                <div class="class-name-big color-angin">BAYU</div>
                 <div
                   class="class-element"
                   style="
@@ -4058,9 +4274,8 @@
                   🗺️ Sumatra • Adat Sumatra
                 </div>
                 <p class="class-desc">
-                  Kelas Angin mengalir bebas seperti semilir yang membawa
-                  keharuman hutan Sumatra yang megah. Dinamis, energik, dan
-                  selalu membawa perubahan positif ke mana pun melangkah.
+                  Siswa diharapkan lincah, bebas, dan mampu beradaptasi dengan
+                  lingkungan baru serta aktif dan dinamis dalam belajar.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-angin">Dinamis</span>
@@ -4107,7 +4322,7 @@
                   alt="Maskot Api"
                   class="class-mascot-mobile mascot-animate"
                 />
-                <div class="class-name-big color-api">API</div>
+                <div class="class-name-big color-api">AGNI</div>
                 <div
                   class="class-element"
                   style="
@@ -4119,9 +4334,8 @@
                   🗺️ Jawa • Batik Jawa
                 </div>
                 <p class="class-desc">
-                  Kelas Api mengambil semangat dari kehangatan budaya Jawa yang
-                  kaya dan berkobar-kobar. Penuh semangat, hangat, dan mampu
-                  menerangi kegelapan dengan api pengetahuan.
+                  Siswa diharapkan memiliki motivasi tinggi, berani menghadapi
+                  tantangan, serta tidak mudah menyerah dalam meraih prestasi.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-api">Bersemangat</span>
@@ -4168,7 +4382,7 @@
                   alt="Maskot Matahari"
                   class="class-mascot-mobile mascot-mirror"
                 />
-                <div class="class-name-big color-matahari">MATAHARI</div>
+                <div class="class-name-big color-matahari">ARUNA</div>
                 <div
                   class="class-element"
                   style="
@@ -4180,10 +4394,8 @@
                   🗺️ Bali • Pakaian Adat Bali
                 </div>
                 <p class="class-desc">
-                  Kelas Matahari bersinar seperti fajar di Bali yang memukau
-                  dunia. Gemilang, hangat, dan menjadi pusat cahaya bagi semua.
-                  Seperti matahari, kalian adalah sumber semangat dan
-                  kehangatan.
+                  Siswa diharapkan memulai semangat dan harapan baru dengan
+                  membawa cahaya yang dapat menerangi masa depan.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-matahari">Gemilang</span>
@@ -4234,7 +4446,7 @@
                   alt="Maskot Tanah"
                   class="class-mascot-mobile mascot-animate"
                 />
-                <div class="class-name-big color-tanah">TANAH</div>
+                <div class="class-name-big color-tanah">BHUMI</div>
                 <div
                   class="class-element"
                   style="
@@ -4246,10 +4458,8 @@
                   🗺️ Papua • Koteka Papua
                 </div>
                 <p class="class-desc">
-                  Kelas Tanah berdiri kokoh seperti bumi Papua yang penuh
-                  kekayaan alam yang luar biasa. Kuat, stabil, dan menjadi
-                  fondasi bagi semua kehidupan di atasnya. Kalian adalah pondasi
-                  masa depan bangsa.
+                  Siswa diharapkan memiliki kepribadian yang kuat , dapat
+                  diandalkan, serta mampu menjadi penopang bagi sesama.
                 </p>
                 <div class="class-traits">
                   <span class="class-trait color-tanah">Kuat</span>
@@ -4310,8 +4520,8 @@
             <div class="ekskul-type">Olahraga</div>
           </div>
           <div class="ekskul-card" data-name="futsal">
-            <span class="ekskul-icon">⚽</span>
-            <div class="ekskul-name">Futsal</div>
+            <span class="ekskul-icon">🕺</span>
+            <div class="ekskul-name">Modern Dance</div>
             <div class="ekskul-type">Olahraga</div>
           </div>
           <div class="ekskul-card" data-name="voli">
@@ -4320,14 +4530,14 @@
             <div class="ekskul-type">Olahraga</div>
           </div>
           <div class="ekskul-card" data-name="badminton">
-            <span class="ekskul-icon">🏸</span>
-            <div class="ekskul-name">Badminton</div>
+            <span class="ekskul-icon">🦵</span>
+            <div class="ekskul-name">Tae Kwon Do</div>
             <div class="ekskul-type">Olahraga</div>
           </div>
           <div class="ekskul-card" data-name="pramuka">
-            <span class="ekskul-icon">🏕️</span>
-            <div class="ekskul-name">Pramuka</div>
-            <div class="ekskul-type">Kepanduan</div>
+            <span class="ekskul-icon">🧑‍💻</span>
+            <div class="ekskul-name">Web Design</div>
+            <div class="ekskul-type">Teknologi</div>
           </div>
           <div class="ekskul-card" data-name="paskibra">
             <span class="ekskul-icon">🚩</span>
@@ -4341,52 +4551,47 @@
           </div>
           <div class="ekskul-card" data-name="paduan suara">
             <span class="ekskul-icon">🎵</span>
-            <div class="ekskul-name">Paduan Suara</div>
-            <div class="ekskul-type">Seni</div>
+            <div class="ekskul-name">Band</div>
+            <div class="ekskul-type">Seni Musik</div>
           </div>
           <div class="ekskul-card" data-name="tari tradisional">
-            <span class="ekskul-icon">💃</span>
-            <div class="ekskul-name">Tari Tradisional</div>
-            <div class="ekskul-type">Seni</div>
+            <span class="ekskul-icon">⚽</span>
+            <div class="ekskul-name">Futsal</div>
+            <div class="ekskul-type">Olahraga</div>
           </div>
-          <div class="ekskul-card" data-name="teater drama">
-            <span class="ekskul-icon">🎭</span>
-            <div class="ekskul-name">Teater</div>
-            <div class="ekskul-type">Seni</div>
-          </div>
-          <div class="ekskul-card" data-name="fotografi">
-            <span class="ekskul-icon">📸</span>
-            <div class="ekskul-name">Fotografi</div>
-            <div class="ekskul-type">Seni & Teknologi</div>
-          </div>
-          <div class="ekskul-card" data-name="jurnalistik">
-            <span class="ekskul-icon">📰</span>
-            <div class="ekskul-name">Jurnalistik</div>
-            <div class="ekskul-type">Literasi</div>
-          </div>
-          <div class="ekskul-card" data-name="english club">
-            <span class="ekskul-icon">🗣️</span>
-            <div class="ekskul-name">English Club</div>
-            <div class="ekskul-type">Akademik</div>
-          </div>
-          <div class="ekskul-card" data-name="robotik coding">
-            <span class="ekskul-icon">🤖</span>
-            <div class="ekskul-name">Robotik</div>
-            <div class="ekskul-type">Teknologi</div>
-          </div>
-          <div class="ekskul-card" data-name="karya ilmiah">
-            <span class="ekskul-icon">🔬</span>
-            <div class="ekskul-name">KIR</div>
-            <div class="ekskul-type">Akademik</div>
-          </div>
-          <div class="ekskul-card" data-name="lingkungan hidup">
-            <span class="ekskul-icon">🌿</span>
-            <div class="ekskul-name">Pecinta Alam</div>
-            <div class="ekskul-type">Lingkungan</div>
+          <div class="ekskul-card" data-name="tari tradisional">
+            <span class="ekskul-icon">⁉️</span>
+            <div class="ekskul-name">Coming soon</div>
+            <div class="ekskul-type">???</div>
           </div>
         </div>
-        <div class="guru-section-title reveal">
-          👩‍🏫 Perkenalan Guru per Kelas
+        <div
+          class="guru-section-title reveal"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+          "
+        >
+          <span>👩‍🏫 Perkenalan Guru per Kelas</span>
+
+          <button
+            class="btn btn-primary"
+            onclick="openGuideModal('modalGuruKaryawan')"
+            style="
+              border-radius: 50px;
+              padding: 0.6rem 1.5rem;
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 0.85rem;
+            "
+          >
+            📇 Lihat Struktur Guru & Karyawan
+          </button>
         </div>
         <div class="guru-grid" id="guruGrid">
           <!-- Generated by JS -->
@@ -4414,16 +4619,9 @@
               </div>
               <div class="story-author-info">
                 <div class="author-name">From...</div>
-                <div class="author-class">
-                  Kelas Langit 2022 • Sekarang di Univ. Indonesia
-                </div>
               </div>
             </div>
-            <div class="story-quote">
-              "MPLS mengajarku bahwa keberagaman bukan halangan, melainkan
-              kekuatan. Teman-temanku dari berbagai daerah menjadi keluargaku
-              hingga hari ini."
-            </div>
+            <div class="story-quote">"Pengalamanku..."</div>
             <div class="story-date">📅 Juli 2022</div>
           </div>
           <div class="story-card reveal reveal-delay-2">
@@ -4436,16 +4634,9 @@
               </div>
               <div class="story-author-info">
                 <div class="author-name">From...</div>
-                <div class="author-class">
-                  Kelas Air 2021 • Kini Dokter Muda
-                </div>
               </div>
             </div>
-            <div class="story-quote">
-              "Di MPLS, aku menemukan passion-ku di bidang kesehatan. Ketika
-              kami diajak simulasi P3K, aku sadar ini yang ingin kulakukan
-              seumur hidup."
-            </div>
+            <div class="story-quote">"Pengalamanku..."</div>
             <div class="story-date">📅 Juli 2021</div>
           </div>
           <div class="story-card reveal reveal-delay-3">
@@ -4458,16 +4649,9 @@
               </div>
               <div class="story-author-info">
                 <div class="author-name">From...</div>
-                <div class="author-class">
-                  Kelas Api 2023 • Sekarang Kelas XII
-                </div>
               </div>
             </div>
-            <div class="story-quote">
-              "Saat pertama masuk, aku sangat pemalu. Tapi MPLS dengan tema
-              budaya Indonesia ini membuat aku bangga dengan asal-usulku dan
-              berani tampil."
-            </div>
+            <div class="story-quote">"Pengalamanku..."</div>
             <div class="story-date">📅 Juli 2023</div>
           </div>
         </div>
@@ -4476,342 +4660,358 @@
           <div class="osis-structure-title">🌟 Dinding Pesan Agnesian</div>
           <div class="messages-wall" id="messageWall">
             <div class="message-card">
-              <div class="message-from">🌿 Anya • Kelas Angin</div>
-              <div class="message-text">
-                "Hei Anya masa depan! Jangan pernah berhenti bermimpi besar.
-                Ingat tekad pertamamu hari ini."
-              </div>
+              <div class="message-from">☁️ Gugus AKASA</div>
+              <div class="message-text">"Coming soon"</div>
             </div>
             <div class="message-card">
-              <div class="message-from">🔥 Doni • Kelas Api</div>
-              <div class="message-text">
-                "Aku ingin jadi insinyur. Tiga tahun lagi, apakah kamu sudah
-                melamar beasiswa?"
-              </div>
+              <div class="message-from">🔥 Gugus AGNI</div>
+              <div class="message-text">"Coming soon"</div>
             </div>
             <div class="message-card">
-              <div class="message-from">☀️ Clara • Kelas Matahari</div>
-              <div class="message-text">
-                "Teruslah bersinar, walau kadang langit mendung. Kamu lebih kuat
-                dari yang kamu kira!"
-              </div>
+              <div class="message-from">☀️ Gugus ARUNA</div>
+              <div class="message-text">"Coming soon"</div>
+            </div>
+            <div class="message-card">
+              <div class="message-from">🍃 Gugus BAYU</div>
+              <div class="message-text">"Coming soon"</div>
+            </div>
+            <div class="message-card">
+              <div class="message-from">💧 Gugus TIRTA</div>
+              <div class="message-text">"Coming soon"</div>
+            </div>
+            <div class="message-card">
+              <div class="message-from">🌍 Gugus BHUMI</div>
+              <div class="message-text">"Coming soon"</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== PETA SEKOLAH 3D ===================== -->
+    <!-- ===================== PETA SEKOLAH 3D + VISUAL CAROUSEL ===================== -->
     <section id="peta-section" class="section-pad">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-label">Navigasi Sekolah</div>
-          <h2 class="section-title">Peta Sekolah <em> 2026</em></h2>
+          <h2 class="section-title">Peta Sekolah <em>2026</em></h2>
           <p class="section-desc">
-            Klik setiap ruangan untuk melihat informasi detail. Geser untuk
-            menjelajahi seluruh area sekolah.
+            Geser untuk Klik setiap ruangan untuk melihat informasi detail.
+            Tekan tombol dibawah ini untuk melihat fasilitas
           </p>
           <div class="section-divider"></div>
+          <a href="#popup-fasilitas" class="btn-fasilitas">
+            <span class="btn-icon">📸</span> Lihat Foto Fasilitas
+          </a>
         </div>
 
-        <div class="map-container reveal">
-          <div class="map-scene">
-            <div class="map-grid">
-              <!-- Row 1 -->
-              <div
-                class="map-block mb-blue"
-                onclick="
-                  showRoomInfo(
-                    'Gerbang Masuk',
-                    '🚪',
-                    'Pintu masuk utama sekolah, ada 2 gerbang untuk mobil di bagian depan dan satu gerbang untuk motor dan murid',
-                    'Batas 06.25 sebelum gerbang tertutup dan siswa/i dinyatakan terlambat',
-                    'Sesuai jam masuk sekolah',
-                  )
-                "
-              >
-                <span class="map-block-icon">🚪</span>
-                <span class="map-block-name">Gerbang Masuk</span>
+        <!-- MAIN COMPONENT: SPLIT SCREEN INTERACTIVE AREA -->
+        <div class="map-split-wrapper reveal">
+          <!-- SISI KIRI: Peta INTERAKTIF 3D & Legend Anda -->
+          <div class="map-left-column">
+            <div class="map-container">
+              <div class="map-scene">
+                <div class="map-grid">
+                  <!-- Row 1 -->
+                  <div
+                    class="map-block mb-blue"
+                    onclick="
+                      showRoomInfo(
+                        'Gerbang Masuk',
+                        '🚪',
+                        'Pintu masuk utama sekolah, ada 2 gerbang untuk mobil di bagian depan dan satu gerbang untuk motor dan murid',
+                        'Batas 06.25 sebelum gerbang tertutup dan siswa/i dinyatakan terlambat',
+                        'Sesuai jam masuk sekolah',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🚪</span>
+                    <span class="map-block-name">Gerbang Masuk</span>
+                  </div>
+                  <div
+                    class="map-block mb-gray"
+                    onclick="
+                      showRoomInfo(
+                        'Area Parkir',
+                        '🚗',
+                        'Dapat digunakan bagi siswa, guru dan tamu. Parkir untuk guru ada tepat saat masuk gerbang di bagian kanan dan kiri. Untuk siswa dapat parkir di lapangan upacara, atau di gor ketika upacara sedang berlangsung',
+                        'Sesuai jadwal sekolah',
+                        'Siswa & Guru',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🚗</span>
+                    <span class="map-block-name">Parkir</span>
+                  </div>
+                  <div
+                    class="map-block mb-green span2"
+                    onclick="
+                      showRoomInfo(
+                        'Lapangan Gor',
+                        '⚽',
+                        'Lapangan serbaguna untuk olahraga, senam, pertemuan dan acara sekolah',
+                        'Sesuai jam sekolah',
+                        'Semua Siswa baik SMP dan SMA',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">⚽</span>
+                    <span class="map-block-name">Lapangan Gor</span>
+                  </div>
+                  <!-- Row 2 -->
+                  <div
+                    class="map-block mb-blue span2"
+                    onclick="
+                      showRoomInfo(
+                        'Ruang Kelas X',
+                        '📚',
+                        'Ruang belajar kelas 10. Memuat siswa per kelas dengan fasilitas AC dan proyektor disetiap kelas',
+                        'Sesuai jam masuk sekolah',
+                        'Siswa Kelas X',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">📚</span>
+                    <span class="map-block-name">Kelas X (1-6)</span>
+                  </div>
+                  <div
+                    class="map-block mb-gold"
+                    onclick="
+                      showRoomInfo(
+                        'Kantin Sekolah',
+                        '🍽️',
+                        'Kantin utama dengan berbagai pilihan makanan',
+                        'Sesuai jam istirahat',
+                        'Semua Siswa dan Guru',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🍽️</span>
+                    <span class="map-block-name">Kantin</span>
+                  </div>
+                  <div
+                    class="map-block mb-earth"
+                    onclick="
+                      showRoomInfo(
+                        'Greenhouse sekolah',
+                        '🌿',
+                        'Berada di lantai 4, terletak tepat diatas lab komputer dan lab bahasa',
+                        'Sesuai kegiatan',
+                        'Siswa dan Guru',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🌿</span>
+                    <span class="map-block-name">Greenhouse</span>
+                  </div>
+                  <!-- Row 3 -->
+                  <div
+                    class="map-block mb-teal"
+                    onclick="
+                      showRoomInfo(
+                        'Lab Fisika, Kimia, Biologi',
+                        '🔬',
+                        'Laboratorium untuk praktikum Fisika, Kimia, dan Biologi. Dilengkapi peralatan yang mendukung setiap mata pelajaran',
+                        'Sesuai jam pelajaran',
+                        'Siswa dan Guru',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🔬</span>
+                    <span class="map-block-name"
+                      >Lab Fisika, Kimia, Biologi</span
+                    >
+                  </div>
+                  <div
+                    class="map-block mb-teal"
+                    onclick="
+                      showRoomInfo(
+                        'Lab Komputer',
+                        '💻',
+                        'Lab komputer dengan banyak unit komputer untuk pelajaran TIK dan coding',
+                        'Sesuai jam pelajaran Informatika',
+                        'Kelas TIK',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">💻</span>
+                    <span class="map-block-name">Lab Komputer</span>
+                  </div>
+                  <div
+                    class="map-block mb-blue span2"
+                    onclick="
+                      showRoomInfo(
+                        'Perpustakaan',
+                        '📖',
+                        'Ruang buku dan menjadi ruang pinjaman kelas sepulang sekolah',
+                        'Sesuai jam sekolah',
+                        'Semua Siswa',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">📖</span>
+                    <span class="map-block-name">Perpustakaan</span>
+                  </div>
+                  <!-- Row 4 -->
+                  <div
+                    class="map-block mb-teal"
+                    onclick="
+                      showRoomInfo(
+                        'Ruang musik',
+                        '🎶',
+                        'Tempat siswa/i dapat mengembangkan bakat dan minat di bidang seni musik',
+                        '07.00–17.00',
+                        'Pelajaran Seni musik & Ekstra Band',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🎶</span>
+                    <span class="map-block-name">R. Musik</span>
+                  </div>
+                  <div
+                    class="map-block mb-gold"
+                    onclick="
+                      showRoomInfo(
+                        'Ruang BK',
+                        '💬',
+                        'Ruang Bimbingan Konseling untuk konsultasi akademik dan personal siswa',
+                        'Sepulang sekolah',
+                        'Semua Siswa',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">💬</span>
+                    <span class="map-block-name">R. BK</span>
+                  </div>
+                  <div
+                    class="map-block mb-gray"
+                    onclick="
+                      showRoomInfo(
+                        'Ruang Guru',
+                        '👩‍🏫',
+                        'Ruang kerja dan istirahat bagi seluruh tenaga pengajar',
+                        'Sesuai jam sekolah',
+                        'Guru & Staf',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">👩‍🏫</span>
+                    <span class="map-block-name">R. Guru</span>
+                  </div>
+                  <div
+                    class="map-block mb-blue"
+                    onclick="
+                      showRoomInfo(
+                        'Ruang TU',
+                        '🏢',
+                        'Tata Usaha dan administrasi sekolah. Urusan dokumen, pembayaran, dll',
+                        'Sesuai jam sekolah',
+                        'Semua',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🏢</span>
+                    <span class="map-block-name">Tata Usaha</span>
+                  </div>
+                  <!-- Row 5 -->
+                  <div
+                    class="map-block mb-green span2"
+                    onclick="
+                      showRoomInfo(
+                        'Aula Utama',
+                        '🎭',
+                        'Aula serbaguna untuk seminar, pentas seni, dan acara besar. Aula berada pada kelas gabungan XI4 dan XI5',
+                        'Sesuai Jadwal',
+                        'Semua',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🎭</span>
+                    <span class="map-block-name">Aula Utama</span>
+                  </div>
+                  <div
+                    class="map-block mb-teal"
+                    onclick="
+                      showRoomInfo(
+                        'UKS',
+                        '🏥',
+                        'Unit Kesehatan Siswa dengan perlengkapan P3K dan tempat istirahat bagi yang sakit',
+                        'Selama jam sekolah buka',
+                        'Semua Siswa',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">🏥</span>
+                    <span class="map-block-name">UKS</span>
+                  </div>
+                  <div
+                    class="map-block mb-earth"
+                    onclick="
+                      showRoomInfo(
+                        'Kapel Sekolah',
+                        '⛪',
+                        'Kapel untuk ibadah, doa pagi, dan kegiatan rohani sekolah',
+                        'Sesuai kegiatan',
+                        'Semua',
+                      )
+                    "
+                  >
+                    <span class="map-block-icon">⛪</span>
+                    <span class="map-block-name">Kapel</span>
+                  </div>
+                </div>
               </div>
-              <div
-                class="map-block mb-gray"
-                onclick="
-                  showRoomInfo(
-                    'Area Parkir',
-                    '🚗',
-                    'Dapat digunakan bagi siswa, guru dan tamu. Parkir untuk guru ada tepat saat masuk gerbang di bagian kanan dan kiri. Untuk siswa dapat parkir di lapangan upacara, atau di gor ketika upacara sedang berlangsung',
-                    'Sesuai jadwal sekolah',
-                    'Siswa & Guru',
-                  )
-                "
-              >
-                <span class="map-block-icon">🚗</span>
-                <span class="map-block-name">Parkir</span>
+            </div>
+            <br />
+
+            <!-- Map Legend -->
+            <div class="map-legend" style="margin-top: 20px">
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(93, 187, 128, 0.4)"
+                ></div>
+                Ruang Terbuka
               </div>
-              <div
-                class="map-block mb-green span2"
-                onclick="
-                  showRoomInfo(
-                    'Lapangan Gor',
-                    '⚽',
-                    'Lapangan serbaguna untuk olahraga, senam, pertemuan dan acara sekolah',
-                    'Sesuai jam sekolah',
-                    'Semua Siswa baik SMP dan SMA',
-                  )
-                "
-              >
-                <span class="map-block-icon">⚽</span>
-                <span class="map-block-name">Lapangan Gor</span>
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(74, 144, 217, 0.4)"
+                ></div>
+                Ruang Kelas
               </div>
-              <!-- Row 2 -->
-              <div
-                class="map-block mb-blue span2"
-                onclick="
-                  showRoomInfo(
-                    'Ruang Kelas X',
-                    '📚',
-                    'Ruang belajar kelas 10. Memuat siswa per kelas dengan fasilitas AC dan proyektor disetiap kelas',
-                    'Sesuai jam masuk sekolah',
-                    'Siswa Kelas X',
-                  )
-                "
-              >
-                <span class="map-block-icon">📚</span>
-                <span class="map-block-name">Kelas X (1-6)</span>
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(43, 187, 160, 0.4)"
+                ></div>
+                Lab & Perpustakaan
               </div>
-              <div
-                class="map-block mb-gold"
-                onclick="
-                  showRoomInfo(
-                    'Kantin Sekolah',
-                    '🍽️',
-                    'Kantin utama dengan berbagai pilihan makanan',
-                    'Sesuai jam istirahat',
-                    'Semua Siswa dan Guru',
-                  )
-                "
-              >
-                <span class="map-block-icon">🍽️</span>
-                <span class="map-block-name">Kantin</span>
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(212, 168, 67, 0.4)"
+                ></div>
+                Layanan Siswa
               </div>
-              <div
-                class="map-block mb-earth"
-                onclick="
-                  showRoomInfo(
-                    'Greenhouse sekolah',
-                    '🌿',
-                    'Berada di lantai 4, terletak tepat diatas lab komputer dan lab bahasa',
-                    'Sesuai kegiatan',
-                    'Siswa dan Guru',
-                  )
-                "
-              >
-                <span class="map-block-icon">🌿</span>
-                <span class="map-block-name">Greenhouse</span>
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(232, 93, 58, 0.4)"
+                ></div>
+                Organisasi
               </div>
-              <!-- Row 3 -->
-              <div
-                class="map-block mb-teal"
-                onclick="
-                  showRoomInfo(
-                    'Lab Fisika, Kimia, Biologi',
-                    '🔬',
-                    'Laboratorium untuk praktikum Fisika, Kimia, dan Biologi. Dilengkapi peralatan yang mendukung setiap mata pelajaran',
-                    'Sesuai jam pelajaran',
-                    'Siswa dan Guru',
-                  )
-                "
-              >
-                <span class="map-block-icon">🔬</span>
-                <span class="map-block-name">Lab Fisika, Kimia, Biologi</span>
-              </div>
-              <div
-                class="map-block mb-teal"
-                onclick="
-                  showRoomInfo(
-                    'Lab Komputer',
-                    '💻',
-                    'Lab komputer dengan banyak unit komputer untuk pelajaran TIK dan coding',
-                    'Sesuai jam pelajaran Informatika',
-                    'Kelas TIK',
-                  )
-                "
-              >
-                <span class="map-block-icon">💻</span>
-                <span class="map-block-name">Lab Komputer</span>
-              </div>
-              <div
-                class="map-block mb-blue span2"
-                onclick="
-                  showRoomInfo(
-                    'Perpustakaan',
-                    '📖',
-                    'Ruang buku dan menjadi ruang pinjaman kelas sepulang sekolah',
-                    'Sesuai jam sekolah',
-                    'Semua Siswa',
-                  )
-                "
-              >
-                <span class="map-block-icon">📖</span>
-                <span class="map-block-name">Perpustakaan</span>
-              </div>
-              <!-- Row 4 -->
-              <div
-                class="map-block mb-teal"
-                onclick="
-                  showRoomInfo(
-                    'Ruang musik',
-                    '🎶',
-                    'Tempat siswa/i dapat mengembangkan bakat dan minat di bidang seni musik',
-                    '07.00–17.00',
-                    'Pelajaran Seni musik & Ekstra Band',
-                  )
-                "
-              >
-                <span class="map-block-icon">🎶</span>
-                <span class="map-block-name">R. Musik</span>
-              </div>
-              <div
-                class="map-block mb-gold"
-                onclick="
-                  showRoomInfo(
-                    'Ruang BK',
-                    '💬',
-                    'Ruang Bimbingan Konseling untuk konsultasi akademik dan personal siswa',
-                    'Sepulang sekolah',
-                    'Semua Siswa',
-                  )
-                "
-              >
-                <span class="map-block-icon">💬</span>
-                <span class="map-block-name">R. BK</span>
-              </div>
-              <div
-                class="map-block mb-gray"
-                onclick="
-                  showRoomInfo(
-                    'Ruang Guru',
-                    '👩‍🏫',
-                    'Ruang kerja dan istirahat bagi seluruh tenaga pengajar',
-                    'Sesuai jam sekolah',
-                    'Guru & Staf',
-                  )
-                "
-              >
-                <span class="map-block-icon">👩‍🏫</span>
-                <span class="map-block-name">R. Guru</span>
-              </div>
-              <div
-                class="map-block mb-blue"
-                onclick="
-                  showRoomInfo(
-                    'Ruang TU',
-                    '🏢',
-                    'Tata Usaha dan administrasi sekolah. Urusan dokumen, pembayaran, dll',
-                    'Sesuai jam sekolah',
-                    'Semua',
-                  )
-                "
-              >
-                <span class="map-block-icon">🏢</span>
-                <span class="map-block-name">Tata Usaha</span>
-              </div>
-              <!-- Row 5 -->
-              <div
-                class="map-block mb-green span2"
-                onclick="
-                  showRoomInfo(
-                    'Aula Utama',
-                    '🎭',
-                    'Aula serbaguna untuk seminar, pentas seni, dan acara besar. Aula berada pada kelas gabungan XI4 dan XI5',
-                    'Sesuai Jadwal',
-                    'Semua',
-                  )
-                "
-              >
-                <span class="map-block-icon">🎭</span>
-                <span class="map-block-name">Aula Utama</span>
-              </div>
-              <div
-                class="map-block mb-teal"
-                onclick="
-                  showRoomInfo(
-                    'UKS',
-                    '🏥',
-                    'Unit Kesehatan Siswa dengan perlengkapan P3K dan tempat istirahat bagi yang sakit',
-                    'Selama jam sekolah buka',
-                    'Semua Siswa',
-                  )
-                "
-              >
-                <span class="map-block-icon">🏥</span>
-                <span class="map-block-name">UKS</span>
-              </div>
-              <div
-                class="map-block mb-earth"
-                onclick="
-                  showRoomInfo(
-                    'Kapel Sekolah',
-                    '⛪',
-                    'Kapel untuk ibadah, doa pagi, dan kegiatan rohani sekolah',
-                    'Sesuai kegiatan',
-                    'Semua',
-                  )
-                "
-              >
-                <span class="map-block-icon">⛪</span>
-                <span class="map-block-name">Kapel</span>
+              <div class="map-legend-item">
+                <div
+                  class="map-legend-dot"
+                  style="background: rgba(139, 94, 60, 0.4)"
+                ></div>
+                Area Hijau & Ibadah
               </div>
             </div>
           </div>
         </div>
-        <br />
 
-        <!-- Map Legend -->
-        <div class="map-legend reveal">
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(93, 187, 128, 0.4)"
-            ></div>
-            Ruang Terbuka
-          </div>
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(74, 144, 217, 0.4)"
-            ></div>
-            Ruang Kelas
-          </div>
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(43, 187, 160, 0.4)"
-            ></div>
-            Lab & Perpustakaan
-          </div>
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(212, 168, 67, 0.4)"
-            ></div>
-            Layanan Siswa
-          </div>
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(232, 93, 58, 0.4)"
-            ></div>
-            Organisasi
-          </div>
-          <div class="map-legend-item">
-            <div
-              class="map-legend-dot"
-              style="background: rgba(139, 94, 60, 0.4)"
-            ></div>
-            Area Hijau & Ibadah
-          </div>
-        </div>
+        <br /><br />
 
         <!-- Denah Lantai (Floor Plan) -->
         <div class="floorplan-block reveal">
@@ -4913,19 +5113,28 @@
           <h4>Kontak</h4>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📍</span>
-            <span>Jl. Agnesian No. 17, Kota Pendidikan, Indonesia 12345</span>
+            <span
+              >Jl. Mendut No.7, Pacar Keling, Kec. Tambaksari, Surabaya, Jawa
+              Timur</span
+            >
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📞</span>
-            <span>(021) 8765-4321</span>
+            <span>+62 821-1456-8033 (Mrs. Ester)</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">✉️</span>
-            <span>osis@agnesian.sch.id</span>
+            <span>osis@smakstagnes.sch.id</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📱</span>
-            <span>Instagram: @osis_agnesian</span>
+            <span>Instagram: @stag.nes</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📺</span>
+            <a href="https://youtube.com/@saintagnesian2630?si=QrrU1zWNzBe6AF35"
+              ><span>Youtube: @saintagnesian2630</span></a
+            >
           </div>
         </div>
       </div>
@@ -4933,7 +5142,7 @@
       <!-- QR Code Section -->
       <div class="qr-section" id="footer">
         <div class="qr-code">
-          <div class="qr-inner" id="qrPixels"><!-- JS generated --></div>
+          <img src="QR.png" alt="" />
         </div>
         <div class="qr-text">
           <h4>📢 Kritik & Saran</h4>
@@ -5544,6 +5753,665 @@
       </div>
     </div>
 
+    <!-- ===== Modal: Profil Pelajar Pancasila ===== -->
+    <div class="modal-overlay" id="pancasilaModal">
+      <div class="modal modal-lg">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">🧭</span>
+            <div class="modal-title">Profil Pelajar Pancasila</div>
+            <div class="modal-sub">
+              Enam dimensi karakter penuntun peserta didik
+            </div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('pancasilaModal')"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Profil Pelajar Pancasila menjadi acuan karakter yang dikembangkan
+            dalam kegiatan MPLS Diversa Natura, mendorong siswa/i untuk
+            bertumbuh menjadi pribadi yang beriman, berwawasan global, gotong
+            royong, mandiri, kritis, dan kreatif.
+          </p>
+          <div class="pancasila-grid">
+            <div class="pancasila-item">
+              <h5>
+                🙏 Beriman, Bertakwa kepada Tuhan Yang Maha Esa, dan Berakhlak
+                Mulia
+              </h5>
+              <p>
+                Pelajar Indonesia yang berakhlak mulia ialah pelajar yang
+                berakhlak dalam hubungannya dengan Tuhan Yang Maha Esa. Pelajar
+                Pancasila memahami ajaran agama dan kepercayaannya serta dapat
+                menerapkan pemahaman tersebut dalam kehidupan sehari-hari.
+              </p>
+            </div>
+            <div class="pancasila-item">
+              <h5>🌏 Berkebinekaan Global</h5>
+              <p>
+                Pelajar Indonesia mempertahankan kebudayaan luhur, lokalitas,
+                dan identitasnya, serta tetap berpikiran terbuka dalam
+                berinteraksi dengan budaya lain. Perilaku pelajar Pancasila ini
+                menumbuhkan rasa saling menghargai dan memungkinkan terbentuknya
+                budaya baru yang positif dan tidak bertentangan dengan budaya
+                luhur bangsa.
+              </p>
+            </div>
+            <div class="pancasila-item">
+              <h5>🤝 Gotong Royong</h5>
+              <p>
+                Pelajar Indonesia memiliki kemampuan gotong royong, yaitu
+                kemampuan pelajar Pancasila untuk melakukan kegiatan secara
+                bersama-sama dengan sukarela agar kegiatan yang dikerjakan dapat
+                berjalan dengan lancar, mudah, dan ringan.
+              </p>
+            </div>
+            <div class="pancasila-item">
+              <h5>🎒 Mandiri</h5>
+              <p>
+                Pelajar Indonesia adalah pelajar mandiri, yaitu pelajar
+                Pancasila yang bertanggung jawab atas proses dan hasil
+                belajarnya.
+              </p>
+            </div>
+            <div class="pancasila-item">
+              <h5>🧠 Bernalar Kritis</h5>
+              <p>
+                Pelajar yang bernalar kritis adalah pelajar Pancasila yang mampu
+                secara objektif memproses informasi baik kualitatif maupun
+                kuantitatif, membangun keterkaitan antara berbagai informasi,
+                menganalisis informasi, mengevaluasi, dan menyimpulkannya.
+              </p>
+            </div>
+            <div class="pancasila-item">
+              <h5>💡 Kreatif</h5>
+              <p>
+                Pelajar yang kreatif adalah pelajar Pancasila yang mampu
+                memodifikasi dan menghasilkan sesuatu yang orisinal, bermakna,
+                bermanfaat, dan berdampak.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Latar Belakang MPLS ===== -->
+    <div class="modal-overlay" id="latarBelakangModal">
+      <div class="modal modal-lg">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📖</span>
+            <div class="modal-title">Latar Belakang MPLS</div>
+            <div class="modal-sub">Diversa Natura 2025/2026</div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('latarBelakangModal')"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="latar-block">
+            <p>
+              Pendidikan merupakan upaya sadar untuk mewujudkan suasana belajar
+              dan proses pembelajaran agar peserta didik terlibat aktif
+              mengembangkan potensi dirinya. Sekolah sebagai institusi formal
+              memegang peran penting, tidak hanya sebagai tempat untuk
+              memperoleh pengetahuan, tetapi berperan dalam pendidikan karakter.
+              Pendidikan yang berkualitas adalah kunci dalam membentuk generasi
+              unggul melalui dukungan visi dan misi sekolah.
+            </p>
+            <p>
+              Masa Pengenalan Lingkungan Sekolah (MPLS) merupakan kegiatan yang
+              dilakukan pada saat awal tahun ajaran baru. Program ini ditujukan
+              bagi peserta didik baru untuk memperkenalkan lingkungan, tata
+              tertib, dan budaya sekolah sehingga peserta didik dapat
+              beradaptasi dalam proses pembelajaran dan bersosialisasi dengan
+              warga sekolah.
+            </p>
+            <p>
+              Tema
+              <em style="color: var(--gold)"
+                >"Diversa Natura: Keberagaman yang selaras dengan alam"</em
+              >
+              menjadi acuan dalam pelaksanaan proses kegiatan MPLS 2025/2026
+              yang membentuk karakter siswa/i yang berlandaskan nilai-nilai
+              Pancasila. Tema ini menggambarkan keberagaman yang harmonis di
+              lingkungan sekolah serta mendorong tumbuhnya sikap toleransi dan
+              kepedulian terhadap lingkungan melalui tindakan nyata dalam
+              kehidupan sehari-hari.
+            </p>
+          </div>
+
+          <div class="latar-block">
+            <h5>Dasar Pelaksanaan</h5>
+            <ol>
+              <li>
+                Berdasarkan Permendikbud Nomor 18 Tahun 2016 tentang Masa
+                Pengenalan Lingkungan Sekolah bagi peserta didik baru.
+              </li>
+              <li>
+                Program SMA Katolik Santa Agnes Surabaya 2025/2026 dalam bidang
+                pembinaan kesiswaan.
+              </li>
+              <li>
+                Program kerja OSIS SMA Katolik Santa Agnes Surabaya 2024/2025.
+              </li>
+            </ol>
+          </div>
+
+          <div class="latar-block">
+            <h5>Manfaat Materi</h5>
+            <ol>
+              <li>
+                Melatih peserta didik baru dalam beradaptasi di lingkungan
+                sekolah, berinteraksi dengan warga sekolah, serta membentuk
+                karakter dan menggali potensi sejak awal di lingkungan sekolah
+                baru.
+              </li>
+              <li>
+                Memberikan kesempatan bagi panitia guru dan siswa/i untuk
+                mengenal dan membangun interaksi positif dengan peserta didik
+                baru sehingga memperluas relasi demi menciptakan lingkungan
+                sekolah yang harmonis.
+              </li>
+            </ol>
+          </div>
+
+          <div class="latar-block">
+            <h5>Tujuan Kegiatan</h5>
+            <ol>
+              <li>
+                Membantu peserta didik beradaptasi dalam proses pembelajaran di
+                lingkungan sekolah sehingga dapat menggali potensi semaksimal
+                mungkin.
+              </li>
+              <li>
+                Meningkatkan kemampuan interaksi dan komunikasi peserta didik
+                seperti nilai-nilai kerja sama, empati, keterbukaan, dan
+                kolaboratif untuk menciptakan interaksi positif sehingga
+                kegiatan dapat berjalan dengan lancar.
+              </li>
+              <li>
+                Mendorong kemampuan bernalar dan berpikir kritis peserta didik
+                sehingga mampu menganalisis informasi secara objektif dan
+                mengembangkan proses berpikir logis dalam mengambil keputusan.
+              </li>
+              <li>
+                Membantu peserta didik untuk beradaptasi dari berbagai aspek
+                pendidikan dan sekolah yaitu, lingkungan fisik, norma dan
+                budaya, tata tertib, sarana-prasarana, dan aspek lainnya.
+              </li>
+              <li>
+                Meningkatkan kreativitas dan kemampuan berinovasi peserta didik
+                sehingga mampu menciptakan ide dan karya yang orisinal.
+              </li>
+              <li>
+                Menanamkan jiwa kebhinekaan peserta didik dalam menjunjung
+                tinggi nilai keberagaman melalui sikap toleransi dan tanggung
+                jawab atas setiap tindakan.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Foto Struktur OSIS & MPK ===== -->
+    <div
+      class="modal-overlay"
+      id="modalOsisMpk"
+      onclick="closeGuideModal('modalOsisMpk')"
+    >
+      <div
+        class="modal modal-lg"
+        onclick="event.stopPropagation()"
+        style="max-width: 900px"
+      >
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">🌟</span>
+            <div class="modal-title">Panitia OSIS & MPK</div>
+            <div class="modal-sub">MPLS SMA Agnesiana Diversa Natura 2026</div>
+          </div>
+          <button class="modal-close" onclick="closeGuideModal('modalOsisMpk')">
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Kita mendaur ulang class CSS guru karena rasionya sama (A5) -->
+          <div class="teacher-gallery-grid">
+            <!-- 1. MPK -->
+            <div class="teacher-card-infografis">
+              <img src="MPK.png" alt="Struktur MPK" loading="lazy" />
+            </div>
+
+            <!-- 2. Pengurus Inti OSIS -->
+            <div class="teacher-card-infografis">
+              <img
+                src="INTI.png"
+                alt="Struktur Pengurus Inti OSIS"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- 3. Departemen TKK -->
+            <div class="teacher-card-infografis">
+              <img src="TKK.png" alt="Departemen TKK" loading="lazy" />
+            </div>
+
+            <!-- 4. Departemen Rohani -->
+            <div class="teacher-card-infografis">
+              <img src="Rohani.png" alt="Departemen Rohani" loading="lazy" />
+            </div>
+
+            <!-- 5. Departemen Prestasi -->
+            <div class="teacher-card-infografis">
+              <img
+                src="Prestasi.png"
+                alt="Departemen Prestasi"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- 6. Departemen Seni -->
+            <div class="teacher-card-infografis">
+              <img src="Seni.png" alt="Departemen Seni" loading="lazy" />
+            </div>
+
+            <!-- 7. Departemen Olahraga -->
+            <div class="teacher-card-infografis">
+              <img
+                src="Olahraga.png"
+                alt="Departemen Olahraga"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- 8. Departemen Desara -->
+            <div class="teacher-card-infografis">
+              <img src="Desara.png" alt="Departemen Desara" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Dokumentasi ===== -->
+    <div
+      class="modal-overlay"
+      id="modalDokumentasi"
+      onclick="closeGuideModal('modalDokumentasi')"
+    >
+      <div
+        class="modal modal-lg"
+        onclick="event.stopPropagation()"
+        style="max-width: 900px"
+      >
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📸</span>
+            <div class="modal-title">Dokumentasi Kegiatan</div>
+            <div class="modal-sub">Kilasan momen MPLS Diversa Natura</div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('modalDokumentasi')"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="teacher-gallery-grid">
+            <div class="teacher-card-infografis">
+              <img src="D1.png" alt="Dokumentasi 1" loading="lazy" />
+            </div>
+
+            <div class="teacher-card-infografis">
+              <img src="D2.png" alt="Dokumentasi 2" loading="lazy" />
+            </div>
+
+            <div class="teacher-card-infografis">
+              <img src="D3.png" alt="Dokumentasi 3" loading="lazy" />
+            </div>
+
+            <div class="teacher-card-infografis">
+              <img src="D4.png" alt="Dokumentasi 4" loading="lazy" />
+            </div>
+            <div class="teacher-card-infografis">
+              <img src="D5.png" alt="Dokumentasi 5" loading="lazy" />
+            </div>
+            <div class="teacher-card-infografis">
+              <img src="D6.png" alt="Dokumentasi 6" loading="lazy" />
+            </div>
+            <div class="teacher-card-infografis">
+              <img src="D7.png" alt="Dokumentasi 7" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Tambahkan onclick pada modal-overlay -->
+    <div
+      class="modal-overlay"
+      id="modalGuruKaryawan"
+      onclick="closeGuideModal('modalGuruKaryawan')"
+    >
+      <!-- 2. Tambahkan onclick="event.stopPropagation()" pada div modal -->
+      <div
+        class="modal modal-lg"
+        style="max-width: 900px"
+        onclick="event.stopPropagation()"
+      >
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📇</span>
+            <div class="modal-title">Guru & Staf Karyawan</div>
+            <div class="modal-sub">
+              Daftar lengkap pendidik SMA Agnesiana MPLS 2026
+            </div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('modalGuruKaryawan')"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="teacher-gallery-grid">
+            <!-- Isi konten gambar tetap sama... -->
+            <div class="teacher-card-infografis">
+              <img
+                src="Guru1.png"
+                alt="Foto Guru & Karyawan Bagian 1"
+                loading="lazy"
+              />
+            </div>
+            <div class="teacher-card-infografis">
+              <img
+                src="Guru2.png"
+                alt="Foto Guru & Karyawan Bagian 2"
+                loading="lazy"
+              />
+            </div>
+            <div class="teacher-card-infografis">
+              <img
+                src="Guru3.png"
+                alt="Foto Guru & Karyawan Bagian 3"
+                loading="lazy"
+              />
+            </div>
+            <div class="teacher-card-infografis">
+              <img
+                src="Guru4.png"
+                alt="Foto Guru & Karyawan Bagian 4"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POPUP MODAL CAROUSEL FASILITAS -->
+    <div id="popup-fasilitas" class="modal-overlay">
+      <a href="#peta-section" class="modal-close-area"></a>
+      <div class="modal-card-carousel">
+        <a href="#peta-section" class="modal-close-btn">&times;</a>
+        <div class="popup-carousel-wrapper">
+          <input type="radio" name="pop-gallery" id="pop-slide-1" checked />
+          <input type="radio" name="pop-gallery" id="pop-slide-2" />
+          <input type="radio" name="pop-gallery" id="pop-slide-3" />
+          <input type="radio" name="pop-gallery" id="pop-slide-4" />
+          <div class="pop-viewport">
+            <div class="pop-slider-track">
+              <div class="pop-slide">
+                <img src="Fas1.png" alt="GOR" />
+              </div>
+              <div class="pop-slide">
+                <img src="Fas2.png" alt="Lab" />
+              </div>
+              <div class="pop-slide">
+                <img src="Fas3.png" alt="Perpustakaan" />
+              </div>
+              <div class="pop-slide">
+                <img src="Fas4.png" alt="Greenhouse" />>
+              </div>
+            </div>
+          </div>
+          <div class="pop-bullet-nav">
+            <label for="pop-slide-1" class="pop-dot"></label>
+            <label for="pop-slide-2" class="pop-dot"></label>
+            <label for="pop-slide-3" class="pop-dot"></label>
+            <label for="pop-slide-4" class="pop-dot"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      /* =============================================
+   GALLERY INFOGRAFIS GURU (RASIO 14.8 x 21 CM)
+   ============================================= */
+      .teacher-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 Kolom di Desktop (2x2) */
+        gap: 1.5rem;
+        padding: 0.5rem 0;
+      }
+
+      .teacher-card-infografis {
+        width: 100%;
+        /* Mengunci rasio matematika 14.8 lebar dan 21 tinggi */
+        aspect-ratio: 14.8 / 21;
+        background-color: var(--surface2);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1px solid var(--border2);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+
+      .teacher-card-infografis:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent-h);
+      }
+
+      .teacher-card-infografis img {
+        width: 100%;
+        height: 100%;
+        /* 'contain' memastikan seluruh isi gambar A5 terlihat tanpa terpotong, 
+     atau gunakan 'cover' jika gambarnya sudah ngepas tanpa border putih */
+        object-fit: contain;
+        display: block;
+      }
+
+      /* Responsive: Di Handphone otomatis jadi 1 kolom memanjang ke bawah */
+      @media (max-width: 768px) {
+        .teacher-gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+        }
+      }
+
+      .btn-fasilitas {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px auto 0;
+        padding: 12px 28px;
+        background: linear-gradient(135deg, #4a90d9, #2bbba0);
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 30px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(74, 144, 217, 0.3);
+        transition: 0.3s;
+      }
+      .btn-fasilitas:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(74, 144, 217, 0.5);
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(10, 15, 24, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      .modal-close-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: default;
+      }
+      .modal-overlay:target {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-card-carousel {
+        position: relative;
+        width: 90%;
+        max-width: 350px;
+        background: #141a24;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        transform: scale(0.9);
+        transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 10000;
+      }
+      .modal-overlay:target .modal-card-carousel {
+        transform: scale(1);
+      }
+      .modal-close-btn {
+        position: absolute;
+        top: -45px;
+        right: 0;
+        color: #fff;
+        font-size: 2rem;
+        text-decoration: none;
+        opacity: 0.7;
+      }
+      .popup-carousel-wrapper input[type="radio"] {
+        display: none;
+      }
+      .pop-viewport {
+        width: 100%;
+        aspect-ratio: 1 / 1.414;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+      .pop-slider-track {
+        display: flex;
+        width: 400%;
+        height: 100%;
+        transition: transform 0.5s ease;
+      }
+      .pop-slide {
+        width: 25%;
+        height: 100%;
+        position: relative;
+      }
+      .pop-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .pop-meta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 35px 20px 25px;
+        background: linear-gradient(
+          to top,
+          #141a24 50%,
+          rgba(20, 26, 36, 0.8),
+          transparent
+        );
+      }
+      .pop-meta h4 {
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+      .pop-meta p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.4;
+      }
+      .pop-bullet-nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 15px 0;
+        background: #141a24;
+        border-radius: 0 0 20px 20px;
+      }
+      .pop-bullet-nav .pop-dot {
+        width: 9px;
+        height: 9px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      #pop-slide-1:checked ~ .pop-viewport .pop-slider-track {
+        transform: translateX(0%);
+      }
+      #pop-slide-2:checked ~ .pop-viewport .pop-slider-track {
+        transform: translateX(-25%);
+      }
+      #pop-slide-3:checked ~ .pop-viewport .pop-slider-track {
+        transform: translateX(-50%);
+      }
+      #pop-slide-4:checked ~ .pop-viewport .pop-slider-track {
+        transform: translateX(-75%);
+      }
+      #pop-slide-1:checked ~ .pop-bullet-nav .pop-dot:nth-child(1) {
+        background: #4a90d9;
+        transform: scale(1.3);
+      }
+      #pop-slide-2:checked ~ .pop-bullet-nav .pop-dot:nth-child(2) {
+        background: #2bbba0;
+        transform: scale(1.3);
+      }
+      #pop-slide-3:checked ~ .pop-bullet-nav .pop-dot:nth-child(3) {
+        background: #d4a843;
+        transform: scale(1.3);
+      }
+      #pop-slide-4:checked ~ .pop-bullet-nav .pop-dot:nth-child(4) {
+        background: #5dbb80;
+        transform: scale(1.3);
+      }
+    </style>
+
     <!-- Toast -->
     <div id="toast">
       <span class="toast-icon">✅</span><span id="toastMsg"></span>
@@ -5671,33 +6539,28 @@
    ============================================= */
       const guruData = [
         {
-          nama: "?????",
-          mapel: "???",
+          nama: "Ignatia Niken K.,S.Pd.",
           kelas: "langit",
           emoji: "📐",
         },
         {
-          nama: "?????",
-          mapel: "???",
+          nama: "Ida Rosana, S.Pd.",
           kelas: "air",
           emoji: "📝",
         },
-        { nama: "?????", mapel: "???", kelas: "angin", emoji: "⚗️" },
+        { nama: "Deddy Budianto, S.Pd.", kelas: "angin", emoji: "⚗️" },
         {
-          nama: "?????",
-          mapel: "???",
+          nama: "Handriamus Hamu, S.Pd.",
           kelas: "api",
           emoji: "🌿",
         },
         {
-          nama: "?????",
-          mapel: "???",
+          nama: "Sri Juliawanti, S.Pd.",
           kelas: "matahari",
           emoji: "🧪",
         },
         {
-          nama: "?????",
-          mapel: "???",
+          nama: "Beatrix Nurhayati P., S.Si",
           kelas: "tanah",
           emoji: "📜",
         },
@@ -5740,7 +6603,6 @@
       <div class="guru-avatar" style="background:${bgColors[g.kelas]}">${g.emoji}</div>
       <div>
         <div class="guru-name">${g.nama}</div>
-        <div class="guru-subject">${g.mapel}</div>
         <div class="guru-class" style="color:${textColors[g.kelas]}">${kelasLabels[g.kelas]}</div>
       </div>
     </div>
@@ -5824,7 +6686,13 @@
         el.classList.remove("show");
         document.body.style.overflow = "";
       }
-      ["tataTertibModal", "jadwalModal", "pengumumanModal"].forEach((id) => {
+      [
+        "tataTertibModal",
+        "jadwalModal",
+        "pengumumanModal",
+        "pancasilaModal",
+        "latarBelakangModal",
+      ].forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
         el.addEventListener("click", (e) => {
@@ -5833,9 +6701,13 @@
       });
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
-          ["tataTertibModal", "jadwalModal", "pengumumanModal"].forEach((id) =>
-            closeGuideModal(id),
-          );
+          [
+            "tataTertibModal",
+            "jadwalModal",
+            "pengumumanModal",
+            "pancasilaModal",
+            "latarBelakangModal",
+          ].forEach((id) => closeGuideModal(id));
         }
       });
 
