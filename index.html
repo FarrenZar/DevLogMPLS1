@@ -18,7 +18,7 @@
       :root {
         /* KELAS ELEMENTAL COLORS */
         --langit-h: #4a90d9; /* Langit/Kalimantan - Biru Langit */
-        --langit-l: #e8f4ff;  
+        --langit-l: #e8f4ff;
         --langit-d: #1a5a9a;
 
         --air-h: #2bbba0; /* Air/Sulawesi - Tosca */
@@ -127,7 +127,6 @@
         background: var(--accent2);
         border-radius: 999px;
       }
-
 
       /* =============================================
    NAVBAR
@@ -410,7 +409,7 @@
 
       /* ── Z-index variable for leaf overlay (tweak freely) ── */
       :root {
-        --leaf-z: 15;   /* daun ada di depan video; naikkan angka = lebih depan */
+        --leaf-z: 15; /* daun ada di depan video; naikkan angka = lebih depan */
       }
 
       #hero {
@@ -467,24 +466,24 @@
           linear-gradient(
             to bottom,
             rgba(8, 18, 12, 0.72) 0%,
-            rgba(8, 18, 12, 0.10) 28%,
-            rgba(8, 18, 12, 0.10) 72%,
+            rgba(8, 18, 12, 0.1) 28%,
+            rgba(8, 18, 12, 0.1) 72%,
             rgba(8, 18, 12, 0.72) 100%
           ),
           /* Vignette horizontal: gelap pinggir kiri & kanan */
           linear-gradient(
-            to right,
-            rgba(8, 18, 12, 0.55) 0%,
-            transparent 30%,
-            transparent 70%,
-            rgba(8, 18, 12, 0.55) 100%
-          ),
+              to right,
+              rgba(8, 18, 12, 0.55) 0%,
+              transparent 30%,
+              transparent 70%,
+              rgba(8, 18, 12, 0.55) 100%
+            ),
           /* Radial di tengah untuk area teks */
           radial-gradient(
-            ellipse 55% 60% at 50% 48%,
-            rgba(8, 18, 12, 0.52) 0%,
-            transparent 100%
-          );
+              ellipse 55% 60% at 50% 48%,
+              rgba(8, 18, 12, 0.52) 0%,
+              transparent 100%
+            );
       }
 
       .hero-bg-art {
@@ -492,7 +491,7 @@
         inset: 0;
         pointer-events: none;
         overflow: hidden;
-        z-index: 2;   /* orbs di atas overlay */
+        z-index: 2; /* orbs di atas overlay */
       }
       /* Animated organic shapes */
       .hero-orb {
@@ -547,9 +546,9 @@
         width: 60px;
         height: 40px;
         border-radius: 50% 10px;
-        opacity: 0.18;           /* lebih terlihat di atas video */
+        opacity: 0.18; /* lebih terlihat di atas video */
         animation: leafDrift linear infinite;
-        z-index: var(--leaf-z);  /* ubah --leaf-z di :root untuk atur posisi */
+        z-index: var(--leaf-z); /* ubah --leaf-z di :root untuk atur posisi */
         pointer-events: none;
       }
       .leaf:nth-child(4) {
@@ -622,18 +621,25 @@
 
       /* TABLET (≤ 768px) — mulai tampilkan video portrait */
       @media (max-width: 768px) {
-        .hero-video-bg .vid-desktop { display: none; }
-        .hero-video-bg .vid-mobile  { display: block; }
+        .hero-video-bg .vid-desktop {
+          display: none;
+        }
+        .hero-video-bg .vid-mobile {
+          display: block;
+        }
 
         #hero {
-          min-height: max(133.33vw, 92svh); /* 133.33vw = 100vw × 4/3 (rasio 3:4) */
+          min-height: max(
+            133.33vw,
+            92svh
+          ); /* 133.33vw = 100vw × 4/3 (rasio 3:4) */
           padding-bottom: 3rem;
         }
         .hero-video-overlay {
           background:
             linear-gradient(
               to bottom,
-              rgba(8, 18, 12, 0.70) 0%,
+              rgba(8, 18, 12, 0.7) 0%,
               rgba(8, 18, 12, 0.12) 25%,
               rgba(8, 18, 12, 0.12) 70%,
               rgba(8, 18, 12, 0.78) 100%
@@ -685,10 +691,10 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(8, 20, 13, 0.50);
+        background: rgba(8, 20, 13, 0.5);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
-        border: 1px solid rgba(125, 239, 160, 0.30);
+        border: 1px solid rgba(125, 239, 160, 0.3);
         border-radius: var(--radius-pill);
         padding: 0.4rem 1rem;
         font-size: 0.72rem;
@@ -768,7 +774,7 @@
       }
       .hero-motto-sub {
         font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.80);
+        color: rgba(255, 255, 255, 0.8);
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease 0.25s both;
         text-shadow:
@@ -875,10 +881,10 @@
       }
       .countdown-unit {
         text-align: center;
-        background: rgba(8, 20, 13, 0.50);
+        background: rgba(8, 20, 13, 0.5);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: var(--radius-md);
         padding: 0.6rem 0.8rem;
         min-width: 64px;
@@ -1472,7 +1478,7 @@
           max-width: 220px;
           height: auto;
           object-fit: contain;
-          filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+          filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
         }
       }
 
@@ -1487,15 +1493,29 @@
 
       /* ── Mascot animations ── */
       @keyframes mascotFloat {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        30%       { transform: translateY(-12px) rotate(1.5deg); }
-        60%       { transform: translateY(-6px) rotate(-1deg); }
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        30% {
+          transform: translateY(-12px) rotate(1.5deg);
+        }
+        60% {
+          transform: translateY(-6px) rotate(-1deg);
+        }
       }
 
       @keyframes mascotFloatMirror {
-        0%, 100% { transform: translateY(0px) rotate(0deg) scaleX(-1); }
-        30%       { transform: translateY(-12px) rotate(1.5deg) scaleX(-1); }
-        60%       { transform: translateY(-6px) rotate(-1deg) scaleX(-1); }
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg) scaleX(-1);
+        }
+        30% {
+          transform: translateY(-12px) rotate(1.5deg) scaleX(-1);
+        }
+        60% {
+          transform: translateY(-6px) rotate(-1deg) scaleX(-1);
+        }
       }
 
       .mascot-animate {
@@ -1516,10 +1536,12 @@
         height: 110px;
         object-fit: contain;
         margin-bottom: 1rem;
-        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
       }
       @media (min-width: 768px) {
-        .class-mascot-mobile { display: none; }
+        .class-mascot-mobile {
+          display: none;
+        }
       }
 
       .class-mascot-big {
@@ -2046,6 +2068,176 @@
         flex-shrink: 0;
       }
 
+      /* =============================================
+   DENAH LANTAI (FLOOR PLAN TABS)
+   ============================================= */
+      .floorplan-block {
+        margin-top: 2.25rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--border);
+      }
+      .floorplan-head {
+        margin-bottom: 1.1rem;
+      }
+      .floorplan-title {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.35rem;
+      }
+      .floorplan-desc {
+        font-size: 0.82rem;
+        color: var(--text3);
+        line-height: 1.6;
+      }
+      .floor-tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0.25rem 0.1rem 0.6rem;
+        margin-bottom: 1rem;
+        scrollbar-width: none;
+      }
+      .floor-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .floor-tab {
+        flex: 1 1 0;
+        min-width: 84px;
+        padding: 0.65rem 0.75rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border2);
+        background: var(--surface);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        text-align: center;
+        transition: var(--transition);
+      }
+      .floor-tab:hover {
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .floor-tab.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: transparent;
+      }
+      @media (min-width: 640px) {
+        .floor-tab {
+          flex: 0 1 auto;
+          min-width: 112px;
+        }
+      }
+      .floor-panel {
+        display: none;
+      }
+      .floor-panel.active {
+        display: block;
+        animation: fadeInUp 0.3s ease both;
+      }
+      .floor-img-wrap {
+        position: relative;
+        width: 80%;
+        aspect-ratio: 949 / 526;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border2);
+        background: #fdfdfb;
+        cursor: zoom-in;
+        left: 10%;
+      }
+      .floor-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        background: #fdfdfb;
+      }
+      .floor-zoom-hint {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 600;
+        padding: 0.35rem 0.65rem;
+        border-radius: var(--radius-pill);
+        backdrop-filter: blur(4px);
+        pointer-events: none;
+      }
+      .floor-placeholder {
+        width: 100%;
+        aspect-ratio: 949 / 526;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1.5px dashed var(--border2);
+        border-radius: var(--radius-lg);
+        background: repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.02) 10px,
+          rgba(255, 255, 255, 0.045) 10px,
+          rgba(255, 255, 255, 0.045) 20px
+        );
+        color: var(--text3);
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 1rem;
+      }
+      .floor-placeholder span:first-child {
+        font-size: 1.8rem;
+      }
+
+      /* Floor zoom lightbox (reuses .modal-overlay base) */
+      .floor-zoom-img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: var(--radius-md);
+        object-fit: contain;
+        touch-action: pinch-zoom;
+        background: #fdfdfb;
+      }
+      .floor-zoom-close {
+        position: absolute;
+        top: 1.1rem;
+        right: 1.1rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--border2);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .floor-zoom-close:hover {
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .floor-zoom-label {
+        position: absolute;
+        top: 1.1rem;
+        left: 1.1rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text2);
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.4rem 0.75rem;
+        border-radius: var(--radius-pill);
+      }
+
       /* Modal */
       .modal-overlay {
         position: fixed;
@@ -2134,6 +2326,245 @@
       .modal-detail-value {
         color: var(--text);
         font-weight: 500;
+      }
+
+      /* =============================================
+   GUIDEBOOK MODALS (Tata Tertib / Jadwal / Pengumuman)
+   ============================================= */
+      .modal-lg {
+        max-width: 560px;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+      .modal-lg .modal-header {
+        position: sticky;
+        margin-top: 0;
+        background: var(--bg2);
+        padding-bottom: 0.75rem;
+        z-index: 2;
+      }
+      .modal-sub {
+        font-size: 0.78rem;
+        color: var(--text3);
+        margin-top: 2px;
+      }
+
+      /* Tata Tertib — uniform images */
+      .uniform-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .uniform-item {
+        border: 1px solid var(--border2);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--surface);
+      }
+      .uniform-frame {
+        width: 100%;
+        aspect-ratio: 902 / 718;
+        object-fit: cover;
+        display: block;
+        background: var(--bg3);
+      }
+      .uniform-placeholder {
+        width: 100%;
+        aspect-ratio: 902 / 718;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border: 1.5px dashed var(--border2);
+        background: repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.02) 10px,
+          rgba(255, 255, 255, 0.045) 10px,
+          rgba(255, 255, 255, 0.045) 20px
+        );
+        color: var(--text3);
+        font-size: 0.75rem;
+        text-align: center;
+        padding: 1rem;
+      }
+      .uniform-placeholder span:first-child {
+        font-size: 1.6rem;
+      }
+      .uniform-caption {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.82rem;
+        color: var(--text2);
+        font-weight: 600;
+        border-top: 1px solid var(--border);
+      }
+      .uniform-note {
+        font-size: 0.78rem;
+        color: var(--text3);
+        margin-top: 0.9rem;
+        line-height: 1.6;
+      }
+
+      /* Jadwal Kegiatan — tabs */
+      .jadwal-tabs {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        margin-bottom: 1rem;
+        scrollbar-width: none;
+      }
+      .jadwal-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .jadwal-tab {
+        flex-shrink: 0;
+        padding: 0.5rem 0.85rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--border2);
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        transition: var(--transition);
+      }
+      .jadwal-tab:hover {
+        background: var(--surface2);
+      }
+      .jadwal-tab.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: transparent;
+      }
+      .jadwal-day-panel {
+        display: none;
+      }
+      .jadwal-day-panel.active {
+        display: block;
+        animation: fadeInUp 0.3s ease both;
+      }
+      .jadwal-date {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+      .jadwal-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        overflow: hidden;
+      }
+      .jadwal-row {
+        display: flex;
+        gap: 10px;
+        padding: 0.55rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.78rem;
+      }
+      .jadwal-row:last-child {
+        border-bottom: none;
+      }
+      .jadwal-row:nth-child(odd) {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .jadwal-time {
+        flex-shrink: 0;
+        width: 92px;
+        font-family: var(--font-mono);
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .jadwal-activity {
+        color: var(--text2);
+        line-height: 1.5;
+      }
+      .jadwal-empty {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: var(--text3);
+        font-size: 0.85rem;
+        line-height: 1.7;
+      }
+      .jadwal-empty span {
+        font-size: 1.8rem;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Pengumuman */
+      .pengumuman-card {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border2);
+        background: linear-gradient(
+          135deg,
+          rgba(212, 168, 67, 0.1),
+          rgba(232, 93, 58, 0.06)
+        );
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .pengumuman-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 0.9rem;
+        border-radius: var(--radius-md);
+        background: linear-gradient(
+          135deg,
+          #f58529,
+          #dd2a7b 45%,
+          #8134af 75%,
+          #515bd4
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+      }
+      .pengumuman-card h4 {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+      .pengumuman-card p {
+        font-size: 0.82rem;
+        color: var(--text2);
+        line-height: 1.6;
+        margin-bottom: 1.1rem;
+      }
+      .pengumuman-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.7rem 1.4rem;
+        border-radius: var(--radius-pill);
+        background: var(--text);
+        color: var(--bg2);
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: var(--transition);
+      }
+      .pengumuman-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      @media (max-width: 480px) {
+        .modal-lg {
+          padding: 1.4rem 1.1rem;
+          max-height: 88vh;
+        }
+        .jadwal-time {
+          width: 76px;
+          font-size: 0.72rem;
+        }
+        .jadwal-activity {
+          font-size: 0.75rem;
+        }
       }
 
       /* =============================================
@@ -2402,96 +2833,102 @@
         border-color: rgba(74, 144, 217, 0.4) !important;
       }
       .bg-langit .class-hero-bg-img {
-        background-image: url('maskot_langit.png');
+        background-image: url("maskot_langit.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-langit .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(26, 45, 80, 0.92) 0%,
-            rgba(20, 50, 100, 0.80) 45%,
-            rgba(10, 25, 60, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(26, 45, 80, 0.92) 0%,
+          rgba(20, 50, 100, 0.8) 45%,
+          rgba(10, 25, 60, 0.3) 100%
+        );
       }
 
       .bg-air {
         border-color: rgba(43, 187, 160, 0.4) !important;
       }
       .bg-air .class-hero-bg-img {
-        background-image: url('maskot_air.png');
+        background-image: url("maskot_air.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-air .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(5, 50, 45, 0.92) 0%,
-            rgba(5, 70, 60, 0.80) 45%,
-            rgba(0, 30, 28, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(5, 50, 45, 0.92) 0%,
+          rgba(5, 70, 60, 0.8) 45%,
+          rgba(0, 30, 28, 0.3) 100%
+        );
       }
 
       .bg-angin {
         border-color: rgba(126, 200, 162, 0.4) !important;
       }
       .bg-angin .class-hero-bg-img {
-        background-image: url('maskot_angin.png');
+        background-image: url("maskot_angin.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-angin .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(20, 60, 35, 0.92) 0%,
-            rgba(25, 80, 45, 0.80) 45%,
-            rgba(10, 40, 20, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(20, 60, 35, 0.92) 0%,
+          rgba(25, 80, 45, 0.8) 45%,
+          rgba(10, 40, 20, 0.3) 100%
+        );
       }
 
       .bg-api {
         border-color: rgba(232, 93, 58, 0.4) !important;
       }
       .bg-api .class-hero-bg-img {
-        background-image: url('maskot_api.png');
+        background-image: url("maskot_api.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-api .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(80, 20, 10, 0.92) 0%,
-            rgba(100, 30, 15, 0.80) 45%,
-            rgba(50, 10, 5, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(80, 20, 10, 0.92) 0%,
+          rgba(100, 30, 15, 0.8) 45%,
+          rgba(50, 10, 5, 0.3) 100%
+        );
       }
 
       .bg-matahari {
         border-color: rgba(245, 166, 35, 0.4) !important;
       }
       .bg-matahari .class-hero-bg-img {
-        background-image: url('maskot_matahari.png');
+        background-image: url("maskot_matahari.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-matahari .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(80, 50, 5, 0.92) 0%,
-            rgba(100, 65, 8, 0.80) 45%,
-            rgba(50, 30, 0, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(80, 50, 5, 0.92) 0%,
+          rgba(100, 65, 8, 0.8) 45%,
+          rgba(50, 30, 0, 0.3) 100%
+        );
       }
 
       .bg-tanah {
         border-color: rgba(139, 94, 60, 0.4) !important;
       }
       .bg-tanah .class-hero-bg-img {
-        background-image: url('maskot_tanah.png');
+        background-image: url("maskot_tanah.png");
         background-position: right bottom;
         background-size: 55% auto;
       }
       .bg-tanah .class-hero-overlay {
-        background:
-          linear-gradient(135deg,
-            rgba(60, 30, 10, 0.92) 0%,
-            rgba(80, 40, 15, 0.80) 45%,
-            rgba(35, 15, 5, 0.30) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(60, 30, 10, 0.92) 0%,
+          rgba(80, 40, 15, 0.8) 45%,
+          rgba(35, 15, 5, 0.3) 100%
+        );
       }
 
       /* =============================================
@@ -2584,25 +3021,33 @@
         border-color: rgba(232, 93, 58, 0.35);
         background: rgba(232, 93, 58, 0.1);
       }
-      .hero-countdown .countdown-unit:nth-child(1) .countdown-num { color: var(--api-h); }
+      .hero-countdown .countdown-unit:nth-child(1) .countdown-num {
+        color: var(--api-h);
+      }
 
       .hero-countdown .countdown-unit:nth-child(3) {
         border-color: rgba(74, 144, 217, 0.35);
         background: rgba(74, 144, 217, 0.1);
       }
-      .hero-countdown .countdown-unit:nth-child(3) .countdown-num { color: var(--langit-h); }
+      .hero-countdown .countdown-unit:nth-child(3) .countdown-num {
+        color: var(--langit-h);
+      }
 
       .hero-countdown .countdown-unit:nth-child(5) {
         border-color: rgba(245, 166, 35, 0.35);
         background: rgba(245, 166, 35, 0.1);
       }
-      .hero-countdown .countdown-unit:nth-child(5) .countdown-num { color: var(--matahari-h); }
+      .hero-countdown .countdown-unit:nth-child(5) .countdown-num {
+        color: var(--matahari-h);
+      }
 
       .hero-countdown .countdown-unit:nth-child(7) {
         border-color: rgba(43, 187, 160, 0.35);
         background: rgba(43, 187, 160, 0.1);
       }
-      .hero-countdown .countdown-unit:nth-child(7) .countdown-num { color: var(--air-h); }
+      .hero-countdown .countdown-unit:nth-child(7) .countdown-num {
+        color: var(--air-h);
+      }
 
       /* ── Section dividers → full rainbow gradient ── */
       .section-divider {
@@ -2647,43 +3092,85 @@
       }
 
       /* ── Section labels: different elemental color per panel ── */
-      #panel-guidebook .section-label { color: var(--langit-h); }
+      #panel-guidebook .section-label {
+        color: var(--langit-h);
+      }
       #panel-guidebook .section-label::before,
-      #panel-guidebook .section-label::after { background: rgba(74, 144, 217, 0.4); }
+      #panel-guidebook .section-label::after {
+        background: rgba(74, 144, 217, 0.4);
+      }
 
-      #panel-sekolah .section-label { color: var(--matahari-h); }
+      #panel-sekolah .section-label {
+        color: var(--matahari-h);
+      }
       #panel-sekolah .section-label::before,
-      #panel-sekolah .section-label::after { background: rgba(245, 166, 35, 0.4); }
+      #panel-sekolah .section-label::after {
+        background: rgba(245, 166, 35, 0.4);
+      }
 
-      #panel-kelas .section-label { color: var(--api-h); }
+      #panel-kelas .section-label {
+        color: var(--api-h);
+      }
       #panel-kelas .section-label::before,
-      #panel-kelas .section-label::after { background: rgba(232, 93, 58, 0.4); }
+      #panel-kelas .section-label::after {
+        background: rgba(232, 93, 58, 0.4);
+      }
 
-      #panel-ekskul .section-label { color: var(--air-h); }
+      #panel-ekskul .section-label {
+        color: var(--air-h);
+      }
       #panel-ekskul .section-label::before,
-      #panel-ekskul .section-label::after { background: rgba(43, 187, 160, 0.4); }
+      #panel-ekskul .section-label::after {
+        background: rgba(43, 187, 160, 0.4);
+      }
 
-      #panel-memorial .section-label { color: var(--tanah-h); }
+      #panel-memorial .section-label {
+        color: var(--tanah-h);
+      }
       #panel-memorial .section-label::before,
-      #panel-memorial .section-label::after { background: rgba(139, 94, 60, 0.4); }
+      #panel-memorial .section-label::after {
+        background: rgba(139, 94, 60, 0.4);
+      }
 
-      #peta-section .section-label { color: var(--angin-h); }
+      #peta-section .section-label {
+        color: var(--angin-h);
+      }
       #peta-section .section-label::before,
-      #peta-section .section-label::after { background: rgba(126, 200, 162, 0.4); }
+      #peta-section .section-label::after {
+        background: rgba(126, 200, 162, 0.4);
+      }
 
       /* ── Guidebook cards — elemental accent border per card ── */
-      .guide-grid .guide-card:nth-child(1) { border-color: rgba(74,144,217,0.2); border-top: 2px solid rgba(74,144,217,0.5); }
-      .guide-grid .guide-card:nth-child(2) { border-color: rgba(245,166,35,0.2); border-top: 2px solid rgba(245,166,35,0.5); }
-      .guide-grid .guide-card:nth-child(3) { border-color: rgba(232,93,58,0.2); border-top: 2px solid rgba(232,93,58,0.5); }
+      .guide-grid .guide-card:nth-child(1) {
+        border-color: rgba(74, 144, 217, 0.2);
+        border-top: 2px solid rgba(74, 144, 217, 0.5);
+      }
+      .guide-grid .guide-card:nth-child(2) {
+        border-color: rgba(245, 166, 35, 0.2);
+        border-top: 2px solid rgba(245, 166, 35, 0.5);
+      }
+      .guide-grid .guide-card:nth-child(3) {
+        border-color: rgba(232, 93, 58, 0.2);
+        border-top: 2px solid rgba(232, 93, 58, 0.5);
+      }
 
       /* ── Hero orbs — slightly more vibrant ── */
-      .hero-orb:nth-child(1) { opacity: 0.18; background: var(--api-h); }
-      .hero-orb:nth-child(2) { opacity: 0.15; background: var(--langit-h); }
-      .hero-orb:nth-child(3) { opacity: 0.18; background: var(--matahari-h); }
+      .hero-orb:nth-child(1) {
+        opacity: 0.18;
+        background: var(--api-h);
+      }
+      .hero-orb:nth-child(2) {
+        opacity: 0.15;
+        background: var(--langit-h);
+      }
+      .hero-orb:nth-child(3) {
+        opacity: 0.18;
+        background: var(--matahari-h);
+      }
 
       /* ── Navbar rainbow accent line on scroll ── */
       #navbar::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -2707,7 +3194,11 @@
 
       /* ── Primary button — subtle gradient ── */
       .btn-primary {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--air-h) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--air-h) 100%
+        );
         box-shadow: 0 4px 20px rgba(93, 187, 128, 0.25);
       }
       .btn-primary:hover {
@@ -2727,7 +3218,7 @@
         border-top: none;
       }
       footer::before {
-        content: '';
+        content: "";
         display: block;
         height: 3px;
         background: linear-gradient(
@@ -2754,7 +3245,11 @@
 
       /* ── Sidebar elemental icon highlights ── */
       .sidebar-badge {
-        background: linear-gradient(135deg, rgba(93,187,128,0.1), rgba(43,187,160,0.08));
+        background: linear-gradient(
+          135deg,
+          rgba(93, 187, 128, 0.1),
+          rgba(43, 187, 160, 0.08)
+        );
         border-color: rgba(93, 187, 128, 0.3);
       }
     </style>
@@ -2989,20 +3484,29 @@
 
     <!-- ===================== HERO ===================== -->
     <section id="hero">
-
       <!-- Video Background (loop) -->
       <!-- Desktop (>768px): landscape 16:9 -->
       <!-- Mobile (≤768px): portrait 9:16  -->
       <div class="hero-video-bg">
         <video
           class="vid-desktop"
-          autoplay muted loop playsinline preload="auto" aria-hidden="true"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-hidden="true"
         >
           <source src="Homepage_video_MPLS.mp4" type="video/mp4" />
         </video>
         <video
           class="vid-mobile"
-          autoplay muted loop playsinline preload="auto" aria-hidden="true"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-hidden="true"
         >
           <source src="Ratio_9_16.mp4" type="video/mp4" />
         </video>
@@ -3149,7 +3653,7 @@
             </p>
             <div
               class="guide-card-action"
-              onclick="showToast('📋 Membuka Tata Tertib...')"
+              onclick="openGuideModal('tataTertibModal')"
             >
               → Baca ketentuan
             </div>
@@ -3168,7 +3672,7 @@
             </p>
             <div
               class="guide-card-action"
-              onclick="showToast('📅 Membuka Jadwal...')"
+              onclick="openGuideModal('jadwalModal')"
             >
               ↓ Lihat Jadwal
             </div>
@@ -3187,7 +3691,7 @@
             </p>
             <div
               class="guide-card-action"
-              onclick="showToast('📣 Membuka Pengumuman...')"
+              onclick="openGuideModal('pengumumanModal')"
             >
               → Baca
             </div>
@@ -3223,43 +3727,43 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Senin</td>
-                  <td>14 Juli</td>
-                  <td>Upacara Pembukaan & Orientasi</td>
+                  <td>Jumat</td>
+                  <td>10 Juli</td>
+                  <td>Pra MPLS</td>
                   <td>
                     <span class="schedule-badge sbadge-blue">Segera</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Senin</td>
+                  <td>13 Juli</td>
+                  <td>MPLS Day 1</td>
+                  <td>
+                    <span class="schedule-badge sbadge-gold">Menunggu</span>
                   </td>
                 </tr>
                 <tr>
                   <td>Selasa</td>
-                  <td>15 Juli</td>
-                  <td>Pengenalan Kelas & Guru</td>
+                  <td>14 Juli</td>
+                  <td>MPLS Day 2</td>
                   <td>
-                    <span class="schedule-badge sbadge-blue">Segera</span>
+                    <span class="schedule-badge sbadge-gold">Menunggu</span>
                   </td>
                 </tr>
                 <tr>
                   <td>Rabu</td>
-                  <td>16 Juli</td>
-                  <td>Workshop: Peduli Lingkungan</td>
+                  <td>15 Juli</td>
+                  <td>MPLS Day 3</td>
                   <td>
-                    <span class="schedule-badge sbadge-green">Terbuka</span>
+                    <span class="schedule-badge sbadge-gold">Menunggu</span>
                   </td>
                 </tr>
                 <tr>
                   <td>Kamis</td>
-                  <td>17 Juli</td>
-                  <td>Festival Kelas & Pentas Budaya</td>
+                  <td>16 Juli</td>
+                  <td>MPLS Day 4</td>
                   <td>
-                    <span class="schedule-badge sbadge-gold">Unggulan</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jumat</td>
-                  <td>18 Juli</td>
-                  <td>Upacara Penutupan & Wisuda MPLS</td>
-                  <td>
-                    <span class="schedule-badge sbadge-green">Final</span>
+                    <span class="schedule-badge sbadge-green">...</span>
                   </td>
                 </tr>
               </tbody>
@@ -3304,126 +3808,34 @@
             </p>
           </div>
         </div>
-        <div class="stats-grid reveal">
-          <div class="stat-card">
-            <span class="stat-num">63</span>
-            <span class="stat-label">Berdiri selama</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">611</span>
-            <span class="stat-label">Siswa Aktif</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">52</span>
-            <span class="stat-label">Tenaga Didik</span>
-          </div>
-        </div>
         <div class="vm-grid reveal">
           <div class="vm-card">
             <div class="vm-card-label">Visi</div>
             <p>
-              Menjadi SMA pilihan, pembentuk peserta
-               didik yang beriman, berkarakter, kompeten, 
-               berjiwa misioner, dan yang berkomitmen pada kehidupan
+              Menjadi SMA pilihan, pembentuk peserta didik yang beriman,
+              berkarakter, kompeten, berjiwa misioner, dan yang berkomitmen pada
+              kehidupan
             </p>
           </div>
           <div class="vm-card">
             <div class="vm-card-label">Misi</div>
             <p>
-              1. Menumbuh kembangkan kecintaan peserta didik terhadap Tuhan, diri sendiri, sesama, bangsa/negara, dan lingkungan hidup sesuai dengan paradigma pedagogi SSpS. <br/>
-              2. Membangun atmosfir pembelajaran yang memacu peserta didik untuk mengembangkan daya nalar, berpikir kritis, dan berprinsip.<br/>
-              3. Menyediakan sarana dan prasarana edukasi yang mampu membentuk peserta didik menjadi manusia yang kompeten dan terampil dalam bidang pilihannya.<br/>
-              4. Mengelola suatu proses belajar   mengajar yang mampu membangun kepercayaan diri peserta didik dalam belajar mengkomunikasikan ilmunya kepada masyarakat.<br/>
-              5. Membangun jejaring dengan Lembaga Pendidikan Tinggi, masyarakat dan pemerintah yang mendukung pengembangan institusi dan mutu lulusan.<br/>
+              1. Menumbuh kembangkan kecintaan peserta didik terhadap Tuhan,
+              diri sendiri, sesama, bangsa/negara, dan lingkungan hidup sesuai
+              dengan paradigma pedagogi SSpS. <br />
+              2. Membangun atmosfir pembelajaran yang memacu peserta didik untuk
+              mengembangkan daya nalar, berpikir kritis, dan berprinsip.<br />
+              3. Menyediakan sarana dan prasarana edukasi yang mampu membentuk
+              peserta didik menjadi manusia yang kompeten dan terampil dalam
+              bidang pilihannya.<br />
+              4. Mengelola suatu proses belajar mengajar yang mampu membangun
+              kepercayaan diri peserta didik dalam belajar mengkomunikasikan
+              ilmunya kepada masyarakat.<br />
+              5. Membangun jejaring dengan Lembaga Pendidikan Tinggi, masyarakat
+              dan pemerintah yang mendukung pengembangan institusi dan mutu
+              lulusan.<br />
               6. Menciptakan lingkungan hidup yang sehat.
             </p>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="osis-structure-title">
-            Struktur Pengurus OSIS 2025/2026
-          </div>
-          <div class="osis-member-grid">
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(93, 187, 128, 0.15)"
-              >
-                👑
-              </div>
-              <div class="member-name">Maria Jocelyn Nainggoian </div>
-              <div class="member-role">Ketua OSIS</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(74, 144, 217, 0.15)"
-              >
-                🤝
-              </div>
-              <div class="member-name">Ruth Shekania Arella Tiku</div>
-              <div class="member-role">Wakil Ketua</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(212, 168, 67, 0.15)"
-              >
-                ✍️
-              </div>
-              <div class="member-name">Aulia Puteri Sidharta</div>
-              <div class="member-role">Sekretaris I</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(212, 168, 67, 0.15)"
-              >
-                ✍️
-              </div>
-              <div class="member-name">Jesselyn Fiorencia Djunaedi</div>
-              <div class="member-role">Sekretaris II</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                <!-- style="background: rgba(232, 93, 58, 0.15)" -->
-              >
-                💰
-              </div>
-              <div class="member-name">Eliana Jessica Yo’eli</div>
-              <div class="member-role">Bendahara I</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                <!-- style="background: rgba(232, 93, 58, 0.15)" -->
-              >
-                💰
-              </div>
-              <div class="member-name">Gracia Florentina Setiawan</div>
-              <div class="member-role">Bendahara II</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(43, 187, 160, 0.15)"
-              >
-                📢
-              </div>
-              <div class="member-name">DLL</div>
-              <div class="member-role">Depart Lain</div>
-            </div>
-            <div class="osis-member">
-              <div
-                class="member-avatar"
-                style="background: rgba(126, 200, 162, 0.15)"
-              >
-                🎨
-              </div>
-              <div class="member-name">Felicia K. T.</div>
-              <div class="member-role">Sie. Kreasi</div>
-            </div>
           </div>
         </div>
       </div>
@@ -3494,7 +3906,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="AKASA.png" alt="Maskot Langit" class="class-mascot-mobile mascot-mirror" />
+                <img
+                  src="AKASA.png"
+                  alt="Maskot Langit"
+                  class="class-mascot-mobile mascot-mirror"
+                />
                 <div class="class-name-big color-langit">LANGIT</div>
                 <div
                   class="class-element"
@@ -3520,7 +3936,11 @@
                 </div>
               </div>
               <div class="class-mascot-img-wrap">
-                <img src="AKASA.png" alt="Maskot Langit" class="mascot-mirror" />
+                <img
+                  src="AKASA.png"
+                  alt="Maskot Langit"
+                  class="mascot-mirror"
+                />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3552,7 +3972,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="TIRTA.png" alt="Maskot Air" class="class-mascot-mobile mascot-mirror" />
+                <img
+                  src="TIRTA.png"
+                  alt="Maskot Air"
+                  class="class-mascot-mobile mascot-mirror"
+                />
                 <div class="class-name-big color-air">AIR</div>
                 <div
                   class="class-element"
@@ -3609,7 +4033,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="BAYU.png" alt="Maskot Angin" class="class-mascot-mobile mascot-animate" />
+                <img
+                  src="BAYU.png"
+                  alt="Maskot Angin"
+                  class="class-mascot-mobile mascot-animate"
+                />
                 <div class="class-name-big color-angin">ANGIN</div>
                 <div
                   class="class-element"
@@ -3666,7 +4094,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="AGNI.png" alt="Maskot Api" class="class-mascot-mobile mascot-animate" />
+                <img
+                  src="AGNI.png"
+                  alt="Maskot Api"
+                  class="class-mascot-mobile mascot-animate"
+                />
                 <div class="class-name-big color-api">API</div>
                 <div
                   class="class-element"
@@ -3723,7 +4155,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="ARUNA.png" alt="Maskot Matahari" class="class-mascot-mobile mascot-mirror" />
+                <img
+                  src="ARUNA.png"
+                  alt="Maskot Matahari"
+                  class="class-mascot-mobile mascot-mirror"
+                />
                 <div class="class-name-big color-matahari">MATAHARI</div>
                 <div
                   class="class-element"
@@ -3749,7 +4185,11 @@
                 </div>
               </div>
               <div class="class-mascot-img-wrap">
-                <img src="ARUNA.png" alt="Maskot Matahari" class="mascot-mirror" />
+                <img
+                  src="ARUNA.png"
+                  alt="Maskot Matahari"
+                  class="mascot-mirror"
+                />
               </div>
             </div>
             <div class="class-info-grid">
@@ -3781,7 +4221,11 @@
               <div class="class-hero-bg-img"></div>
               <div class="class-hero-overlay"></div>
               <div class="class-hero-content">
-                <img src="BHUMI.png" alt="Maskot Tanah" class="class-mascot-mobile mascot-animate" />
+                <img
+                  src="BHUMI.png"
+                  alt="Maskot Tanah"
+                  class="class-mascot-mobile mascot-animate"
+                />
                 <div class="class-name-big color-tanah">TANAH</div>
                 <div
                   class="class-element"
@@ -3807,7 +4251,11 @@
                 </div>
               </div>
               <div class="class-mascot-img-wrap">
-                <img src="BHUMI.png" alt="Maskot Tanah" class="mascot-animate" />
+                <img
+                  src="BHUMI.png"
+                  alt="Maskot Tanah"
+                  class="mascot-animate"
+                />
               </div>
             </div>
             <div class="class-info-grid">
@@ -4068,9 +4516,9 @@
                   showRoomInfo(
                     'Gerbang Masuk',
                     '🚪',
-                    'Pintu masuk utama sekolah',
-                    'Senin–Sabtu 06.00–17.00',
-                    'Semua Civitas',
+                    'Pintu masuk utama sekolah, ada 2 gerbang untuk mobil di bagian depan dan satu gerbang untuk motor dan murid',
+                    'Batas 06.25 sebelum gerbang tertutup dan siswa/i dinyatakan terlambat',
+                    'Sesuai jam masuk sekolah',
                   )
                 "
               >
@@ -4083,8 +4531,8 @@
                   showRoomInfo(
                     'Area Parkir',
                     '🚗',
-                    'Area parkir siswa dan guru',
-                    'Senin–Sabtu',
+                    'Dapat digunakan bagi siswa, guru dan tamu. Parkir untuk guru ada tepat saat masuk gerbang di bagian kanan dan kiri. Untuk siswa dapat parkir di lapangan upacara, atau di gor ketika upacara sedang berlangsung',
+                    'Sesuai jadwal sekolah',
                     'Siswa & Guru',
                   )
                 "
@@ -4096,16 +4544,16 @@
                 class="map-block mb-green span2"
                 onclick="
                   showRoomInfo(
-                    'Lapangan Utama',
+                    'Lapangan Gor',
                     '⚽',
-                    'Lapangan serbaguna untuk olahraga, upacara, dan acara besar sekolah',
-                    'Setiap hari',
-                    'Semua Siswa',
+                    'Lapangan serbaguna untuk olahraga, senam, pertemuan dan acara sekolah',
+                    'Sesuai jam sekolah',
+                    'Semua Siswa baik SMP dan SMA',
                   )
                 "
               >
                 <span class="map-block-icon">⚽</span>
-                <span class="map-block-name">Lapangan Utama</span>
+                <span class="map-block-name">Lapangan Gor</span>
               </div>
               <!-- Row 2 -->
               <div
@@ -4114,14 +4562,14 @@
                   showRoomInfo(
                     'Ruang Kelas X',
                     '📚',
-                    'Ruang belajar kelas 10. Memuat 36 siswa per kelas dengan fasilitas AC dan proyektor',
-                    '07.00–15.30',
+                    'Ruang belajar kelas 10. Memuat siswa per kelas dengan fasilitas AC dan proyektor disetiap kelas',
+                    'Sesuai jam masuk sekolah',
                     'Siswa Kelas X',
                   )
                 "
               >
                 <span class="map-block-icon">📚</span>
-                <span class="map-block-name">Kelas X (A–F)</span>
+                <span class="map-block-name">Kelas X (1-6)</span>
               </div>
               <div
                 class="map-block mb-gold"
@@ -4129,9 +4577,9 @@
                   showRoomInfo(
                     'Kantin Sekolah',
                     '🍽️',
-                    'Kantin utama dengan berbagai pilihan makanan sehat',
-                    '06.30–15.00',
-                    'Semua Siswa',
+                    'Kantin utama dengan berbagai pilihan makanan',
+                    'Sesuai jam istirahat',
+                    'Semua Siswa dan Guru',
                   )
                 "
               >
@@ -4144,9 +4592,9 @@
                   showRoomInfo(
                     'Greenhouse sekolah',
                     '🌿',
-                    'Taman hijau tempat bersantai dan belajar di alam terbuka',
-                    'Setiap hari',
-                    'Semua',
+                    'Berada di lantai 4, terletak tepat diatas lab komputer dan lab bahasa',
+                    'Sesuai kegiatan',
+                    'Siswa dan Guru',
                   )
                 "
               >
@@ -4158,16 +4606,16 @@
                 class="map-block mb-teal"
                 onclick="
                   showRoomInfo(
-                    'Lab IPA',
+                    'Lab Fisika, Kimia, Biologi',
                     '🔬',
-                    'Laboratorium lengkap untuk praktikum Fisika, Kimia, dan Biologi',
-                    '07.00–15.00',
-                    'Siswa & Guru IPA',
+                    'Laboratorium untuk praktikum Fisika, Kimia, dan Biologi. Dilengkapi peralatan yang mendukung setiap mata pelajaran',
+                    'Sesuai jam pelajaran',
+                    'Siswa dan Guru',
                   )
                 "
               >
                 <span class="map-block-icon">🔬</span>
-                <span class="map-block-name">Lab IPA</span>
+                <span class="map-block-name">Lab Fisika, Kimia, Biologi</span>
               </div>
               <div
                 class="map-block mb-teal"
@@ -4175,8 +4623,8 @@
                   showRoomInfo(
                     'Lab Komputer',
                     '💻',
-                    'Lab komputer dengan 40 unit terbaru untuk pelajaran TIK dan coding',
-                    '07.00–15.30',
+                    'Lab komputer dengan banyak unit komputer untuk pelajaran TIK dan coding',
+                    'Sesuai jam pelajaran Informatika',
                     'Kelas TIK',
                   )
                 "
@@ -4190,8 +4638,8 @@
                   showRoomInfo(
                     'Perpustakaan',
                     '📖',
-                    'Koleksi lebih dari 10.000 judul buku dan digital library. Ruang baca nyaman ber-AC',
-                    '07.00–16.00',
+                    'Ruang buku dan menjadi ruang pinjaman kelas sepulang sekolah',
+                    'Sesuai jam sekolah',
                     'Semua Siswa',
                   )
                 "
@@ -4208,7 +4656,7 @@
                     '🎶',
                     'Tempat siswa/i dapat mengembangkan bakat dan minat di bidang seni musik',
                     '07.00–17.00',
-                    'Ekstra Band',
+                    'Pelajaran Seni musik & Ekstra Band',
                   )
                 "
               >
@@ -4222,7 +4670,7 @@
                     'Ruang BK',
                     '💬',
                     'Ruang Bimbingan Konseling untuk konsultasi akademik dan personal siswa',
-                    '08.00–15.00',
+                    'Sepulang sekolah',
                     'Semua Siswa',
                   )
                 "
@@ -4237,7 +4685,7 @@
                     'Ruang Guru',
                     '👩‍🏫',
                     'Ruang kerja dan istirahat bagi seluruh tenaga pengajar',
-                    'Jam Kerja',
+                    'Sesuai jam sekolah',
                     'Guru & Staf',
                   )
                 "
@@ -4252,7 +4700,7 @@
                     'Ruang TU',
                     '🏢',
                     'Tata Usaha dan administrasi sekolah. Urusan dokumen, pembayaran, dll',
-                    '07.30–15.30',
+                    'Sesuai jam sekolah',
                     'Semua',
                   )
                 "
@@ -4267,7 +4715,7 @@
                   showRoomInfo(
                     'Aula Utama',
                     '🎭',
-                    'Aula serbaguna berkapasitas 500 orang untuk seminar, pentas seni, dan acara besar',
+                    'Aula serbaguna untuk seminar, pentas seni, dan acara besar. Aula berada pada kelas gabungan XI4 dan XI5',
                     'Sesuai Jadwal',
                     'Semua',
                   )
@@ -4282,8 +4730,8 @@
                   showRoomInfo(
                     'UKS',
                     '🏥',
-                    'Unit Kesehatan Siswa dengan perlengkapan P3K dan tempat istirahat',
-                    '07.00–15.30',
+                    'Unit Kesehatan Siswa dengan perlengkapan P3K dan tempat istirahat bagi yang sakit',
+                    'Selama jam sekolah buka',
                     'Semua Siswa',
                   )
                 "
@@ -4298,7 +4746,7 @@
                     'Kapel Sekolah',
                     '⛪',
                     'Kapel untuk ibadah, doa pagi, dan kegiatan rohani sekolah',
-                    '06.30–17.00',
+                    'Sesuai kegiatan',
                     'Semua',
                   )
                 "
@@ -4308,7 +4756,8 @@
               </div>
             </div>
           </div>
-        </div><br> 
+        </div>
+        <br />
 
         <!-- Map Legend -->
         <div class="map-legend reveal">
@@ -4353,6 +4802,89 @@
               style="background: rgba(139, 94, 60, 0.4)"
             ></div>
             Area Hijau & Ibadah
+          </div>
+        </div>
+
+        <!-- Denah Lantai (Floor Plan) -->
+        <div class="floorplan-block reveal">
+          <div class="floorplan-head">
+            <h3 class="floorplan-title">📐 Denah Detail per Lantai</h3>
+            <p class="floorplan-desc">
+              Butuh detail lebih jelas? Pilih lantai di bawah untuk melihat
+              denah ruangan secara lengkap.
+            </p>
+          </div>
+
+          <div class="floor-tabs" role="tablist">
+            <button
+              class="floor-tab active"
+              onclick="switchFloorTab('1', this)"
+            >
+              Lantai 1
+            </button>
+            <button class="floor-tab" onclick="switchFloorTab('2', this)">
+              Lantai 2
+            </button>
+            <button class="floor-tab" onclick="switchFloorTab('3', this)">
+              Lantai 3
+            </button>
+            <button class="floor-tab" onclick="switchFloorTab('4', this)">
+              Lantai 4
+            </button>
+          </div>
+
+          <div class="floor-panels">
+            <div class="floor-panel active" id="floor-1">
+              <div
+                class="floor-img-wrap"
+              >
+                <img
+                  src="Lantai_1.png"
+                  alt="Denah Lantai 1"
+                  class="floor-img"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="floor-panel" id="floor-2">
+              <div
+                class="floor-img-wrap"
+              >
+                <img
+                  src="Lantai_2.png"
+                  alt="Denah Lantai 2"
+                  class="floor-img"
+                  loading="lazy"
+                />
+                <span class="floor-zoom-hint">🔍 Ketuk untuk perbesar</span>
+              </div>
+            </div>
+            <div class="floor-panel" id="floor-3">
+              <div
+                class="floor-img-wrap"
+              >
+                <img
+                  src="Lantai_3.png"
+                  alt="Denah Lantai 3"
+                  class="floor-img"
+                  loading="lazy"
+                />
+                <span class="floor-zoom-hint">🔍 Ketuk untuk perbesar</span>
+              </div>
+            </div>
+            <div class="floor-panel" id="floor-4">
+              <div
+                class="floor-img-wrap"
+              >
+                <img
+                  src="Lantai_4.png"
+                  alt="Denah Lantai 4"
+                  class="floor-img"
+                  loading="lazy"
+                />
+                <span class="floor-zoom-hint">🔍 Ketuk untuk perbesar</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -4424,8 +4956,7 @@
 
       <div class="footer-bottom">
         <div class="footer-bottom-left">
-          © 2026 SMA Agnesia • MPLS Diversa Natura • Dibuat dengan ❤️ oleh
-          OSIS
+          © 2026 SMA Agnesia • MPLS Diversa Natura • Dibuat dengan ❤️ oleh OSIS
         </div>
         <div class="footer-bottom-right">
           <a href="#">Kebijakan Privasi</a>
@@ -4453,6 +4984,564 @@
           <div class="modal-detail-row">
             <span class="modal-detail-label">👥 Pengguna</span
             ><span class="modal-detail-value" id="modalUsers"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Zoom Denah Lantai ===== -->
+    <div
+      class="modal-overlay"
+      id="floorZoomModal"
+      onclick="if (event.target === this) closeFloorZoom();"
+    >
+      <span class="floor-zoom-label" id="floorZoomLabel"></span>
+      <button class="floor-zoom-close" onclick="closeFloorZoom()">✕</button>
+      <img id="floorZoomImg" src="" alt="" class="floor-zoom-img" />
+    </div>
+
+    <!-- ===== Modal: Tata Tertib MPLS ===== -->
+    <div class="modal-overlay" id="tataTertibModal">
+      <div class="modal modal-lg">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📋</span>
+            <div class="modal-title">Tata Tertib MPLS</div>
+            <div class="modal-sub">Ketentuan seragam & kode etik peserta</div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('tataTertibModal')"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Kenakan seragam sesuai ketentuan berikut selama kegiatan MPLS
+            berlangsung. Pastikan atribut lengkap dan rapi setiap harinya.
+          </p>
+          <div class="uniform-grid">
+            <div class="uniform-item">
+              <!-- Ganti div placeholder ini dengan: <img class="uniform-frame" src="seragam-1.jpg" alt="Seragam Hari 1"> -->
+              <img
+                class="uniform-frame"
+                src="Baju_senin_selasa_rabu.png"
+                alt="Seragam Hari 1"
+              />
+              <div class="uniform-caption">
+                Seragam Hari Senin, Selasa & Rabu
+              </div>
+            </div>
+            <div class="uniform-item">
+              <!-- Ganti div placeholder ini dengan: <img class="uniform-frame" src="seragam-3.jpg" alt="Seragam Hari 3"> -->
+              <img
+                class="uniform-frame"
+                src="Baju_Kamis_Jumat.png"
+                alt="Seragam Hari 1"
+              />
+              <div class="uniform-caption">Seragam Hari Kamis & Jumat</div>
+            </div>
+            <div class="uniform-item">
+              <!-- Ganti div placeholder ini dengan: <img class="uniform-frame" src="seragam-3.jpg" alt="Seragam Hari 3"> -->
+              <img
+                class="uniform-frame"
+                src="Baju_OR_Kegiatan.png"
+                alt="Seragam Hari 1"
+              />
+              <div class="uniform-caption">Seragam Olahraga dan Kegiatan</div>
+            </div>
+          </div>
+          <p class="uniform-note">
+            📌 Lengkapi dengan sepatu tertutup berwarna hitam untuk senin dan
+            jumat, kaos kaki Santa Agnes, dan atribut sekolah (ikat pinggang,
+            topi, dasi) sesuai arahan sekolah. Rambut rapi, kuku pendek, dan
+            tidak menggunakan aksesoris berlebihan.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Jadwal Kegiatan ===== -->
+    <div class="modal-overlay" id="jadwalModal">
+      <div class="modal modal-lg">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📅</span>
+            <div class="modal-title">Jadwal Kegiatan</div>
+            <div class="modal-sub">Rundown lengkap Pra MPLS – Day 4</div>
+          </div>
+          <button class="modal-close" onclick="closeGuideModal('jadwalModal')">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="jadwal-tabs">
+            <button
+              class="jadwal-tab active"
+              onclick="switchJadwalTab('pra', this)"
+            >
+              Pra MPLS
+            </button>
+            <button class="jadwal-tab" onclick="switchJadwalTab('d1', this)">
+              Day 1
+            </button>
+            <button class="jadwal-tab" onclick="switchJadwalTab('d2', this)">
+              Day 2
+            </button>
+            <button class="jadwal-tab" onclick="switchJadwalTab('d3', this)">
+              Day 3
+            </button>
+            <button class="jadwal-tab" onclick="switchJadwalTab('d4', this)">
+              Day 4
+            </button>
+          </div>
+
+          <!-- Pra MPLS -->
+          <div class="jadwal-day-panel active" id="jadwal-pra">
+            <span class="jadwal-date">Jumat, 10 Juli 2026</span>
+            <div class="jadwal-list">
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.30–06.35</span
+                ><span class="jadwal-activity">Doa Pagi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.35–06.40</span
+                ><span class="jadwal-activity">Perkenalan Kakak Fasil</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.40–06.50</span
+                ><span class="jadwal-activity"
+                  >Memperkenalkan lagu-lagu SMAK St. Agnes</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.50–07.00</span
+                ><span class="jadwal-activity">Perjalanan menuju ke GOR</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.00–08.00</span
+                ><span class="jadwal-activity">Materi Spss</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.00–08.20</span
+                ><span class="jadwal-activity">Istirahat</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.20–10.05</span
+                ><span class="jadwal-activity">Materi NAPZA</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.05–10.10</span
+                ><span class="jadwal-activity">Perjalanan kembali ke GOR</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.10–10.30</span
+                ><span class="jadwal-activity">Istirahat</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.30–11.15</span
+                ><span class="jadwal-activity">Ngobrol sesama teman</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.15–11.30</span
+                ><span class="jadwal-activity">Pengisian link pendaftaran</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.30–12.20</span
+                ><span class="jadwal-activity"
+                  >Pemberian guidebook dan penjelasan peraturan MPLS serta foto
+                  bersama dan kebersihan kelas</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.20–12.50</span
+                ><span class="jadwal-activity">Pengumuman Hari Pertama</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.50–13.05</span
+                ><span class="jadwal-activity">Doa Penutup</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 1 -->
+          <div class="jadwal-day-panel" id="jadwal-d1">
+            <span class="jadwal-date">Senin, 13 Juli 2026</span>
+            <div class="jadwal-list">
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.00–06.25</span
+                ><span class="jadwal-activity">Presensi Peserta</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.25–06.30</span
+                ><span class="jadwal-activity">Peserta menuju ke lapangan</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.30–07.40</span
+                ><span class="jadwal-activity">Upacara Bendera</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.40–08.10</span
+                ><span class="jadwal-activity"
+                  >Perkenalan Suster, Bapak/Ibu Guru, dan Karyawan (CS,
+                  Satpam)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.10–08.30</span
+                ><span class="jadwal-activity"
+                  >Perkenalan Pengurus OSIS & MPK</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.30–08.45</span
+                ><span class="jadwal-activity"
+                  >Dinamika Kelas / Ice Breaking</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.45–09.05</span
+                ><span class="jadwal-activity">Istirahat 1</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">09.05–10.05</span
+                ><span class="jadwal-activity">Pertemuan Wali Kelas</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.05–10.45</span
+                ><span class="jadwal-activity"
+                  >Materi Kurikulum (X-1 & X-2 & X-3)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.05–10.45</span
+                ><span class="jadwal-activity"
+                  >Visi Misi (X-4 & X-5 & X-6)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.45–11.25</span
+                ><span class="jadwal-activity"
+                  >Materi Kurikulum (X-4 & X-5 & X-6)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.45–11.25</span
+                ><span class="jadwal-activity"
+                  >Visi Misi (X-1 & X-2 & X-3)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.25–11.45</span
+                ><span class="jadwal-activity">Istirahat 2</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.45–14.05</span
+                ><span class="jadwal-activity">Games Besar</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.05–14.25</span
+                ><span class="jadwal-activity"
+                  >Penjelasan, Undian, dan Diskusi Pentas Seni</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.25–14.30</span
+                ><span class="jadwal-activity">Pengumuman Hari Kedua</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.30–14.40</span
+                ><span class="jadwal-activity"
+                  >Doa Penutup + Kebersihan Kelas</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 2 -->
+          <div class="jadwal-day-panel" id="jadwal-d2">
+            <span class="jadwal-date">Selasa, 14 Juli 2026</span>
+            <div class="jadwal-list">
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.00–06.30</span
+                ><span class="jadwal-activity"
+                  >Presensi Peserta & Persiapan</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.30–06.35</span
+                ><span class="jadwal-activity">Doa Pagi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.35–06.50</span
+                ><span class="jadwal-activity"
+                  >Menyanyikan Indonesia Raya, Hymne Santa Agnes, 1 lagu daerah,
+                  Hymne Rukun Sama Teman</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.50–07.00</span
+                ><span class="jadwal-activity">Senam Singkat</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.00–07.20</span
+                ><span class="jadwal-activity">Briefing PBB</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.20–08.50</span
+                ><span class="jadwal-activity">PBB</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.50–09.10</span
+                ><span class="jadwal-activity"
+                  >Kembali ke sekolah dan berganti</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">09.10–09.40</span
+                ><span class="jadwal-activity">Istirahat 1</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">09.40–11.10</span
+                ><span class="jadwal-activity"
+                  >Budaya Sekolah & 7 Kebiasaan Anak Indonesia Hebat (X-1 & X-2
+                  & X-3)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">09.40–11.10</span
+                ><span class="jadwal-activity"
+                  >Observasi Sekolah (X-4 & X-5 & X-6)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.10–12.40</span
+                ><span class="jadwal-activity"
+                  >Budaya Sekolah & 7 Kebiasaan Anak Indonesia Hebat (X-4 & X-5
+                  & X-6)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.10–12.40</span
+                ><span class="jadwal-activity"
+                  >Observasi Sekolah (X-1 & X-2 & X-3)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.40–13.00</span
+                ><span class="jadwal-activity">Istirahat 2</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">13.00–14.25</span
+                ><span class="jadwal-activity">Latihan Pensi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.25–14.30</span
+                ><span class="jadwal-activity">Refleksi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.30–14.35</span
+                ><span class="jadwal-activity">Pengumuman Hari Ketiga</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.35–14.40</span
+                ><span class="jadwal-activity"
+                  >Doa Penutup + Kebersihan Kelas</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 3 -->
+          <div class="jadwal-day-panel" id="jadwal-d3">
+            <span class="jadwal-date">Rabu, 15 Juli 2026</span>
+            <div class="jadwal-list">
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.00–06.30</span
+                ><span class="jadwal-activity"
+                  >Presensi Peserta & Persiapan</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.30–06.35</span
+                ><span class="jadwal-activity">Doa Pagi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.35–06.45</span
+                ><span class="jadwal-activity"
+                  >Menyanyikan Indonesia Raya, Hymne, & Rukun Sama Teman</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.45–09.45</span
+                ><span class="jadwal-activity"
+                  >Materi Laudato Si, Bersih-Bersih/Aksi Nyata Mengumpulkan
+                  Sampah, dan Perjalanan + Materi di Teratai (Eco House)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">09.45–10.15</span
+                ><span class="jadwal-activity">Istirahat 1</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.15–11.15</span
+                ><span class="jadwal-activity"
+                  >Rally Games (X-1, X-2 & X-3) / Promosi OSIS & Games
+                  Seru-seruan (X-4, X-5 & X-6)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">11.15–12.15</span
+                ><span class="jadwal-activity"
+                  >Rally Games (X-4, X-5 & X-6) / Promosi OSIS & Games
+                  Seru-seruan (X-1, X-2 & X-3)</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.15–12.35</span
+                ><span class="jadwal-activity">Istirahat 2</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.35–13.55</span
+                ><span class="jadwal-activity">Materi Share With Us</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">13.55–14.25</span
+                ><span class="jadwal-activity"
+                  >Komitmen Kelas dan Refleksi</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.25–14.35</span
+                ><span class="jadwal-activity">Pengumuman untuk Hari ke-4</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.35–14.40</span
+                ><span class="jadwal-activity">Doa Pulang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 4 -->
+          <div class="jadwal-day-panel" id="jadwal-d4">
+            <span class="jadwal-date">Kamis, 16 Juli 2026</span>
+            <div class="jadwal-list">
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.00–06.30</span
+                ><span class="jadwal-activity"
+                  >Presensi Peserta & Persiapan</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.30–06.35</span
+                ><span class="jadwal-activity">Doa Pagi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.35–06.45</span
+                ><span class="jadwal-activity"
+                  >Menyanyikan Indonesia Raya, Hymne, & 7 Kebiasaan Anak
+                  Indonesia Hebat, Rukun Sama Teman</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.45–06.55</span
+                ><span class="jadwal-activity">Ice Breaking</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">06.55–07.15</span
+                ><span class="jadwal-activity"
+                  >Sosialisasi Tim Sarana dan Prasarana Sekolah</span
+                >
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.15–07.55</span
+                ><span class="jadwal-activity">Latihan Pensi</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">07.55–08.15</span
+                ><span class="jadwal-activity">Istirahat 1</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.15–08.25</span
+                ><span class="jadwal-activity">Perjalanan Menuju ke GOR</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.25–08.35</span
+                ><span class="jadwal-activity">Pembukaan MC</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">08.35–10.35</span
+                ><span class="jadwal-activity">Parade Ekstrakurikuler</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.35–10.55</span
+                ><span class="jadwal-activity">Top 3 Unjuk Bakat</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">10.55–12.25</span
+                ><span class="jadwal-activity">Pentas Seni</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.25–12.50</span
+                ><span class="jadwal-activity">Pengumuman Game Besar</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">12.50–13.20</span
+                ><span class="jadwal-activity">Penyerahan Hadiah</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">13.20–13.30</span
+                ><span class="jadwal-activity">Persiapan Ibadat Penutup</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">13.30–14.30</span
+                ><span class="jadwal-activity">Kata dan Ibadat Penutupan</span>
+              </div>
+              <div class="jadwal-row">
+                <span class="jadwal-time">14.30–14.40</span
+                ><span class="jadwal-activity"
+                  >Kata-kata Penutup dan Pengumuman</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Modal: Pengumuman Terbaru ===== -->
+    <div class="modal-overlay" id="pengumumanModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <span class="modal-icon">📣</span>
+            <div class="modal-title">Pengumuman Terbaru</div>
+          </div>
+          <button
+            class="modal-close"
+            onclick="closeGuideModal('pengumumanModal')"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="pengumuman-card">
+            <div class="pengumuman-icon">📷</div>
+            <h4>Ikuti Instagram Kami</h4>
+            <p>
+              Recap kegiatan harian, dokumentasi, dan info tambahan seputar MPLS
+              2026 dibagikan langsung lewat Instagram panitia.
+            </p>
+            <!-- Ganti href berikut dengan link Instagram resmi panitia -->
+            <a
+              href="https://www.instagram.com/stag.nes?igsh=MTZ1OWtvZGo3Nnl5Nw==/"
+              target="_blank"
+              rel="noopener"
+              class="pengumuman-btn"
+            >
+              📷 Buka Instagram
+            </a>
           </div>
         </div>
       </div>
@@ -4585,33 +5674,33 @@
    ============================================= */
       const guruData = [
         {
-          nama: "Wali kelas langit",
-          mapel: "Matematika",
+          nama: "?????",
+          mapel: "???",
           kelas: "langit",
           emoji: "📐",
         },
         {
-          nama: "Wali kelas air",
-          mapel: "Bahasa Indonesia",
+          nama: "?????",
+          mapel: "???",
           kelas: "air",
           emoji: "📝",
         },
-        { nama: "Wali kelas angin", mapel: "Fisika", kelas: "angin", emoji: "⚗️" },
+        { nama: "?????", mapel: "???", kelas: "angin", emoji: "⚗️" },
         {
-          nama: "Wali kelas api",
-          mapel: "Biologi",
+          nama: "?????",
+          mapel: "???",
           kelas: "api",
           emoji: "🌿",
         },
         {
-          nama: "Wali kelas matahari",
-          mapel: "Kimia",
+          nama: "?????",
+          mapel: "???",
           kelas: "matahari",
           emoji: "🧪",
         },
         {
-          nama: "Wali kelas tanah",
-          mapel: "Sejarah",
+          nama: "?????",
+          mapel: "???",
           kelas: "tanah",
           emoji: "📜",
         },
@@ -4698,6 +5787,72 @@
       document.getElementById("roomModal").addEventListener("click", (e) => {
         if (e.target === document.getElementById("roomModal")) closeModal();
       });
+
+      /* =============================================
+   DENAH LANTAI (FLOOR PLAN TABS + ZOOM)
+   ============================================= */
+      function switchFloorTab(floor, btnEl) {
+        document
+          .querySelectorAll(".floor-tab")
+          .forEach((b) => b.classList.remove("active"));
+        btnEl.classList.add("active");
+        document
+          .querySelectorAll(".floor-panel")
+          .forEach((p) => p.classList.remove("active"));
+        const panel = document.getElementById("floor-" + floor);
+        if (panel) panel.classList.add("active");
+      }
+      function openFloorZoom(src, label) {
+        document.getElementById("floorZoomImg").src = src;
+        document.getElementById("floorZoomImg").alt = label;
+        document.getElementById("floorZoomLabel").textContent = label;
+        document.getElementById("floorZoomModal").classList.add("show");
+      }
+      function closeFloorZoom() {
+        document.getElementById("floorZoomModal").classList.remove("show");
+      }
+
+      /* =============================================
+   GUIDEBOOK MODALS (Tata Tertib / Jadwal / Pengumuman)
+   ============================================= */
+      function openGuideModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+      function closeGuideModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+      ["tataTertibModal", "jadwalModal", "pengumumanModal"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("click", (e) => {
+          if (e.target === el) closeGuideModal(id);
+        });
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          ["tataTertibModal", "jadwalModal", "pengumumanModal"].forEach((id) =>
+            closeGuideModal(id),
+          );
+        }
+      });
+
+      function switchJadwalTab(day, btnEl) {
+        document
+          .querySelectorAll("#jadwalModal .jadwal-tab")
+          .forEach((b) => b.classList.remove("active"));
+        btnEl.classList.add("active");
+        document
+          .querySelectorAll("#jadwalModal .jadwal-day-panel")
+          .forEach((p) => p.classList.remove("active"));
+        const panel = document.getElementById("jadwal-" + day);
+        if (panel) panel.classList.add("active");
+      }
 
       /* =============================================
    FUTURE MESSAGE FORM
@@ -4858,8 +6013,10 @@
    Mobile : Ratio_9_16.mp4 (9:16)
    ============================================= */
       (function () {
-        const vidDesktop = document.querySelector(".hero-video-bg .vid-desktop");
-        const vidMobile  = document.querySelector(".hero-video-bg .vid-mobile");
+        const vidDesktop = document.querySelector(
+          ".hero-video-bg .vid-desktop",
+        );
+        const vidMobile = document.querySelector(".hero-video-bg .vid-mobile");
         if (!vidDesktop || !vidMobile) return;
 
         /* Tentukan video aktif berdasarkan lebar layar */
@@ -4869,7 +6026,7 @@
 
         /* Pause video yang tidak dipakai, play yang aktif */
         function syncVideos() {
-          const active   = activeVideo();
+          const active = activeVideo();
           const inactive = active === vidDesktop ? vidMobile : vidDesktop;
           if (!inactive.paused) inactive.pause();
           if (active.paused) active.play().catch(() => {});
@@ -4906,11 +6063,11 @@
                 if (e.isIntersecting) forcePlay();
                 else {
                   if (!vidDesktop.paused) vidDesktop.pause();
-                  if (!vidMobile.paused)  vidMobile.pause();
+                  if (!vidMobile.paused) vidMobile.pause();
                 }
               });
             },
-            { threshold: 0.1 }
+            { threshold: 0.1 },
           ).observe(hero);
         }
 
@@ -4918,7 +6075,7 @@
         function unlock() {
           forcePlay();
           ["touchstart", "click", "scroll"].forEach((ev) =>
-            document.removeEventListener(ev, unlock)
+            document.removeEventListener(ev, unlock),
           );
         }
         document.addEventListener("touchstart", unlock, { passive: true });
